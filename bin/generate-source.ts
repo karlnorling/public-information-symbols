@@ -128,7 +128,8 @@ const collectEntries = (
       const svgKey = Object.keys(svgMap).find((k) => {
         const normalized = k.replace(/\\/g, "/");
         return (
-          normalized.includes(`/${category}/${codeSlug}/`) &&
+          (normalized.startsWith(`${category}/${codeSlug}/`) ||
+            normalized.includes(`/${category}/${codeSlug}/`)) &&
           normalized.endsWith(".svg") &&
           !/_\d+x\d+\.svg$/.test(normalized)
         );

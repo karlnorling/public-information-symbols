@@ -5,8 +5,6 @@
     "moduleResolution": "node",
     "outDir": "./dist/cjs",
     "rootDir": "./src",
-    "paths": {
-      "@public-information-symbols/core": ["../core/src/index.ts"]
-    }
+    "paths": {}
   }
 }
