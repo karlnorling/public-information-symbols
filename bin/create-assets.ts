@@ -203,15 +203,10 @@ const createSVGSprite = async (): Promise<void> => {
 
   for (const file of svgFiles) {
     const raw = await fs.promises.readFile(file, "utf-8");
-    const basename = path.basename(file, ".svg");
-
-    // Match ISO 7001 pattern: ISO_7001_PI_AC_001 → ac-001
-    const codeMatch = basename.match(/ISO_7001_PI_([A-Z]{2})_(\d{3})/i);
-    const id = codeMatch
-      ? `${codeMatch[1].toLowerCase()}-${codeMatch[2]}`
-      : sanitize(path.relative(ASSETS_ROOT, file).replace(/\\/g, "/"))
-          .replace(/\.svg$/, "")
-          .replace(/[._]/g, "-");
+    // Use the parent directory name (code slug) as the sprite ID so that
+    // symbols whose filenames don't match their ISO category (e.g. AC 001
+    // stored as ISO_7001_PI_PF_006.svg) still get the correct ID "ac-001".
+    const id = path.basename(path.dirname(file));
 
     if (seen.has(id)) continue;
     seen.add(id);
@@ -290,11 +285,9 @@ const createCSSSprite = async (): Promise<void> => {
 
   for (const file of svgFiles) {
     const key = path.relative(ASSETS_ROOT, file).replace(/\\/g, "/");
-    const basename = path.basename(key, ".svg");
-    const codeMatch = basename.match(/ISO_7001_PI_([A-Z]{2})_(\d{3})/i);
-    const className = codeMatch
-      ? `pi-${codeMatch[1].toLowerCase()}-${codeMatch[2]}`
-      : `pi-${sanitize(basename).replace(/[._]/g, "-")}`;
+    // Use the parent directory name (code slug) for the class name — same
+    // reason as SVG sprite: filenames may not match the assigned ISO category.
+    const className = `pi-${path.basename(path.dirname(file))}`;
 
     if (seen.has(className)) continue;
     seen.add(className);
