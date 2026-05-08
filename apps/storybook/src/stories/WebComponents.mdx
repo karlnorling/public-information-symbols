@@ -1,5 +1,5 @@
-import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
-import * as WebComponentsStories from './WebComponents.stories';
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as WebComponentsStories from "./WebComponents.stories";
 
 <Meta of={WebComponentsStories} />
 
@@ -18,7 +18,7 @@ npm install @public-information-symbols/elements
 Call `defineCustomElements()` once at app startup to register all custom elements:
 
 ```ts
-import { defineCustomElements } from '@public-information-symbols/elements';
+import { defineCustomElements } from "@public-information-symbols/elements";
 defineCustomElements();
 ```
 
@@ -33,19 +33,19 @@ Renders any symbol by slug ID. Use this when the symbol ID is dynamic or unknown
 ```
 
 ```ts
-import { defineCustomElements } from '@public-information-symbols/elements';
+import { defineCustomElements } from "@public-information-symbols/elements";
 defineCustomElements();
 ```
 
 ### Attributes
 
-| Attribute | Type | Default | Description |
-| --------- | ---- | ------- | ----------- |
-| `symbol-id` | `string` | — | Slug ID, e.g. `ac-001-full-accessibility-or-toilets-accessible` |
-| `width` | `string \| number` | SVG intrinsic | Width forwarded to the `<svg>` element |
-| `height` | `string \| number` | SVG intrinsic | Height forwarded to the `<svg>` element |
-| `title` | `string` | Symbol name | Overrides the accessible `<title>` |
-| `description` | `string` | Symbol description | Overrides the accessible `<desc>` |
+| Attribute     | Type               | Default            | Description                                                     |
+| ------------- | ------------------ | ------------------ | --------------------------------------------------------------- |
+| `symbol-id`   | `string`           | —                  | Slug ID, e.g. `ac-001-full-accessibility-or-toilets-accessible` |
+| `width`       | `string \| number` | SVG intrinsic      | Width forwarded to the `<svg>` element                          |
+| `height`      | `string \| number` | SVG intrinsic      | Height forwarded to the `<svg>` element                         |
+| `title`       | `string`           | Symbol name        | Overrides the accessible `<title>`                              |
+| `description` | `string`           | Symbol description | Overrides the accessible `<desc>`                               |
 
 ---
 
@@ -54,7 +54,9 @@ defineCustomElements();
 Each symbol has its own named element — e.g. `<pi-ac-001-full-accessibility-or-toilets-accessible>`. Named elements accept the same `width`, `height`, `title`, and `description` attributes.
 
 ```html
-<pi-ac-001-full-accessibility-or-toilets-accessible width="64"></pi-ac-001-full-accessibility-or-toilets-accessible>
+<pi-ac-001-full-accessibility-or-toilets-accessible
+  width="64"
+></pi-ac-001-full-accessibility-or-toilets-accessible>
 <pi-pf-001-general-information width="64"></pi-pf-001-general-information>
 ```
 
@@ -66,7 +68,7 @@ Each symbol has its own named element — e.g. `<pi-ac-001-full-accessibility-or
 
 ```vue
 <script setup>
-import { defineCustomElements } from '@public-information-symbols/elements';
+import { defineCustomElements } from "@public-information-symbols/elements";
 defineCustomElements();
 </script>
 <template>
@@ -78,8 +80,8 @@ defineCustomElements();
 
 ```ts
 // app.module.ts
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { defineCustomElements } from '@public-information-symbols/elements';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { defineCustomElements } from "@public-information-symbols/elements";
 defineCustomElements();
 
 @NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA] })

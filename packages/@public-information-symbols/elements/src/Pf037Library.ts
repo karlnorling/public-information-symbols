@@ -4,26 +4,36 @@
 const _Attrs = `xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.917 52.917"`;
 const _Body = `<path d="M157.399 87.25h52.917v52.917h-52.917z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:2.01819" transform="translate(-157.399 -87.25)"/><path d="m168.803 91.943-5.735 4.516v12.94c.01.56.431.768.922.85l.006.001h.008c.983.096 1.953-.246 2.667-.722q.001.037.007.075v.036h.006l.002.01c.016.072.036.186.14.285.225.217.523.275.767.315l.008.002h.006c1.106.107 2.198-.34 2.925-.908v.017s-.012.101-.015.225-.008.266.043.408c.04.111.106.237.25.315.443.236.95.153 1.36.097.486-.066.948-.248 1.367-.472l.01-.004.01-.006c2.168-1.47 4.147-3.292 6.277-4.777l-.038-.055h.152V91.945l-1.005.797-3.027-.01.6-.473-.248-.315-1 .788h-3.208l.6-.473-.246-.315-1 .788h-2.963l.6-.473zm10.742.837v12.076c-2.135 1.497-4.093 3.295-6.205 4.728a3.7 3.7 0 0 1-1.225.424c-.409.056-.83.1-1.117-.053a.24.24 0 0 1-.062-.097.6.6 0 0 1-.012-.172l.007-11.93c.152.061.31.09.45.113l.007.002h.006c.825.08 1.78-.21 2.444-.568 1.885-1.248 3.827-3.013 5.707-4.524zm-11.504.272c.777.023 1.662.045 2.863.079l-4.226 3.328v.224c-.653.492-1.644.88-2.592.79-.221-.037-.433-.097-.549-.207.007.007-.01-.022-.023-.08a1 1 0 0 1-.006-.152c.002-.062.006-.112.006-.112l-.045-.004v-.265zm3.509.079h3.208l-4.227 3.328v.203c-.658.483-1.896.9-2.842.81-.221-.036-.433-.096-.548-.206.007.007-.013-.022-.026-.08a1 1 0 0 1-.006-.152c.002-.062.008-.112.008-.112l-.039-.004v-.266zm3.855 0h3.063l-4.676 3.734c-.399.222-1.362.702-2.352.608-.198-.033-.388-.084-.508-.173v-.647zm-8.727 4.039v11.861c-.652.506-1.664.913-2.631.82-.222-.036-.434-.096-.55-.206.008.007-.01-.022-.022-.08-.017-3.905-.006-7.928-.006-11.86.183.098.386.136.56.164l.006.002h.008c.968.094 1.923-.236 2.634-.701zm3.784.017.013.085c.01.046.021.109.056.174l-.066 11.443-.14.107c-.65.522-1.684.95-2.674.856-.222-.037-.434-.097-.55-.207.008.007-.01-.02-.023-.072V97.708c.182.096.383.133.555.161l.006.002h.006c.952.093 2.05-.226 2.818-.684zm25.006 3.719a3.6 3.6 0 0 0-3.6 3.6 3.6 3.6 0 0 0 3.6 3.6 3.6 3.6 0 0 0 3.6-3.6 3.6 3.6 0 0 0-3.6-3.6m2.719 8.014-6.117.036-.99.106-1.273.707-1.025 1.59-.07 1.698s-2.276.456-2.68.68c-1.436-.197-2.546-.72-5.184-.661-.342.004-.69.024-1.035.065-2.797.219-6.066.83-6.066.83l-.222.045 5.334 15.836.186-.057s1.261-.334 2.72-.625c-.177.212-.397.48-.55.682-.335.447-.751.858-.954 1.379-.156.399-.155.845-.177 1.272-.05.99.106 2.97.106 2.97h11.739s.03-.652.141-.954c.077-.209.215-.392.354-.566q.173-.215.389-.389c1.865-1.504 6.046-3.889 6.046-3.889l.22-.159c.704.262 1.476.577 2.182.884 1.45.63 2.817.973 2.817.973l.568.097-3.202-10.391.03-8.481v-1.132l-.954-1.556-1.343-.848zm-17.127 4.556c2.133.012 4.017.627 4.137.667l1.248 3.852 3.3 10.721a24 24 0 0 0-1.516-.337c-1.142-.22-2.505-.42-3.463-.316-2.051.222-5.34 1.092-5.569 1.16l-5.019-14.78c-.088-.259 2.465-.36 5.494-.791.472-.042.942-.173 1.388-.176m11.586.379c2.967.008 5.62.577 5.78.612l5.406 16.354c-.304-.145-1.04-.5-2.271-1.035-1.459-.634-3.126-1.308-4.079-1.477-2.417-.43-5.645.229-6.48.416l-4.425-14.378c.986-.122 3.963-.473 5.78-.491z" style="color:#000;fill:#000" transform="translate(-157.399 -87.25)"/>`;
 const _DefaultDesc = `Library`;
-const _DefaultTitle = 'Library';
+const _DefaultTitle = "Library";
 const _DefaultWidth = `200.001`;
 const _DefaultHeight = `200.001`;
-const _h = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+const _h = (s: string) =>
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/'/g, "&#39;")
+    .replace(/"/g, "&quot;");
 
 export class Pf037Library extends HTMLElement {
-  static readonly tagName = 'pi-pf-037-library';
-  static readonly observedAttributes = ['title', 'description', 'width', 'height'];
+  static readonly tagName = "pi-pf-037-library";
+  static readonly observedAttributes = ["title", "description", "width", "height"];
 
-  connectedCallback(): void { this._render(); }
-  attributeChangedCallback(): void { this._render(); }
+  connectedCallback(): void {
+    this._render();
+  }
+  attributeChangedCallback(): void {
+    this._render();
+  }
 
   private _render(): void {
     const descId = `pi-desc-pf-037-library`;
     const titleId = `pi-title-pf-037-library`;
-    const _w = this.hasAttribute('width') ? _h(this.getAttribute('width')!) : _DefaultWidth;
-    const _ht = this.hasAttribute('height') ? _h(this.getAttribute('height')!) : _DefaultHeight;
-    const resolvedTitle = this.getAttribute('title') ?? _DefaultTitle;
-    const resolvedDesc = this.getAttribute('description') ?? _DefaultDesc;
-    this.style.display = 'contents';
+    const _w = this.hasAttribute("width") ? _h(this.getAttribute("width")!) : _DefaultWidth;
+    const _ht = this.hasAttribute("height") ? _h(this.getAttribute("height")!) : _DefaultHeight;
+    const resolvedTitle = this.getAttribute("title") ?? _DefaultTitle;
+    const resolvedDesc = this.getAttribute("description") ?? _DefaultDesc;
+    this.style.display = "contents";
     this.innerHTML = `<svg ${_Attrs} width="${_w}" height="${_ht}" role="img" aria-labelledby="${titleId} ${descId}">
   <title id="${titleId}">${_h(resolvedTitle)}</title>
   <desc id="${descId}">${_h(resolvedDesc)}</desc>

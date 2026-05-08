@@ -7,7 +7,14 @@ const preview: Preview = {
         order: [
           "Introduction",
           "ISO 7001",
-          ["React Components", "CSS Sprite", "SVG Sprite", "Web Components", "Vue 3", "Assets & API"],
+          [
+            "React Components",
+            "CSS Sprite",
+            "SVG Sprite",
+            "Web Components",
+            "Vue 3",
+            "Assets & API",
+          ],
         ],
       },
     },

@@ -49,14 +49,14 @@ const CSSGrid = ({ size = 96, category }: GridProps) => {
           return (
             <div
               key={s.id}
-              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.4rem" }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "0.4rem",
+              }}
             >
-              <span
-                className={`pi-icon ${cls}`}
-                role="img"
-                aria-label={s.name}
-                title={s.name}
-              />
+              <span className={`pi-icon ${cls}`} role="img" aria-label={s.name} title={s.name} />
               <span style={{ fontSize: "0.7rem", textAlign: "center", color: "#555" }}>
                 {s.code}
               </span>

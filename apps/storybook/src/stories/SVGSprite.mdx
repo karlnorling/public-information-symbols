@@ -1,5 +1,5 @@
-import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
-import * as SVGSpriteStories from './SVGSprite.stories';
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as SVGSpriteStories from "./SVGSprite.stories";
 
 <Meta of={SVGSpriteStories} />
 
@@ -15,12 +15,12 @@ npm install @public-information-symbols/sprite
 
 ## When to use
 
-| Approach | Best for |
-| -------- | -------- |
-| **SVG sprite** | Plain HTML, no framework, single network request |
+| Approach         | Best for                                             |
+| ---------------- | ---------------------------------------------------- |
+| **SVG sprite**   | Plain HTML, no framework, single network request     |
 | React components | React/JSX — richer props, TypeScript, tree-shakeable |
-| Web Components | Any framework or plain HTML with JS |
-| CSS sprite | Class-driven usage, CMS output, zero JavaScript |
+| Web Components   | Any framework or plain HTML with JS                  |
+| CSS sprite       | Class-driven usage, CMS output, zero JavaScript      |
 
 ---
 
@@ -51,12 +51,12 @@ npm install @public-information-symbols/sprite
 ### React with bundler import
 
 ```tsx
-import spriteUrl from '@public-information-symbols/sprite/sprite.svg';
+import spriteUrl from "@public-information-symbols/sprite/sprite.svg";
 
 <svg width={64} height={64} role="img" aria-label="Full accessibility">
   <title>Full accessibility</title>
   <use href={`${spriteUrl}#ac-001`} />
-</svg>
+</svg>;
 ```
 
 ---
@@ -66,7 +66,7 @@ import spriteUrl from '@public-information-symbols/sprite/sprite.svg';
 Symbol IDs are the code slug: `ac-001`, `pf-015`, `tf-001`. Enumerate all IDs from `sprite-ids.json`:
 
 ```ts
-import ids from '@public-information-symbols/sprite/sprite-ids.json';
+import ids from "@public-information-symbols/sprite/sprite-ids.json";
 ```
 
 ---
