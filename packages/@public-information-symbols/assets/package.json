@@ -1,0 +1,36 @@
+{
+  "name": "@public-information-symbols/assets",
+  "version": "0.0.0",
+  "description": "Static image assets for all ISO 7001 public information symbols — SVG, PNG, JPG, and WebP at five sizes (240–2048 px)",
+  "keywords": [
+    "assets",
+    "icons",
+    "images",
+    "iso",
+    "iso-7001",
+    "jpg",
+    "png",
+    "public-information",
+    "signs",
+    "svg",
+    "webp"
+  ],
+  "homepage": "https://github.com/karlnorling/public-information-symbols",
+  "bugs": {
+    "url": "https://github.com/karlnorling/public-information-symbols/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karlnorling/public-information-symbols",
+    "directory": "packages/@public-information-symbols/assets"
+  },
+  "files": [
+    "assets/",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    "./assets/*": "./assets/*"
+  }
+}

@@ -1,0 +1,149 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" />
+
+# ISO 7001 Public Information Symbols
+
+Accessible, framework-agnostic packages for all **ISO 7001** public information symbols used in airports, train stations, hotels, and public spaces worldwide.
+
+[![CI](https://github.com/karlnorling/public-information-symbols/actions/workflows/ci.yml/badge.svg)](https://github.com/karlnorling/public-information-symbols/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/karlnorling/public-information-symbols/blob/main/LICENSE)
+
+---
+
+## What is ISO 7001?
+
+ISO 7001 is the international standard defining graphical symbols for public information — the signs you see in airports, train stations, hotels, shopping centres, and public spaces worldwide. The 2023 edition covers 177 symbols across seven categories.
+
+| Category            | Code | Count | Examples                                          |
+| ------------------- | ---- | ----- | ------------------------------------------------- |
+| Accessibility       | AC   | 23    | Wheelchair access, hearing loop, priority seating |
+| Public Facilities   | PF   | 32+   | Toilets, information, elevator, recycling, shower |
+| Transportation      | TF   | 28+   | Airport, taxi, parking, baggage, vehicle charging |
+| Behaviour           | BP   | 19    | Queue here, no photography, silence               |
+| Commercial          | CF   | 22    | Restaurant, hotel, pharmacy, shop, cinema         |
+| Tourism & Culture   | TC   | 18    | Museum, camping, trail, planetarium               |
+| Sporting Activities | SA   | 4     | Athletic facilities                               |
+
+---
+
+## Packages
+
+| Package                                                                                                      | Description                                              |
+| ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| [`@public-information-symbols/react`](/?path=/docs/iso-7001-react-components--docs)                          | Inline SVG React components, tree-shakeable, fully typed |
+| [`@public-information-symbols/vue`](https://www.npmjs.com/package/@public-information-symbols/vue)           | Inline SVG Vue 3 components                              |
+| [`@public-information-symbols/elements`](https://www.npmjs.com/package/@public-information-symbols/elements) | Web Components / Custom Elements (`<pi-symbol>`)         |
+| [`@public-information-symbols/css`](/?path=/docs/iso-7001-css-sprite--docs)                                  | CSS background-image sprite, zero JavaScript             |
+| [`@public-information-symbols/sprite`](/?path=/docs/iso-7001-svg-sprite--docs)                               | SVG `<symbol>` sprite, single network request            |
+| [`@public-information-symbols/assets`](https://www.npmjs.com/package/@public-information-symbols/assets)     | Pre-built SVG, PNG, JPG, WebP at 5 sizes                 |
+| [`@public-information-symbols/core`](https://www.npmjs.com/package/@public-information-symbols/core)         | Typed symbol data and lookup API                         |
+
+---
+
+## Quick start
+
+### React
+
+```sh
+npm install @public-information-symbols/react
+```
+
+Named components for each symbol:
+
+```tsx
+import { Ac001FullAccessibility, Pf001GeneralInformation } from '@public-information-symbols/react';
+
+<Ac001FullAccessibility width={64} />
+<Pf001GeneralInformation width={64} title="Information desk" />
+```
+
+Dynamic rendering by ID:
+
+```tsx
+import { SymbolById } from "@public-information-symbols/react";
+
+<SymbolById id="ac-001-full-accessibility" width={64} />;
+```
+
+### Vue 3
+
+```sh
+npm install @public-information-symbols/vue
+```
+
+```vue
+<script setup>
+import { SymbolById } from "@public-information-symbols/vue";
+</script>
+<template>
+  <SymbolById id="ac-001-full-accessibility" :width="64" />
+</template>
+```
+
+### Web Components
+
+```sh
+npm install @public-information-symbols/elements
+```
+
+```ts
+import { defineCustomElements } from "@public-information-symbols/elements";
+defineCustomElements();
+```
+
+```html
+<!-- Generic element -->
+<pi-symbol symbol-id="ac-001-full-accessibility" width="64"></pi-symbol>
+
+<!-- Named element -->
+<pi-ac-001-full-accessibility width="64"></pi-ac-001-full-accessibility>
+```
+
+### CSS sprite (no JavaScript)
+
+```sh
+npm install @public-information-symbols/css
+```
+
+```js
+import "@public-information-symbols/css/sprite.css";
+```
+
+```html
+<span
+  class="pi-ac-001"
+  style="display:inline-block;width:64px;height:64px"
+  role="img"
+  aria-label="Full accessibility"
+></span>
+```
+
+### SVG sprite
+
+```sh
+npm install @public-information-symbols/sprite
+```
+
+```html
+<svg width="64" height="64" role="img" aria-label="Full accessibility">
+  <title>Full accessibility</title>
+  <use href="/path/to/sprite.svg#ac-001" />
+</svg>
+```
+
+### Programmatic API
+
+```ts
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+
+const all = getAllSymbols(); // PISymbol[]
+const symbol = getSymbol("ac-001-full-accessibility"); // PISymbol | undefined
+const accessibility = getSymbolsByCategory("accessibility"); // PISymbol[]
+```
+
+---
+
+## License
+
+MIT. ISO 7001 symbol graphics are sourced from Wikimedia Commons — see each file's Commons page for the specific licence of its artwork.

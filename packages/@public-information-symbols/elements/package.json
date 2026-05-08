@@ -1,0 +1,57 @@
+{
+  "name": "@public-information-symbols/elements",
+  "version": "0.0.0",
+  "description": "Web Components (Custom Elements) for all ISO 7001 public information symbols — framework-agnostic, zero dependencies",
+  "keywords": [
+    "accessible",
+    "custom-elements",
+    "icons",
+    "iso",
+    "iso-7001",
+    "public-information",
+    "signs",
+    "svg",
+    "typescript",
+    "web-components"
+  ],
+  "homepage": "https://github.com/karlnorling/public-information-symbols",
+  "bugs": {
+    "url": "https://github.com/karlnorling/public-information-symbols/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karlnorling/public-information-symbols",
+    "directory": "packages/@public-information-symbols/elements"
+  },
+  "files": [
+    "dist/",
+    "package.json",
+    "README.md"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/esm/index.d.ts"
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'})); require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type:'module'}))\"",
+    "test": "jest",
+    "type-check": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@public-information-symbols/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.3.0",
+    "jest-environment-jsdom": "^30.3.0",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
+  }
+}

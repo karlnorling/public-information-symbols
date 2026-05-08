@@ -1,0 +1,35 @@
+{
+  "name": "@public-information-symbols/sprite",
+  "version": "0.0.0",
+  "description": "SVG symbol sprite for all ISO 7001 public information symbols — single network request",
+  "keywords": [
+    "icons",
+    "iso",
+    "iso-7001",
+    "public-information",
+    "signs",
+    "sprite",
+    "svg",
+    "symbol"
+  ],
+  "homepage": "https://github.com/karlnorling/public-information-symbols",
+  "bugs": {
+    "url": "https://github.com/karlnorling/public-information-symbols/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karlnorling/public-information-symbols",
+    "directory": "packages/@public-information-symbols/sprite"
+  },
+  "files": [
+    "sprite.svg",
+    "sprite-ids.json",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    "./sprite.svg": "./sprite.svg",
+    "./sprite-ids.json": "./sprite-ids.json"
+  }
+}

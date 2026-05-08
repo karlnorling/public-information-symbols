@@ -1,0 +1,33 @@
+{
+  "name": "@public-information-symbols/css",
+  "version": "0.0.0",
+  "description": "CSS background-image sprite for all ISO 7001 public information symbols — zero JavaScript",
+  "keywords": [
+    "css",
+    "icons",
+    "iso",
+    "iso-7001",
+    "public-information",
+    "signs",
+    "sprite",
+    "svg"
+  ],
+  "homepage": "https://github.com/karlnorling/public-information-symbols",
+  "bugs": {
+    "url": "https://github.com/karlnorling/public-information-symbols/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karlnorling/public-information-symbols",
+    "directory": "packages/@public-information-symbols/css"
+  },
+  "files": [
+    "sprite.css",
+    "package.json",
+    "README.md"
+  ],
+  "exports": {
+    "./sprite.css": "./sprite.css"
+  }
+}
