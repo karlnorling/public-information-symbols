@@ -2163,6 +2163,7 @@ __metadata:
   resolution: "@pi-storybook/app@workspace:apps/storybook"
   dependencies:
     "@public-information-symbols/core": "workspace:*"
+    "@public-information-symbols/elements": "workspace:*"
     "@public-information-symbols/react": "workspace:*"
     "@storybook/addon-a11y": "npm:^10.3.5"
     "@storybook/addon-docs": "npm:^10.3.5"
@@ -2244,7 +2245,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@public-information-symbols/elements@workspace:packages/@public-information-symbols/elements":
+"@public-information-symbols/elements@workspace:*, @public-information-symbols/elements@workspace:packages/@public-information-symbols/elements":
   version: 0.0.0-use.local
   resolution: "@public-information-symbols/elements@workspace:packages/@public-information-symbols/elements"
   dependencies:

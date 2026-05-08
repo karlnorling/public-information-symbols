@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="ISO 7001/Vue 3" />
+
+# Vue 3 Components
+
+Inline SVG components for all ISO 7001 public information symbols — fully typed, tree-shakeable, and built for Vue 3's Composition API.
+
+## Installation
+
+```sh
+npm install @public-information-symbols/vue
+```
+
+---
+
+## Basic usage
+
+### Dynamic rendering by ID
+
+```vue
+<script setup>
+import { SymbolById } from '@public-information-symbols/vue';
+</script>
+<template>
+  <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" :width="64" />
+</template>
+```
+
+### Named components
+
+Each symbol has a generated named component:
+
+```vue
+<script setup>
+import {
+  Ac001FullAccessibilityOrToiletsAccessible,
+  Pf001GeneralInformation,
+} from '@public-information-symbols/vue';
+</script>
+<template>
+  <Ac001FullAccessibilityOrToiletsAccessible :width="64" />
+  <Pf001GeneralInformation :width="64" title="Information desk" />
+</template>
+```
+
+---
+
+## Props — `SymbolProps`
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `width` | `number \| string` | SVG intrinsic width | Width of the `<svg>` element |
+| `height` | `number \| string` | SVG intrinsic height | Height of the `<svg>` element |
+| `title` | `string` | Symbol name | Accessible title (`<title>` inside SVG) |
+| `description` | `string` | Symbol description | Accessible description (`<desc>` inside SVG) |
+
+---
+
+## All symbols grid
+
+```vue
+<script setup>
+import { SymbolById } from '@public-information-symbols/vue';
+import { getAllSymbols } from '@public-information-symbols/core';
+
+const symbols = getAllSymbols();
+</script>
+<template>
+  <div style="display:flex; flex-wrap:wrap; gap:0.75rem">
+    <div v-for="s in symbols" :key="s.id" style="text-align:center">
+      <SymbolById :id="s.id" :width="64" :height="64" />
+      <div style="font-size:0.7rem">{{ s.code }}</div>
+    </div>
+  </div>
+</template>
+```
+
+---
+
+## Category filtering
+
+```vue
+<script setup>
+import { SymbolById } from '@public-information-symbols/vue';
+import { getSymbolsByCategory } from '@public-information-symbols/core';
+
+const symbols = getSymbolsByCategory('accessibility');
+</script>
+<template>
+  <SymbolById v-for="s in symbols" :key="s.id" :id="s.id" :width="64" />
+</template>
+```
+
+---
+
+## Programmatic API
+
+```ts
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
+
+const all = getAllSymbols();                                   // PISymbol[]
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');  // PISymbol | undefined
+const accessibility = getSymbolsByCategory('accessibility');  // PISymbol[]
+```

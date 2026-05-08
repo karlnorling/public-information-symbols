@@ -1,0 +1,149 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="ISO 7001/Assets & API" />
+
+# Assets & Programmatic API
+
+The `@public-information-symbols/core` package exposes typed data for all ISO 7001 symbols alongside helper functions for filtering and lookup. The `@public-information-symbols/assets` package provides pre-built image files at multiple resolutions.
+
+---
+
+## Installation
+
+```sh
+npm install @public-information-symbols/core @public-information-symbols/assets
+```
+
+---
+
+## Programmatic API
+
+```ts
+import {
+  getAllSymbols,
+  getSymbol,
+  getSymbolsByCategory,
+} from '@public-information-symbols/core';
+```
+
+### `getAllSymbols()`
+
+Returns all 178 ISO 7001 symbols.
+
+```ts
+const all = getAllSymbols();
+// → PISymbol[]
+```
+
+### `getSymbol(id)`
+
+Look up a single symbol by its slug ID.
+
+```ts
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
+// → PISymbol | undefined
+
+const info = getSymbol('pf-001-general-information');
+```
+
+### `getSymbolsByCategory(category)`
+
+Filter symbols by ISO 7001 category.
+
+```ts
+const accessibility   = getSymbolsByCategory('accessibility');      // AC-series
+const publicFacilities = getSymbolsByCategory('public-facilities'); // PF-series
+const transportation  = getSymbolsByCategory('transportation');     // TF-series
+const behaviour       = getSymbolsByCategory('behaviour');          // BP-series
+const commercial      = getSymbolsByCategory('commercial');         // CF-series
+const tourism         = getSymbolsByCategory('tourism');            // TC-series
+const sporting        = getSymbolsByCategory('sporting');           // SA-series
+```
+
+---
+
+## `PISymbol` type
+
+```ts
+interface PISymbol {
+  id: string;           // e.g. 'ac-001-full-accessibility-or-toilets-accessible'
+  code: string;         // e.g. 'AC 001'
+  name: string;         // e.g. 'Full accessibility or toilets - accessible'
+  category: SymbolCategory;
+  description: string;  // accessible description
+  svg: string;          // inline SVG markup (SVGO-optimised)
+  assets: SymbolAssets;
+}
+
+interface SymbolAssets {
+  svg: string;                    // relative path to original SVG
+  png: Record<number, string>;    // size → relative path (240, 512, 768, 1024, 2048)
+  jpg: Record<number, string>;    // same sizes
+  webp: Record<number, string>;   // same sizes
+}
+
+type SymbolCategory =
+  | 'accessibility'
+  | 'public-facilities'
+  | 'transportation'
+  | 'behaviour'
+  | 'commercial'
+  | 'tourism'
+  | 'sporting';
+```
+
+---
+
+## ISO 7001 Categories
+
+| Category | Prefix | Description |
+| -------- | ------ | ----------- |
+| Accessibility | AC | Wheelchair access, hearing loop, assistance dogs, priority seating |
+| Public Facilities | PF | Toilets, information, elevator, recycling, shower, baby care |
+| Transportation | TF | Airport, taxi, parking, baggage, vehicle charging, ferry |
+| Behaviour | BP | Queue here, no photography, silence, phone charging |
+| Commercial | CF | Restaurant, hotel, pharmacy, shop, cinema, ATM |
+| Tourism & Culture | TC | Museum, camping, trail, planetarium, gallery |
+| Sporting Activities | SA | Athletic facilities |
+
+---
+
+## Asset files
+
+The `@public-information-symbols/assets` package ships pre-converted raster images at five resolutions (240, 512, 768, 1024, 2048 px²) in PNG, JPG, and WebP formats alongside the original SVGs.
+
+### Directory layout
+
+```
+assets/
+  accessibility/
+    ac-001/
+      ISO_7001_PI_*.svg
+      ISO_7001_PI_*_240x240.png
+      ISO_7001_PI_*_512x512.png
+      ISO_7001_PI_*_768x768.png
+      ISO_7001_PI_*_1024x1024.png
+      ISO_7001_PI_*_2048x2048.png
+      ISO_7001_PI_*_240x240.jpg
+      ISO_7001_PI_*_240x240.webp
+      …
+  public-facilities/
+  transportation/
+  behaviour/
+  commercial/
+  tourism/
+  sporting/
+```
+
+### Resolve asset paths via the API
+
+```ts
+import { getSymbol } from '@public-information-symbols/core';
+
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
+if (symbol) {
+  console.log(symbol.assets.svg);        // 'accessibility/ac-001/ISO_7001_PI_*.svg'
+  console.log(symbol.assets.png[512]);   // 'accessibility/ac-001/ISO_7001_PI_*_512x512.png'
+  console.log(symbol.assets.webp[240]);  // 'accessibility/ac-001/ISO_7001_PI_*_240x240.webp'
+}
+```

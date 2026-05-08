@@ -1,0 +1,88 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ReactStories from './ReactComponents.stories';
+
+<Meta of={ReactStories} />
+
+# React Components
+
+Inline SVG components for all ISO 7001 public information symbols. Each component is tree-shakeable, fully accessible, and accepts the same `SymbolProps` interface.
+
+## Installation
+
+```sh
+npm install @public-information-symbols/react
+```
+
+## Basic usage
+
+Named components are generated for every symbol:
+
+```tsx
+import { Ac001FullAccessibilityOrToiletsAccessible, Pf001GeneralInformation } from '@public-information-symbols/react';
+
+export default function SignagePanel() {
+  return (
+    <>
+      <Ac001FullAccessibilityOrToiletsAccessible width={64} />
+      <Pf001GeneralInformation width={64} title="Information desk" />
+    </>
+  );
+}
+```
+
+## Dynamic rendering by ID
+
+```tsx
+import { SymbolById } from '@public-information-symbols/react';
+
+<SymbolById id="ac-001-full-accessibility-or-toilets-accessible" width={64} />
+```
+
+---
+
+## Props reference — `SymbolProps`
+
+<Canvas of={ReactStories.SingleSymbol} />
+<Controls of={ReactStories.SingleSymbol} />
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `width` | `number \| string` | SVG intrinsic width | Width of the `<svg>` element |
+| `height` | `number \| string` | SVG intrinsic height | Height of the `<svg>` element |
+| `title` | `string` | Symbol name | Accessible title (`<title>` inside SVG) |
+| `description` | `string` | Symbol description | Accessible description (`<desc>` inside SVG) |
+| `className` | `string` | — | CSS class on the root `<span>` wrapper |
+| `style` | `React.CSSProperties` | — | Inline styles on the root `<span>` wrapper |
+| `aria-label` | `string` | — | Overrides `aria-labelledby` with a direct label |
+
+---
+
+## Categories
+
+### Accessibility (AC)
+
+<Canvas of={ReactStories.Accessibility} />
+
+### Public Facilities (PF)
+
+<Canvas of={ReactStories.PublicFacilities} />
+
+### Transportation (TF)
+
+<Canvas of={ReactStories.Transportation} />
+
+### Behaviour (BP)
+
+<Canvas of={ReactStories.Behaviour} />
+
+### Commercial (CF)
+
+<Canvas of={ReactStories.Commercial} />
+
+### Tourism & Culture (TC)
+
+<Canvas of={ReactStories.Tourism} />
+
+### Sporting Activities (SA)
+
+<Canvas of={ReactStories.Sporting} />

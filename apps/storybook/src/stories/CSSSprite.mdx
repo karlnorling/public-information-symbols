@@ -1,0 +1,65 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as CSSSpriteStories from './CSSSprite.stories';
+
+<Meta of={CSSSpriteStories} />
+
+# CSS Sprite
+
+Import `sprite.css` to get a set of `.pi-*` utility classes. Apply a class to any block element sized with `width`/`height` — no JavaScript required.
+
+## Installation
+
+```sh
+npm install @public-information-symbols/css
+```
+
+## Setup
+
+```js
+import '@public-information-symbols/css/sprite.css';
+```
+
+```css
+@import '@public-information-symbols/css/sprite.css';
+```
+
+## Usage
+
+```html
+<span
+  class="pi-ac-001"
+  style="display:inline-block; width:64px; height:64px"
+  role="img"
+  aria-label="Full accessibility"
+></span>
+```
+
+---
+
+## Class name pattern
+
+Classes follow the pattern `pi-{code}` where the code prefix and number are lowercased — e.g. `pi-ac-001`, `pi-pf-015`, `pi-tf-001`.
+
+---
+
+## All symbols
+
+<Canvas of={CSSSpriteStories.AllSymbols} />
+
+---
+
+## Accessibility (AC)
+
+<Canvas of={CSSSpriteStories.Accessibility} />
+
+---
+
+## Public Facilities (PF)
+
+<Canvas of={CSSSpriteStories.PublicFacilities} />
+
+---
+
+## Transportation (TF)
+
+<Canvas of={CSSSpriteStories.Transportation} />

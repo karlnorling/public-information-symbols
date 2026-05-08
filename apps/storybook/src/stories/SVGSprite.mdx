@@ -1,0 +1,83 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as SVGSpriteStories from './SVGSprite.stories';
+
+<Meta of={SVGSpriteStories} />
+
+# SVG Sprite
+
+A single `sprite.svg` contains all ISO 7001 public information symbols as `<symbol>` elements. Reference any symbol with `<use href="#id">` — one HTTP request serves every symbol.
+
+## Installation
+
+```sh
+npm install @public-information-symbols/sprite
+```
+
+## When to use
+
+| Approach | Best for |
+| -------- | -------- |
+| **SVG sprite** | Plain HTML, no framework, single network request |
+| React components | React/JSX — richer props, TypeScript, tree-shakeable |
+| Web Components | Any framework or plain HTML with JS |
+| CSS sprite | Class-driven usage, CMS output, zero JavaScript |
+
+---
+
+## Usage
+
+### External file reference (recommended)
+
+```html
+<svg width="64" height="64" role="img" aria-label="Full accessibility">
+  <title>Full accessibility</title>
+  <use href="/path/to/sprite.svg#ac-001" />
+</svg>
+```
+
+### Inline sprite
+
+```html
+<div aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <!-- paste contents of sprite.svg here -->
+</div>
+
+<svg width="64" height="64" role="img" aria-label="Full accessibility">
+  <title>Full accessibility</title>
+  <use href="#ac-001" />
+</svg>
+```
+
+### React with bundler import
+
+```tsx
+import spriteUrl from '@public-information-symbols/sprite/sprite.svg';
+
+<svg width={64} height={64} role="img" aria-label="Full accessibility">
+  <title>Full accessibility</title>
+  <use href={`${spriteUrl}#ac-001`} />
+</svg>
+```
+
+---
+
+## Symbol ID pattern
+
+Symbol IDs are the code slug: `ac-001`, `pf-015`, `tf-001`. Enumerate all IDs from `sprite-ids.json`:
+
+```ts
+import ids from '@public-information-symbols/sprite/sprite-ids.json';
+```
+
+---
+
+## All symbols
+
+<Canvas of={SVGSpriteStories.AllSymbols} />
+
+---
+
+## Single symbol with controls
+
+<Canvas of={SVGSpriteStories.SingleIcon} />
+<Controls of={SVGSpriteStories.SingleIcon} />

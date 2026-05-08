@@ -41,6 +41,10 @@ const config: StorybookConfig = {
         dirname,
         "../../../packages/@public-information-symbols/react/src/index.ts",
       ),
+      "@public-information-symbols/elements": path.resolve(
+        dirname,
+        "../../../packages/@public-information-symbols/elements/src/index.ts",
+      ),
     };
     return config;
   },

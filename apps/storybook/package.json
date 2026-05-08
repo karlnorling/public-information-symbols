@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@public-information-symbols/core": "workspace:*",
+    "@public-information-symbols/elements": "workspace:*",
     "@public-information-symbols/react": "workspace:*"
   },
   "devDependencies": {

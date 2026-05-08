@@ -7,9 +7,13 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "types": ["vite/client"],
     "paths": {
       "@public-information-symbols/core": [
         "../../packages/@public-information-symbols/core/src/index.ts"
+      ],
+      "@public-information-symbols/elements": [
+        "../../packages/@public-information-symbols/elements/src/index.ts"
       ],
       "@public-information-symbols/react": [
         "../../packages/@public-information-symbols/react/src/index.ts"
