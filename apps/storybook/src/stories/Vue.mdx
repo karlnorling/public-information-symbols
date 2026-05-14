@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="ISO 7001/Vue 3" />
 
@@ -20,7 +20,7 @@ npm install @public-information-symbols/vue
 
 ```vue
 <script setup>
-import { SymbolById } from "@public-information-symbols/vue";
+import { SymbolById } from '@public-information-symbols/vue';
 </script>
 <template>
   <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" :width="64" />
@@ -36,7 +36,7 @@ Each symbol has a generated named component:
 import {
   Ac001FullAccessibilityOrToiletsAccessible,
   Pf001GeneralInformation,
-} from "@public-information-symbols/vue";
+} from '@public-information-symbols/vue';
 </script>
 <template>
   <Ac001FullAccessibilityOrToiletsAccessible :width="64" />
@@ -61,8 +61,8 @@ import {
 
 ```vue
 <script setup>
-import { SymbolById } from "@public-information-symbols/vue";
-import { getAllSymbols } from "@public-information-symbols/core";
+import { SymbolById } from '@public-information-symbols/vue';
+import { getAllSymbols } from '@public-information-symbols/core';
 
 const symbols = getAllSymbols();
 </script>
@@ -82,10 +82,10 @@ const symbols = getAllSymbols();
 
 ```vue
 <script setup>
-import { SymbolById } from "@public-information-symbols/vue";
-import { getSymbolsByCategory } from "@public-information-symbols/core";
+import { SymbolById } from '@public-information-symbols/vue';
+import { getSymbolsByCategory } from '@public-information-symbols/core';
 
-const symbols = getSymbolsByCategory("accessibility");
+const symbols = getSymbolsByCategory('accessibility');
 </script>
 <template>
   <SymbolById v-for="s in symbols" :key="s.id" :id="s.id" :width="64" />
@@ -97,9 +97,9 @@ const symbols = getSymbolsByCategory("accessibility");
 ## Programmatic API
 
 ```ts
-import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
 
 const all = getAllSymbols(); // PISymbol[]
-const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible"); // PISymbol | undefined
-const accessibility = getSymbolsByCategory("accessibility"); // PISymbol[]
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible'); // PISymbol | undefined
+const accessibility = getSymbolsByCategory('accessibility'); // PISymbol[]
 ```

@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import * as React from "react";
-import { getAllSymbols } from "@public-information-symbols/core";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import * as React from 'react';
+import { getAllSymbols } from '@public-information-symbols/core';
 
 const InlineSprite = () => {
-  const [spriteHtml, setSpriteHtml] = React.useState<string>("");
+  const [spriteHtml, setSpriteHtml] = React.useState<string>('');
 
   React.useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}assets/sprites/sprite.svg`)
@@ -18,7 +18,7 @@ const InlineSprite = () => {
   return (
     <div
       aria-hidden="true"
-      style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+      style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
       dangerouslySetInnerHTML={{ __html: spriteHtml }}
     />
   );
@@ -31,7 +31,7 @@ interface SpriteIconProps {
 }
 
 const SpriteIcon = ({ id, label, size = 120 }: SpriteIconProps) => (
-  <svg width={size} height={size} role="img" aria-label={label} style={{ display: "block" }}>
+  <svg width={size} height={size} role="img" aria-label={label} style={{ display: 'block' }}>
     <title>{label}</title>
     <use href={`#${id}`} />
   </svg>
@@ -51,31 +51,31 @@ interface GridProps {
 const SpriteGrid = ({ size = 120, category }: GridProps) => {
   const symbols = category ? ALL_SYMBOLS.filter((s) => s.category === category) : ALL_SYMBOLS;
   // sprite IDs are "ac-001", "pf-015" (code slug without name)
-  const spriteId = (id: string) => id.split("-").slice(0, 2).join("-");
+  const spriteId = (id: string) => id.split('-').slice(0, 2).join('-');
 
   return (
     <>
       <InlineSprite />
       <div
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "0.75rem",
-          padding: "1rem",
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '0.75rem',
+          padding: '1rem',
         }}
       >
         {symbols.map((s) => (
           <div
             key={s.id}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "0.5rem",
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.5rem',
             }}
           >
             <SpriteIcon id={spriteId(s.id)} label={s.name} size={size} />
-            <span style={{ fontSize: "0.75rem", textAlign: "center", color: "#555" }}>
+            <span style={{ fontSize: '0.75rem', textAlign: 'center', color: '#555' }}>
               {s.code}
             </span>
           </div>
@@ -97,22 +97,22 @@ const SingleSpriteIcon = ({ id, label, size }: SpriteIconProps) => (
 // ---------------------------------------------------------------------------
 
 const meta: Meta<GridProps> = {
-  title: "ISO 7001/SVG Sprite",
+  title: 'ISO 7001/SVG Sprite',
   component: SpriteGrid,
-  parameters: { layout: "padded" },
+  parameters: { layout: 'padded' },
   argTypes: {
-    size: { control: { type: "number", min: 32, max: 512, step: 8 } },
+    size: { control: { type: 'number', min: 32, max: 512, step: 8 } },
     category: {
-      control: "select",
+      control: 'select',
       options: [
-        "",
-        "accessibility",
-        "public-facilities",
-        "transportation",
-        "behaviour",
-        "commercial",
-        "tourism",
-        "sporting",
+        '',
+        'accessibility',
+        'public-facilities',
+        'transportation',
+        'behaviour',
+        'commercial',
+        'tourism',
+        'sporting',
       ],
     },
   },
@@ -121,38 +121,38 @@ const meta: Meta<GridProps> = {
 export default meta;
 
 export const AllSymbols: StoryObj<GridProps> = {
-  name: "All Symbols",
+  name: 'All Symbols',
   render: ({ size, category }) => <SpriteGrid size={size} category={category} />,
   args: { size: 120 },
 };
 
 export const Large: StoryObj<GridProps> = {
-  name: "All Large",
+  name: 'All Large',
   render: ({ size, category }) => <SpriteGrid size={size} category={category} />,
   args: { size: 200 },
 };
 
 const SPRITE_SYMBOLS = ALL_SYMBOLS.map((s) => ({
-  id: s.id.split("-").slice(0, 2).join("-"),
+  id: s.id.split('-').slice(0, 2).join('-'),
   label: `${s.code} — ${s.name}`,
 }));
 
 export const SingleIcon: StoryObj<SpriteIconProps> = {
-  name: "Single Icon",
-  parameters: { layout: "centered" },
+  name: 'Single Icon',
+  parameters: { layout: 'centered' },
   render: (args) => <SingleSpriteIcon {...args} />,
   args: {
-    id: SPRITE_SYMBOLS[0]?.id ?? "ac-001",
-    label: SPRITE_SYMBOLS[0]?.label ?? "AC 001",
+    id: SPRITE_SYMBOLS[0]?.id ?? 'ac-001',
+    label: SPRITE_SYMBOLS[0]?.label ?? 'AC 001',
     size: 200,
   },
   argTypes: {
     id: {
-      control: "select",
+      control: 'select',
       options: SPRITE_SYMBOLS.map((s) => s.id),
       labels: Object.fromEntries(SPRITE_SYMBOLS.map((s) => [s.id, s.label])),
     },
-    label: { control: "text" },
-    size: { control: { type: "number", min: 32, max: 512, step: 8 } },
+    label: { control: 'text' },
+    size: { control: { type: 'number', min: 32, max: 512, step: 8 } },
   },
 };

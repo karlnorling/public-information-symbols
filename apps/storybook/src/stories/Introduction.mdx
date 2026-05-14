@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Introduction" />
 
@@ -61,7 +61,7 @@ import { Ac001FullAccessibility, Pf001GeneralInformation } from '@public-informa
 Dynamic rendering by ID:
 
 ```tsx
-import { SymbolById } from "@public-information-symbols/react";
+import { SymbolById } from '@public-information-symbols/react';
 
 <SymbolById id="ac-001-full-accessibility" width={64} />;
 ```
@@ -74,7 +74,7 @@ npm install @public-information-symbols/vue
 
 ```vue
 <script setup>
-import { SymbolById } from "@public-information-symbols/vue";
+import { SymbolById } from '@public-information-symbols/vue';
 </script>
 <template>
   <SymbolById id="ac-001-full-accessibility" :width="64" />
@@ -88,7 +88,7 @@ npm install @public-information-symbols/elements
 ```
 
 ```ts
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 ```
 
@@ -107,7 +107,7 @@ npm install @public-information-symbols/css
 ```
 
 ```js
-import "@public-information-symbols/css/sprite.css";
+import '@public-information-symbols/css/sprite.css';
 ```
 
 ```html
@@ -135,11 +135,11 @@ npm install @public-information-symbols/sprite
 ### Programmatic API
 
 ```ts
-import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
 
 const all = getAllSymbols(); // PISymbol[]
-const symbol = getSymbol("ac-001-full-accessibility"); // PISymbol | undefined
-const accessibility = getSymbolsByCategory("accessibility"); // PISymbol[]
+const symbol = getSymbol('ac-001-full-accessibility'); // PISymbol | undefined
+const accessibility = getSymbolsByCategory('accessibility'); // PISymbol[]
 ```
 
 ---

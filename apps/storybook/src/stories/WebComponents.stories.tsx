@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/react-vite";
-import * as React from "react";
-import { getAllSymbols } from "@public-information-symbols/core";
-import { defineCustomElements } from "@public-information-symbols/elements";
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import * as React from 'react';
+import { getAllSymbols } from '@public-information-symbols/core';
+import { defineCustomElements } from '@public-information-symbols/elements';
 
 // Register custom elements once on module load.
 defineCustomElements();
@@ -20,16 +20,16 @@ const PISymbol = React.memo(({ symbolId, size = 96 }: PISymbolProps) => {
 
   React.useLayoutEffect(() => {
     if (!ref.current) return;
-    const el = document.createElement("pi-symbol");
-    el.setAttribute("symbol-id", symbolId);
-    el.setAttribute("width", String(size));
-    el.setAttribute("height", String(size));
+    const el = document.createElement('pi-symbol');
+    el.setAttribute('symbol-id', symbolId);
+    el.setAttribute('width', String(size));
+    el.setAttribute('height', String(size));
     ref.current.replaceChildren(el);
   }, [symbolId, size]);
 
-  return <span ref={ref} style={{ display: "contents" }} />;
+  return <span ref={ref} style={{ display: 'contents' }} />;
 });
-PISymbol.displayName = "PISymbol";
+PISymbol.displayName = 'PISymbol';
 
 // ---------------------------------------------------------------------------
 // Grid
@@ -45,14 +45,14 @@ const ElementsGrid = ({ size = 96, category }: GridProps) => {
   const symbols = category ? all.filter((s) => s.category === category) : all;
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", padding: "1rem" }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', padding: '1rem' }}>
       {symbols.map((s) => (
         <div
           key={s.id}
-          style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}
         >
           <PISymbol symbolId={s.id} size={size} />
-          <span style={{ fontSize: "0.75rem", textAlign: "center", color: "#555" }}>{s.code}</span>
+          <span style={{ fontSize: '0.75rem', textAlign: 'center', color: '#555' }}>{s.code}</span>
         </div>
       ))}
     </div>
@@ -79,22 +79,22 @@ const SingleSymbol = ({ symbolId, size = 200 }: SingleProps) => (
 // ---------------------------------------------------------------------------
 
 const meta: Meta<GridProps> = {
-  title: "ISO 7001/Web Components",
+  title: 'ISO 7001/Web Components',
   component: ElementsGrid,
-  parameters: { layout: "padded" },
+  parameters: { layout: 'padded' },
   argTypes: {
-    size: { control: { type: "number", min: 32, max: 512, step: 8 } },
+    size: { control: { type: 'number', min: 32, max: 512, step: 8 } },
     category: {
-      control: "select",
+      control: 'select',
       options: [
-        "",
-        "accessibility",
-        "public-facilities",
-        "transportation",
-        "behaviour",
-        "commercial",
-        "tourism",
-        "sporting",
+        '',
+        'accessibility',
+        'public-facilities',
+        'transportation',
+        'behaviour',
+        'commercial',
+        'tourism',
+        'sporting',
       ],
     },
   },
@@ -103,7 +103,7 @@ const meta: Meta<GridProps> = {
 export default meta;
 
 export const AllSymbols: StoryObj<GridProps> = {
-  name: "All Symbols",
+  name: 'All Symbols',
   render: ({ size, category }) => <ElementsGrid size={size} category={category} />,
   args: { size: 96 },
 };
@@ -114,19 +114,19 @@ export const Accessibility: StoryObj<GridProps> = {
 };
 
 export const Single: StoryObj<SingleProps> = {
-  name: "Single Symbol",
-  parameters: { layout: "centered" },
+  name: 'Single Symbol',
+  parameters: { layout: 'centered' },
   render: ({ symbolId, size }) => <SingleSymbol symbolId={symbolId} size={size} />,
   args: {
-    symbolId: ALL_SYMBOLS[0]?.id ?? "ac-001-full-accessibility-or-toilets-accessible",
+    symbolId: ALL_SYMBOLS[0]?.id ?? 'ac-001-full-accessibility-or-toilets-accessible',
     size: 200,
   },
   argTypes: {
     symbolId: {
-      control: "select",
+      control: 'select',
       options: ALL_SYMBOLS.map((s) => s.id),
       labels: Object.fromEntries(ALL_SYMBOLS.map((s) => [s.id, `${s.code} — ${s.name}`])),
     },
-    size: { control: { type: "number", min: 32, max: 512, step: 8 } },
+    size: { control: { type: 'number', min: 32, max: 512, step: 8 } },
   },
 };

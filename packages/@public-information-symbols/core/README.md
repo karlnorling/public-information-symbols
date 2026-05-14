@@ -67,17 +67,17 @@ type SymbolCategory =
 interface PISymbol {
   assets: SymbolAssets;
   category: SymbolCategory;
-  code: string;        // e.g. "AC 001"
+  code: string; // e.g. "AC 001"
   description: string; // accessible description
-  id: string;          // e.g. "ac-001-full-accessibility-or-toilets-accessible"
-  name: string;        // e.g. "Full accessibility or toilets - accessible"
-  svg: string;         // inline SVG markup
+  id: string; // e.g. "ac-001-full-accessibility-or-toilets-accessible"
+  name: string; // e.g. "Full accessibility or toilets - accessible"
+  svg: string; // inline SVG markup
 }
 
 interface SymbolAssets {
-  jpg: Record<number, string>;  // size → relative path (240, 512, 768, 1024, 2048)
+  jpg: Record<number, string>; // size → relative path (240, 512, 768, 1024, 2048)
   png: Record<number, string>;
-  svg: string;                  // relative path to original SVG
+  svg: string; // relative path to original SVG
   webp: Record<number, string>;
 }
 ```

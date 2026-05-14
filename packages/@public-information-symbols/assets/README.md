@@ -59,9 +59,9 @@ import { getSymbol } from '@public-information-symbols/core';
 
 const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
 if (symbol) {
-  console.log(symbol.assets.svg);        // 'accessibility/ac-001/ISO_7001_PI_*.svg'
-  console.log(symbol.assets.png[512]);   // 'accessibility/ac-001/ISO_7001_PI_*_512x512.png'
-  console.log(symbol.assets.webp[240]);  // 'accessibility/ac-001/ISO_7001_PI_*_240x240.webp'
+  console.log(symbol.assets.svg); // 'accessibility/ac-001/ISO_7001_PI_*.svg'
+  console.log(symbol.assets.png[512]); // 'accessibility/ac-001/ISO_7001_PI_*_512x512.png'
+  console.log(symbol.assets.webp[240]); // 'accessibility/ac-001/ISO_7001_PI_*_240x240.webp'
 }
 ```
 

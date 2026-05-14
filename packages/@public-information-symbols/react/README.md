@@ -71,8 +71,8 @@ Every component and `SymbolById` accept the same props:
 
 `SymbolById` also requires:
 
-| Prop | Type     | Description                                                      |
-| ---- | -------- | ---------------------------------------------------------------- |
+| Prop | Type     | Description                                                              |
+| ---- | -------- | ------------------------------------------------------------------------ |
 | `id` | `string` | Symbol slug ID, e.g. `"ac-001-full-accessibility-or-toilets-accessible"` |
 
 ---

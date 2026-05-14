@@ -33,7 +33,9 @@ Then use the elements in HTML:
 <pi-symbol symbol-id="ac-001-full-accessibility-or-toilets-accessible" width="64"></pi-symbol>
 
 <!-- Named elements -->
-<pi-ac-001-full-accessibility-or-toilets-accessible width="64"></pi-ac-001-full-accessibility-or-toilets-accessible>
+<pi-ac-001-full-accessibility-or-toilets-accessible
+  width="64"
+></pi-ac-001-full-accessibility-or-toilets-accessible>
 <pi-pf-001-general-information width="64"></pi-pf-001-general-information>
 ```
 
@@ -52,13 +54,13 @@ defineCustomElements('pub');
 
 All elements accept the same attributes:
 
-| Attribute     | Default              | Description                                                               |
-| ------------- | -------------------- | ------------------------------------------------------------------------- |
+| Attribute     | Default              | Description                                                                                   |
+| ------------- | -------------------- | --------------------------------------------------------------------------------------------- |
 | `symbol-id`   | —                    | Symbol slug ID (`<pi-symbol>` only), e.g. `"ac-001-full-accessibility-or-toilets-accessible"` |
-| `title`       | Symbol name          | Accessible title (`<title>` inside SVG)                                   |
-| `description` | Symbol description   | Accessible description (`<desc>` inside SVG)                              |
-| `width`       | SVG intrinsic width  | Forwarded to the `<svg>` width attribute                                  |
-| `height`      | SVG intrinsic height | Forwarded to the `<svg>` height attribute                                 |
+| `title`       | Symbol name          | Accessible title (`<title>` inside SVG)                                                       |
+| `description` | Symbol description   | Accessible description (`<desc>` inside SVG)                                                  |
+| `width`       | SVG intrinsic width  | Forwarded to the `<svg>` width attribute                                                      |
+| `height`      | SVG intrinsic height | Forwarded to the `<svg>` height attribute                                                     |
 
 All attributes are reactive — changing them re-renders the SVG.
 

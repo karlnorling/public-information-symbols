@@ -1,12 +1,12 @@
-import { getSymbol } from "@public-information-symbols/core";
+import { getSymbol } from '@public-information-symbols/core';
 
 const _h = (s: string) =>
   s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/'/g, "&#39;")
-    .replace(/"/g, "&quot;");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/'/g, '&#39;')
+    .replace(/"/g, '&quot;');
 
 function scopeIds(body: string, prefix: string): string {
   const ids = new Set<string>();
@@ -17,11 +17,11 @@ function scopeIds(body: string, prefix: string): string {
   if (ids.size === 0) return body;
   let out = body;
   for (const id of ids) {
-    const esc = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const esc = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     out = out
-      .replace(new RegExp(`\\bid="${esc}"`, "g"), `id="${prefix}-${id}"`)
-      .replace(new RegExp(`url\\(#${esc}\\)`, "g"), `url(#${prefix}-${id})`)
-      .replace(new RegExp(`href="#${esc}"`, "g"), `href="#${prefix}-${id}"`);
+      .replace(new RegExp(`\\bid="${esc}"`, 'g'), `id="${prefix}-${id}"`)
+      .replace(new RegExp(`url\\(#${esc}\\)`, 'g'), `url(#${prefix}-${id})`)
+      .replace(new RegExp(`href="#${esc}"`, 'g'), `href="#${prefix}-${id}"`);
   }
   return out;
 }
@@ -37,27 +37,27 @@ const _cache = new Map<string, ParsedSvg>();
 
 function parseSvg(svg: string, id: string): ParsedSvg {
   const svgAttrsMatch = svg.match(/<svg([^>]*)>/);
-  const svgAttrs = svgAttrsMatch ? svgAttrsMatch[1] : "";
+  const svgAttrs = svgAttrsMatch ? svgAttrsMatch[1] : '';
   const viewBoxMatch = svgAttrs.match(/\bviewBox="([^"]+)"/);
   const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
   const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
   const bodyMatch = svg.match(/<svg[^>]*>([\s\S]*)<\/svg>/);
-  const w = (widthMatch ? widthMatch[1] : "100%").replace(/px$/, "");
-  const h = (heightMatch ? heightMatch[1] : "100%").replace(/px$/, "");
+  const w = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
+  const h = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
   const syntheticViewBox =
     !viewBoxMatch && /^\d+(\.\d+)?$/.test(w) && /^\d+(\.\d+)?$/.test(h)
       ? ` viewBox="0 0 ${w} ${h}"`
-      : "";
+      : '';
   const otherAttrs = svgAttrs
-    .replace(/\s*\bxmlns="[^"]*"/g, "")
-    .replace(/\s*\bwidth="[^"]*"/, "")
-    .replace(/\s*\bheight="[^"]*"/, "")
-    .replace(/\s*\bviewBox="[^"]*"/, "")
+    .replace(/\s*\bxmlns="[^"]*"/g, '')
+    .replace(/\s*\bwidth="[^"]*"/, '')
+    .replace(/\s*\bheight="[^"]*"/, '')
+    .replace(/\s*\bviewBox="[^"]*"/, '')
     .trim();
   const viewBoxStr = viewBoxMatch ? ` viewBox="${viewBoxMatch[1]}"` : syntheticViewBox;
-  const body = scopeIds(bodyMatch ? bodyMatch[1] : "", id);
+  const body = scopeIds(bodyMatch ? bodyMatch[1] : '', id);
   return {
-    attrs: `xmlns="http://www.w3.org/2000/svg"${viewBoxStr}${otherAttrs ? ` ${otherAttrs}` : ""}`,
+    attrs: `xmlns="http://www.w3.org/2000/svg"${viewBoxStr}${otherAttrs ? ` ${otherAttrs}` : ''}`,
     body,
     width: w,
     height: h,
@@ -89,8 +89,8 @@ function getParsedSvg(svg: string, id: string): ParsedSvg {
  * ```
  */
 export class PISymbolElement extends HTMLElement {
-  static readonly tagName = "pi-symbol";
-  static readonly observedAttributes = ["symbol-id", "title", "description", "width", "height"];
+  static readonly tagName = 'pi-symbol';
+  static readonly observedAttributes = ['symbol-id', 'title', 'description', 'width', 'height'];
 
   connectedCallback(): void {
     this._render();
@@ -101,14 +101,14 @@ export class PISymbolElement extends HTMLElement {
   }
 
   private _render(): void {
-    const symbolId = this.getAttribute("symbol-id");
+    const symbolId = this.getAttribute('symbol-id');
     if (!symbolId) {
-      this.innerHTML = "";
+      this.innerHTML = '';
       return;
     }
     const symbol = getSymbol(symbolId);
     if (!symbol) {
-      this.innerHTML = "";
+      this.innerHTML = '';
       return;
     }
 
@@ -118,14 +118,14 @@ export class PISymbolElement extends HTMLElement {
       width: defaultWidth,
       height: defaultHeight,
     } = getParsedSvg(symbol.svg, symbolId);
-    const resolvedTitle = this.getAttribute("title") ?? symbol.name;
-    const resolvedDesc = this.getAttribute("description") ?? symbol.description;
-    const _w = this.hasAttribute("width") ? _h(this.getAttribute("width")!) : defaultWidth;
-    const _ht = this.hasAttribute("height") ? _h(this.getAttribute("height")!) : defaultHeight;
+    const resolvedTitle = this.getAttribute('title') ?? symbol.name;
+    const resolvedDesc = this.getAttribute('description') ?? symbol.description;
+    const _w = this.hasAttribute('width') ? _h(this.getAttribute('width')!) : defaultWidth;
+    const _ht = this.hasAttribute('height') ? _h(this.getAttribute('height')!) : defaultHeight;
     const descId = `pi-desc-${symbolId}`;
     const titleId = `pi-title-${symbolId}`;
 
-    this.style.display = "contents";
+    this.style.display = 'contents';
     this.innerHTML = `<svg ${attrs} width="${_w}" height="${_ht}" role="img" aria-labelledby="${titleId} ${descId}">
   <title id="${titleId}">${_h(resolvedTitle)}</title>
   <desc id="${descId}">${_h(resolvedDesc)}</desc>

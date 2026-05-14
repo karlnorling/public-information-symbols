@@ -65,8 +65,8 @@ Returns `null` for unrecognised IDs.
 
 `SymbolById` also requires:
 
-| Prop | Type     | Description                                                             |
-| ---- | -------- | ----------------------------------------------------------------------- |
+| Prop | Type     | Description                                                              |
+| ---- | -------- | ------------------------------------------------------------------------ |
 | `id` | `string` | Symbol slug ID, e.g. `"ac-001-full-accessibility-or-toilets-accessible"` |
 
 ---

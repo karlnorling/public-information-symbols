@@ -1,15 +1,15 @@
-import { defineComponent, h } from "vue";
-import type { PropType } from "vue";
-import { getSymbol } from "@public-information-symbols/core";
-import { symbolProps } from "./SymbolPropsBase";
+import { defineComponent, h } from 'vue';
+import type { PropType } from 'vue';
+import { getSymbol } from '@public-information-symbols/core';
+import { symbolProps } from './SymbolPropsBase';
 
 const _h = (s: string) =>
   s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/'/g, "&#39;")
-    .replace(/"/g, "&quot;");
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/'/g, '&#39;')
+    .replace(/"/g, '&quot;');
 
 function scopeIds(body: string, prefix: string): string {
   const ids = new Set<string>();
@@ -20,11 +20,11 @@ function scopeIds(body: string, prefix: string): string {
   if (ids.size === 0) return body;
   let out = body;
   for (const id of ids) {
-    const esc = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const esc = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     out = out
-      .replace(new RegExp(`\\bid="${esc}"`, "g"), `id="${prefix}-${id}"`)
-      .replace(new RegExp(`url\\(#${esc}\\)`, "g"), `url(#${prefix}-${id})`)
-      .replace(new RegExp(`href="#${esc}"`, "g"), `href="#${prefix}-${id}"`);
+      .replace(new RegExp(`\\bid="${esc}"`, 'g'), `id="${prefix}-${id}"`)
+      .replace(new RegExp(`url\\(#${esc}\\)`, 'g'), `url(#${prefix}-${id})`)
+      .replace(new RegExp(`href="#${esc}"`, 'g'), `href="#${prefix}-${id}"`);
   }
   return out;
 }
@@ -40,27 +40,27 @@ const _cache = new Map<string, ParsedSvg>();
 
 function parseSvg(svg: string, id: string): ParsedSvg {
   const svgAttrsMatch = svg.match(/<svg([^>]*)>/);
-  const svgAttrs = svgAttrsMatch ? svgAttrsMatch[1] : "";
+  const svgAttrs = svgAttrsMatch ? svgAttrsMatch[1] : '';
   const viewBoxMatch = svgAttrs.match(/\bviewBox="([^"]+)"/);
   const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
   const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
   const bodyMatch = svg.match(/<svg[^>]*>([\s\S]*)<\/svg>/);
-  const w = (widthMatch ? widthMatch[1] : "100%").replace(/px$/, "");
-  const h = (heightMatch ? heightMatch[1] : "100%").replace(/px$/, "");
+  const w = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
+  const h = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
   const syntheticViewBox =
     !viewBoxMatch && /^\d+(\.\d+)?$/.test(w) && /^\d+(\.\d+)?$/.test(h)
       ? ` viewBox="0 0 ${w} ${h}"`
-      : "";
+      : '';
   const otherAttrs = svgAttrs
-    .replace(/\s*\bxmlns="[^"]*"/g, "")
-    .replace(/\s*\bwidth="[^"]*"/, "")
-    .replace(/\s*\bheight="[^"]*"/, "")
-    .replace(/\s*\bviewBox="[^"]*"/, "")
+    .replace(/\s*\bxmlns="[^"]*"/g, '')
+    .replace(/\s*\bwidth="[^"]*"/, '')
+    .replace(/\s*\bheight="[^"]*"/, '')
+    .replace(/\s*\bviewBox="[^"]*"/, '')
     .trim();
   const viewBoxStr = viewBoxMatch ? ` viewBox="${viewBoxMatch[1]}"` : syntheticViewBox;
-  const body = scopeIds(bodyMatch ? bodyMatch[1] : "", id);
+  const body = scopeIds(bodyMatch ? bodyMatch[1] : '', id);
   return {
-    attrs: `xmlns="http://www.w3.org/2000/svg"${viewBoxStr}${otherAttrs ? ` ${otherAttrs}` : ""}`,
+    attrs: `xmlns="http://www.w3.org/2000/svg"${viewBoxStr}${otherAttrs ? ` ${otherAttrs}` : ''}`,
     body,
     width: w,
     height: h,
@@ -77,7 +77,7 @@ function getParsedSvg(svg: string, id: string): ParsedSvg {
 }
 
 export const SymbolById = defineComponent({
-  name: "SymbolById",
+  name: 'SymbolById',
   inheritAttrs: false,
   props: {
     ...symbolProps,
@@ -106,11 +106,11 @@ export const SymbolById = defineComponent({
   <desc id="${descId}">${_h(resolvedDesc)}</desc>
   ${body}</svg>`;
 
-      return h("span", {
+      return h('span', {
         ...attrs,
         style: {
-          display: "contents",
-          ...(typeof attrs.style === "object" ? (attrs.style as Record<string, unknown>) : {}),
+          display: 'contents',
+          ...(typeof attrs.style === 'object' ? (attrs.style as Record<string, unknown>) : {}),
         },
         innerHTML: svgHtml,
       });

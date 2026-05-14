@@ -57,15 +57,15 @@ Apply a class to any block element with explicit dimensions:
 
 CSS class names follow the pattern `pi-{code}` where `{code}` is the lowercase ISO 7001 code:
 
-| Symbol                      | CSS class   |
-| --------------------------- | ----------- |
-| AC 001 Full accessibility   | `pi-ac-001` |
-| PF 001 General information  | `pi-pf-001` |
-| TF 001 Airport              | `pi-tf-001` |
-| BP 001 Queue here           | `pi-bp-001` |
-| CF 001 Restaurant           | `pi-cf-001` |
-| TC 001 Museum               | `pi-tc-001` |
-| SA 001 Sporting activities  | `pi-sa-001` |
+| Symbol                     | CSS class   |
+| -------------------------- | ----------- |
+| AC 001 Full accessibility  | `pi-ac-001` |
+| PF 001 General information | `pi-pf-001` |
+| TF 001 Airport             | `pi-tf-001` |
+| BP 001 Queue here          | `pi-bp-001` |
+| CF 001 Restaurant          | `pi-cf-001` |
+| TC 001 Museum              | `pi-tc-001` |
+| SA 001 Sporting activities | `pi-sa-001` |
 
 ---
 
