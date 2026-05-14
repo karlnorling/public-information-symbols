@@ -1,0 +1,90 @@
+---
+title: '@public-information-symbols/sprite'
+description: SVG sprite sheet for Public Information Symbols — reference symbols by ID without inlining every SVG.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Installation
+
+```sh
+npm install @public-information-symbols/sprite
+```
+
+## Symbol ID format
+
+Inside the sprite, each symbol is identified by its code lowercased with hyphens — for example `ac-001` for the first accessibility symbol.
+
+## Usage
+
+<Tabs>
+  <TabItem label="External reference">
+
+Serve the sprite file as a static asset and reference it from your HTML. This keeps the sprite out of the document and lets the browser cache it.
+
+```html
+<!-- Load the sprite file from your static assets directory -->
+<svg aria-hidden="true" style="display:none">
+  <use href="/assets/sprite.svg#ac-001" />
+</svg>
+
+<!-- Render a symbol elsewhere on the page -->
+<svg width="64" height="64" role="img" aria-labelledby="sym-title">
+  <title id="sym-title">Accessible toilets</title>
+  <use href="/assets/sprite.svg#ac-001" />
+</svg>
+```
+
+  </TabItem>
+  <TabItem label="Inline sprite">
+
+Inline the sprite into the document `<body>` so cross-origin restrictions do not apply.
+
+```html
+<!-- Inline sprite (hidden) — paste sprite.svg contents here -->
+<svg aria-hidden="true" style="display:none">
+  <!-- … symbol definitions … -->
+</svg>
+
+<!-- Reference the inlined symbol -->
+<svg width="64" height="64" role="img" aria-labelledby="sym-title">
+  <title id="sym-title">Accessible toilets</title>
+  <use href="#ac-001" />
+</svg>
+```
+
+  </TabItem>
+  <TabItem label="React portal">
+
+In a React app, inject the sprite once at the root using a portal.
+
+```tsx
+import { createPortal } from 'react-dom';
+import spriteUrl from '@public-information-symbols/sprite/sprite.svg?url';
+
+function SpriteProvider() {
+  return createPortal(
+    <svg aria-hidden style={{ display: 'none' }}>
+      <use href={`${spriteUrl}`} />
+    </svg>,
+    document.body,
+  );
+}
+
+// In a component
+function AccessibleToilets() {
+  return (
+    <svg width={64} height={64} role="img" aria-labelledby="sym-ac-001">
+      <title id="sym-ac-001">Accessible toilets</title>
+      <use href={`${spriteUrl}#ac-001`} />
+    </svg>
+  );
+}
+```
+
+  </TabItem>
+</Tabs>
+
+## Accessibility
+
+Each `<svg>` that renders a symbol should have `role="img"` and an accessible name. The recommended pattern is to include a `<title>` element inside the SVG and reference it with `aria-labelledby`. For decorative symbols, omit the `<title>` and add `aria-hidden="true"` to the outer `<svg>`.

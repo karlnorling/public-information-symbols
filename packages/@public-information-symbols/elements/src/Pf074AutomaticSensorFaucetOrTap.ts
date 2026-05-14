@@ -4,36 +4,26 @@
 const _Attrs = `xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.917 52.917"`;
 const _Body = `<path d="M87.25 94.604h52.917v52.917H87.25z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:2.01819" transform="translate(-87.25 -94.604)"/><path d="M95.427 101.8v23.549h2.617v-14.78h6.194c1.18 0 1.905.213 2.253 1.394l.353 2.01 3.46-.01.006-3.173c.004-1.803-1.825-4.025-3.822-3.983h-8.445V101.8zm12.076 12.874a.36.36 0 0 0-.324.315.36.36 0 0 0 .314.406.36.36 0 0 0 .405-.315.36.36 0 0 0-.313-.405.4.4 0 0 0-.081 0m2.225 0a.4.4 0 0 0-.081.001.36.36 0 0 0-.314.405.36.36 0 0 0 .405.315.36.36 0 0 0 .314-.406.36.36 0 0 0-.324-.315m-1.112.708a.36.36 0 0 0-.363.362.36.36 0 0 0 .363.363.36.36 0 0 0 .362-.363.36.36 0 0 0-.362-.362m-1.3.764a.36.36 0 0 0-.324.315.36.36 0 0 0 .314.405.36.36 0 0 0 .405-.314.36.36 0 0 0-.314-.405.4.4 0 0 0-.081-.001m2.599 0a.4.4 0 0 0-.081.001.36.36 0 0 0-.314.405.36.36 0 0 0 .406.314.36.36 0 0 0 .313-.405.36.36 0 0 0-.324-.315m-1.3.72a.36.36 0 0 0-.362.362.36.36 0 0 0 .363.363.36.36 0 0 0 .362-.363.36.36 0 0 0-.362-.362m-1.486.752a.36.36 0 0 0-.324.315.36.36 0 0 0 .313.405.36.36 0 0 0 .405-.314.36.36 0 0 0-.313-.405.4.4 0 0 0-.081-.001m2.973 0a.4.4 0 0 0-.08 0 .36.36 0 0 0-.314.406.36.36 0 0 0 .405.314.36.36 0 0 0 .313-.405.36.36 0 0 0-.324-.315m-1.486.731a.36.36 0 0 0-.363.363.36.36 0 0 0 .363.362.36.36 0 0 0 .362-.362.36.36 0 0 0-.362-.363m-1.675.741a.36.36 0 0 0-.324.315.36.36 0 0 0 .314.405.36.36 0 0 0 .405-.314.36.36 0 0 0-.314-.405.4.4 0 0 0-.08-.001m3.349 0a.4.4 0 0 0-.081.001.36.36 0 0 0-.314.405.36.36 0 0 0 .405.314.36.36 0 0 0 .314-.405.36.36 0 0 0-.324-.315m-8.053.007-.397.39a6.47 6.47 0 0 1 1.888 4.579 6.47 6.47 0 0 1-1.996 4.682l.397.39a7.03 7.03 0 0 0 2.16-5.072 7.03 7.03 0 0 0-2.052-4.969m6.379.737a.36.36 0 0 0-.363.362.36.36 0 0 0 .363.362.36.36 0 0 0 .362-.362.36.36 0 0 0-.362-.362m-7.629.492-.396.39a4.72 4.72 0 0 1 1.385 3.35c0 1.363-.574 2.59-1.494 3.453l.397.39a5.28 5.28 0 0 0 1.656-3.843 5.28 5.28 0 0 0-1.548-3.74m5.767.236a.36.36 0 0 0-.324.315.36.36 0 0 0 .313.405.36.36 0 0 0 .405-.314.36.36 0 0 0-.313-.405.4.4 0 0 0-.08-.001m3.723 0a.4.4 0 0 0-.081.001.36.36 0 0 0-.314.405.36.36 0 0 0 .405.314.36.36 0 0 0 .314-.405.36.36 0 0 0-.324-.315m-1.861.756a.36.36 0 0 0-.363.362.36.36 0 0 0 .363.362.36.36 0 0 0 .362-.362.36.36 0 0 0-.362-.362m-8.964.321-.396.39c.523.52.847 1.24.847 2.037a2.86 2.86 0 0 1-.957 2.139l.398.39a3.417 3.417 0 0 0 .108-4.956m6.915.395a.36.36 0 0 0-.324.314.36.36 0 0 0 .313.406.36.36 0 0 0 .405-.314.36.36 0 0 0-.313-.405.4.4 0 0 0-.081-.001m4.098 0a.4.4 0 0 0-.082 0 .36.36 0 0 0-.313.406.36.36 0 0 0 .405.314.36.36 0 0 0 .314-.406.36.36 0 0 0-.324-.314m-2.05.767a.36.36 0 0 0-.362.362.36.36 0 0 0 .363.363.36.36 0 0 0 .362-.363.36.36 0 0 0-.362-.362m-2.236.704a.36.36 0 0 0-.324.316.36.36 0 0 0 .314.405.36.36 0 0 0 .405-.314.36.36 0 0 0-.314-.405.4.4 0 0 0-.08-.001m4.473 0a.4.4 0 0 0-.081.001.36.36 0 0 0-.314.406.36.36 0 0 0 .405.314.36.36 0 0 0 .314-.405.36.36 0 0 0-.324-.316m-2.236.78a.36.36 0 0 0-.363.363.36.36 0 0 0 .363.362.36.36 0 0 0 .362-.362.36.36 0 0 0-.362-.363m-2.424.692a.36.36 0 0 0-.324.315.36.36 0 0 0 .314.406.36.36 0 0 0 .405-.314.36.36 0 0 0-.314-.406.4.4 0 0 0-.081 0m4.847 0a.4.4 0 0 0-.08.001.36.36 0 0 0-.315.406.36.36 0 0 0 .406.314.36.36 0 0 0 .313-.406.36.36 0 0 0-.324-.315m-2.423.791a.36.36 0 0 0-.363.363.36.36 0 0 0 .363.362.36.36 0 0 0 .362-.362.36.36 0 0 0-.362-.363m3.906 1.548c-.99 0-.906.985-.134 1.45.692.42 1.374.749 2.14.762.944.03 2.641.02 3.587.043.533.031.501.67-.015.67H106.56a.873.873 0 0 0-.875.875c0 .394.256.725.612.836l1.317.04h4.809c.664.003.618.89-.045.9h-7.584a.873.873 0 0 0-.874.875c0 .485.39.875.874.875h7.53c.774-.002.646.882.196.9h-6.5a.3.3 0 0 1-.173-.05h-.237a.873.873 0 0 0-.875.875c0 .485.39.875.875.875h7.736c.636-.02.565.836.174.85h-5.435a.873.873 0 0 0-.875.876c0 .484.39.875.875.875h7.817c2.835 1.108 6.433.105 8.594-.976h7.5v-7.65h-7.35c-.486 0-1.622-3.894-5.55-3.9z" style="display:inline;fill:#000;stroke-width:.799999;stroke-linecap:round" transform="translate(-87.25 -94.604)"/>`;
 const _DefaultDesc = `Automatic sensor faucet or tap`;
-const _DefaultTitle = "Automatic sensor faucet or tap";
+const _DefaultTitle = 'Automatic sensor faucet or tap';
 const _DefaultWidth = `200.001`;
 const _DefaultHeight = `200.001`;
-const _h = (s: string) =>
-  s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/'/g, "&#39;")
-    .replace(/"/g, "&quot;");
+const _h = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
 
 export class Pf074AutomaticSensorFaucetOrTap extends HTMLElement {
-  static readonly tagName = "pi-pf-074-automatic-sensor-faucet-or-tap";
-  static readonly observedAttributes = ["title", "description", "width", "height"];
+  static readonly tagName = 'pi-pf-074-automatic-sensor-faucet-or-tap';
+  static readonly observedAttributes = ['title', 'description', 'width', 'height'];
 
-  connectedCallback(): void {
-    this._render();
-  }
-  attributeChangedCallback(): void {
-    this._render();
-  }
+  connectedCallback(): void { this._render(); }
+  attributeChangedCallback(): void { this._render(); }
 
   private _render(): void {
     const descId = `pi-desc-pf-074-automatic-sensor-faucet-or-tap`;
     const titleId = `pi-title-pf-074-automatic-sensor-faucet-or-tap`;
-    const _w = this.hasAttribute("width") ? _h(this.getAttribute("width")!) : _DefaultWidth;
-    const _ht = this.hasAttribute("height") ? _h(this.getAttribute("height")!) : _DefaultHeight;
-    const resolvedTitle = this.getAttribute("title") ?? _DefaultTitle;
-    const resolvedDesc = this.getAttribute("description") ?? _DefaultDesc;
-    this.style.display = "contents";
+    const _w = this.hasAttribute('width') ? _h(this.getAttribute('width')!) : _DefaultWidth;
+    const _ht = this.hasAttribute('height') ? _h(this.getAttribute('height')!) : _DefaultHeight;
+    const resolvedTitle = this.getAttribute('title') ?? _DefaultTitle;
+    const resolvedDesc = this.getAttribute('description') ?? _DefaultDesc;
+    this.style.display = 'contents';
     this.innerHTML = `<svg ${_Attrs} width="${_w}" height="${_ht}" role="img" aria-labelledby="${titleId} ${descId}">
   <title id="${titleId}">${_h(resolvedTitle)}</title>
   <desc id="${descId}">${_h(resolvedDesc)}</desc>

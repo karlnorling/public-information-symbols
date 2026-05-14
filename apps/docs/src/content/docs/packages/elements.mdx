@@ -1,0 +1,113 @@
+---
+title: '@public-information-symbols/elements'
+description: Framework-agnostic Web Components (Custom Elements) for Public Information Symbols.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Installation
+
+```sh
+npm install @public-information-symbols/elements
+```
+
+## Registering elements
+
+Call `defineCustomElements()` once at your application entry point to register all custom elements with the browser.
+
+```ts
+import { defineCustomElements } from '@public-information-symbols/elements';
+
+defineCustomElements();
+```
+
+### Custom prefix
+
+By default elements are registered under the `pi-` prefix. Pass an options object to use a different prefix.
+
+```ts
+defineCustomElements({ prefix: 'my-' });
+// registers <my-ac-001-full-accessibility-or-toilets-accessible>
+```
+
+## Generic element
+
+Use `<pi-symbol>` when the symbol is not known at build time.
+
+```html
+<pi-symbol
+  symbol-id="ac-001-full-accessibility-or-toilets-accessible"
+  width="64"
+  title="Accessible toilets"
+></pi-symbol>
+```
+
+## Named elements
+
+Every symbol also has a dedicated tag derived from its ID.
+
+```html
+<pi-ac-001-full-accessibility-or-toilets-accessible
+  width="64"
+  title="Accessible toilets"
+></pi-ac-001-full-accessibility-or-toilets-accessible>
+```
+
+## Attributes
+
+| Attribute     | Type     | Required for `<pi-symbol>` | Description                                         |
+| ------------- | -------- | -------------------------- | --------------------------------------------------- |
+| `symbol-id`   | `string` | Yes                        | Symbol ID (only used on the generic `<pi-symbol>`). |
+| `width`       | `string` | No                         | Width of the rendered SVG in pixels.                |
+| `height`      | `string` | No                         | Height of the rendered SVG in pixels.               |
+| `title`       | `string` | No                         | Accessible name injected as `<title>` in the SVG.   |
+| `description` | `string` | No                         | Longer description injected as `<desc>` in the SVG. |
+
+## Reactivity
+
+Attributes are observed. Updating them via JavaScript causes the SVG to re-render automatically.
+
+```js
+const el = document.querySelector('pi-symbol');
+el.setAttribute('symbol-id', 'pf-001-toilets');
+el.setAttribute('width', '128');
+```
+
+## Framework snippets
+
+<Tabs>
+  <TabItem label="Vue">
+```vue
+<template>
+  <pi-symbol
+    symbol-id="ac-001-full-accessibility-or-toilets-accessible"
+    :width="size"
+    title="Accessible toilets"
+  />
+</template>
+```
+  </TabItem>
+  <TabItem label="Angular">
+```ts
+// app.module.ts — add CUSTOM_ELEMENTS_SCHEMA
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+
+@NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA] })
+export class AppModule {}
+
+````
+```html
+<!-- template -->
+<pi-symbol
+  symbol-id="ac-001-full-accessibility-or-toilets-accessible"
+  [attr.width]="size"
+  title="Accessible toilets"
+></pi-symbol>
+````
+
+  </TabItem>
+</Tabs>
+
+## Accessibility
+
+Provide a `title` attribute so screen readers can announce the symbol. The element automatically adds `role="img"` and `aria-labelledby` when a title is present. For purely decorative symbols, set `aria-hidden="true"` on the element.

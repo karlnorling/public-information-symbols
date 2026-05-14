@@ -22,7 +22,7 @@ yarn add @public-information-symbols/elements
 ### Register all elements
 
 ```ts
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 ```
 
@@ -44,7 +44,7 @@ Then use the elements in HTML:
 Avoid tag-name conflicts with other libraries by passing a custom prefix:
 
 ```ts
-defineCustomElements("pub");
+defineCustomElements('pub');
 // Registers: pub-symbol, pub-ac-001-full-accessibility-or-toilets-accessible, …
 ```
 
@@ -79,8 +79,8 @@ All attributes are reactive — changing them re-renders the SVG.
 ### Angular
 
 ```ts
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 
 @NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA] })

@@ -1,0 +1,70 @@
+---
+title: '@public-information-symbols/react'
+description: React components for Public Information Symbols — named components and a dynamic SymbolById helper.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Installation
+
+```sh
+npm install @public-information-symbols/react
+```
+
+## Named components
+
+Every symbol ships as a named React component. The component name is derived from the symbol ID by converting it to PascalCase.
+
+```tsx
+import { Ac001FullAccessibilityOrToiletsAccessible } from '@public-information-symbols/react';
+
+export default function App() {
+  return (
+    <Ac001FullAccessibilityOrToiletsAccessible width={64} height={64} title="Accessible toilets" />
+  );
+}
+```
+
+## SymbolById
+
+Use `SymbolById` when the symbol is not known at build time — for example, when driven by data or user input.
+
+```tsx
+import { SymbolById } from '@public-information-symbols/react';
+
+export default function App() {
+  return (
+    <SymbolById
+      id="ac-001-full-accessibility-or-toilets-accessible"
+      width={64}
+      height={64}
+      title="Accessible toilets"
+    />
+  );
+}
+```
+
+## Props
+
+### Shared props (all named components and SymbolById)
+
+| Prop          | Type     | Required | Description                                         |
+| ------------- | -------- | -------- | --------------------------------------------------- |
+| `width`       | `number` | No       | Width of the rendered SVG in pixels.                |
+| `height`      | `number` | No       | Height of the rendered SVG in pixels.               |
+| `title`       | `string` | No       | Accessible name injected as `<title>` in the SVG.   |
+| `description` | `string` | No       | Longer description injected as `<desc>` in the SVG. |
+
+### Additional SymbolById props
+
+| Prop | Type     | Required | Description                                                        |
+| ---- | -------- | -------- | ------------------------------------------------------------------ |
+| `id` | `string` | Yes      | Symbol ID, e.g. `ac-001-full-accessibility-or-toilets-accessible`. |
+
+## TypeScript
+
+The package ships with full TypeScript declarations. Prop types are inferred automatically when you import named components. For `SymbolById`, the `id` prop is typed as `string` — consult the `PISymbol` type from `@public-information-symbols/core` for valid IDs.
+
+## Accessibility
+
+Always supply a `title` (and optionally a `description`) so screen readers can announce the symbol's meaning. When a `title` is provided, the component adds `role="img"` and `aria-labelledby` to the SVG automatically. If the symbol is decorative, set `aria-hidden="true"` on the component.

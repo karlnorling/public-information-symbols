@@ -1,0 +1,90 @@
+---
+title: '@public-information-symbols/core'
+description: Core API for Public Information Symbols — query symbols, categories, and TypeScript types.
+---
+
+## Installation
+
+```sh
+npm install @public-information-symbols/core
+```
+
+## API reference
+
+### `getAllSymbols()`
+
+Returns every symbol in the library as an array of `PISymbol` objects.
+
+```ts
+import { getAllSymbols } from '@public-information-symbols/core';
+
+const symbols = getAllSymbols();
+console.log(symbols.length); // total number of symbols
+```
+
+### `getSymbol(id)`
+
+Returns the `PISymbol` for the given ID, or `undefined` if not found.
+
+```ts
+import { getSymbol } from '@public-information-symbols/core';
+
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
+
+if (symbol) {
+  console.log(symbol.name); // "Full accessibility or toilets accessible"
+  console.log(symbol.category); // "accessibility"
+  console.log(symbol.assets[512]); // path to the 512 px SVG
+}
+```
+
+### `getSymbolsByCategory(category)`
+
+Returns all symbols that belong to the given category.
+
+```ts
+import { getSymbolsByCategory } from '@public-information-symbols/core';
+
+const accessibilitySymbols = getSymbolsByCategory('accessibility');
+```
+
+## TypeScript types
+
+### `PISymbol`
+
+```ts
+interface PISymbol {
+  id: string; // e.g. "ac-001-full-accessibility-or-toilets-accessible"
+  code: string; // e.g. "AC-001"
+  name: string; // human-readable name
+  description: string; // extended description
+  category: SymbolCategory;
+  svg: string; // inline SVG string
+  assets: SymbolAssets;
+}
+```
+
+### `SymbolAssets`
+
+```ts
+interface SymbolAssets {
+  240: string;
+  512: string;
+  768: string;
+  1024: string;
+  2048: string;
+}
+```
+
+### `SymbolCategory`
+
+```ts
+type SymbolCategory =
+  | 'accessibility'
+  | 'public-facilities'
+  | 'transportation'
+  | 'commercial'
+  | 'behaviour'
+  | 'tourism'
+  | 'sporting';
+```

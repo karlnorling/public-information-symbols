@@ -28,7 +28,7 @@ import {
   Ac001FullAccessibilityOrToiletsAccessible,
   Pf001GeneralInformation,
   Tf001Airport,
-} from "@public-information-symbols/react";
+} from '@public-information-symbols/react';
 
 export default function SignagePanel() {
   return (

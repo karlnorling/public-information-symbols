@@ -49,7 +49,7 @@ Embed the sprite once invisibly at the top of your document to avoid cross-origi
 ### React with bundler import
 
 ```tsx
-import spriteUrl from "@public-information-symbols/sprite/sprite.svg";
+import spriteUrl from '@public-information-symbols/sprite/sprite.svg';
 
 function Accessibility() {
   return (
@@ -68,7 +68,7 @@ function Accessibility() {
 Symbol IDs are the lowercase code slug — e.g. `ac-001`, `pf-015`, `tf-001`. Use `sprite-ids.json` to enumerate all available IDs:
 
 ```ts
-import ids from "@public-information-symbols/sprite/sprite-ids.json";
+import ids from '@public-information-symbols/sprite/sprite-ids.json';
 // → string[]  e.g. ["ac-001", "ac-002", "pf-001", …]
 ```
 

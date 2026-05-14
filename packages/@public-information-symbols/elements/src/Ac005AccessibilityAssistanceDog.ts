@@ -4,36 +4,26 @@
 const _Attrs = `xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.917 52.917"`;
 const _Body = `<path d="M164.187 96.301h52.917v52.917h-52.917z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:2.01819" transform="translate(-164.187 -96.301)"/><path d="M187.252 105.6a2.652 2.652 0 1 0 0 5.304 2.652 2.652 0 0 0 0-5.304m-1.11 5.876c-1.176.01-2.384.903-2.495 2.1l-.575 7.815-1.301 7.413c-.04.23-.03.455.023.666 1.096-.524 2.13-.797 3.207-1.004l.666-3.742 2.423 3.345c1.367-.034 2.974.075 3.965.159l-.056-.083-4.293-5.927.181-1.949 3.003 2.931c.226.22.522.32.812.303l1.212 4.957.625-.153-1.231-5.035q.053-.041.101-.09a1.07 1.07 0 0 0-.018-1.52l-4.247-4.145.327-3.51a2.31 2.31 0 0 0-2.329-2.531m12.7 13.518a2.5 2.5 0 0 0-.558.07c-.224.053-.471.106-.637.266-1.112 1.07-2.952 3.535-2.952 3.535.106 0 3.712 2.334 3.712 2.334l.937-1.803c.583-1.59 1.478-.62 2.546-.937.098-.037.166-.13.23-.212.075-.096.14-.203.177-.319.032-.101.079-.22.035-.318-.068-.15-.267-.194-.407-.283-.332-.21-.72-.335-1.025-.583a.5.5 0 0 1-.142-.16c-.024-.048-.024-.105-.035-.158-.033-.165-.008-.348-.088-.495-.143-.26-.401-.448-.654-.601a2.4 2.4 0 0 0-.885-.319 2 2 0 0 0-.254-.017m-10.243 3.89c-.64.003-1.246.034-1.723.11-2.253.363-4.094.625-6.465 2.363-.308.225-.994 1.104-1.19 1.42-.467.748-.207.988-.207.988l.362-.12s.975-.73 1.784-1.198c.892-.516 1.626-.771 1.664-.72.089.12.052.245-.091.44-.405.55-1.336 1.846-1.816 2.5-.18.246-.441.45-.542.738-.082.234-.02.495-.03.742-.025.6-.067 1.603-.09 2.193-.012.284-.059.32-.02.473s.161.27.241.404l.368.618 2.067-.013s.058-.36-.046-.486c-.211-.259-.625-.162-.905-.343-.21-.136-.544-.512-.544-.512l.343-2.172s1.352-.926 2.067-1.462c.095-.07.256-.103.355-.037.196.336-.02.565-.39.993-.215.304-.332.476-.34.947a44 44 0 0 1-.116 1.76c-.017.17.098.33.176.482.167.324.615.903.615.903h1.9s.144-.153.15-.25c.01-.164-.084-.334-.2-.45-.207-.205-.542-.216-.8-.35-.173-.089-.5-.3-.5-.3.092-.749.24-1.505.253-2.233.402-.749.922-1.425 1.347-2.167.225-.322.437-.373.833-.368 2.062.324 5.992.818 5.992.818l-.35-5.475s-2.23-.244-4.152-.236m4.952.285s.468 3.327.45 5c-.006.529-.096 1.053-.175 1.575q-.11.73-.275 1.451c-.05.219-.141.428-.175.65a2.5 2.5 0 0 0-.025.7c.034.243.131.474.225.7.09.217.325.625.325.625l2.05.05s.056-.287.025-.425a.54.54 0 0 0-.15-.275c-.06-.056-.148-.07-.224-.1-.099-.038-.201-.065-.3-.1-.068-.024-.142-.035-.2-.075a.85.85 0 0 1-.25-.275c-.054-.091-.075-.198-.1-.3a1 1 0 0 1 .024-.5c.05-.15.401-1.31.626-2.025.187-.522.27-.912.374-1.325.04-.08.095-.164.175-.2a.21.21 0 0 1 .176 0c.063.033.095.109.124.174.21.476.185 1.025.325 1.526.245.876.497 1.76.9 2.575.209.42.315.899.675 1.2.049.04.276.05.276.05h2.05s.03-.278-.026-.4c-.067-.15-.208-.265-.35-.35a1.3 1.3 0 0 0-.474-.15c-.124-.02-.26.048-.375 0a.4.4 0 0 1-.176-.175c-.541-.89-.686-1.968-.95-2.975a18 18 0 0 1-.4-1.95c-.04-.282-.121-.57-.074-.85.013-.081.059-.154.1-.226.15-.265.524-.75.524-.75zm-5.91 5.3c-.223 1.228-.378 2.408-.55 3.645a1.514 1.514 0 0 0 1.294 1.712 1.514 1.514 0 0 0 1.712-1.294c.143-1.233.34-2.398.448-3.627z" style="display:inline;fill:#000;fill-opacity:1;stroke-width:1.4" transform="translate(-164.187 -96.301)"/>`;
 const _DefaultDesc = `Accessibility, assistance dog`;
-const _DefaultTitle = "Accessibility, assistance dog";
+const _DefaultTitle = 'Accessibility, assistance dog';
 const _DefaultWidth = `200.001`;
 const _DefaultHeight = `200.001`;
-const _h = (s: string) =>
-  s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/'/g, "&#39;")
-    .replace(/"/g, "&quot;");
+const _h = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
 
 export class Ac005AccessibilityAssistanceDog extends HTMLElement {
-  static readonly tagName = "pi-ac-005-accessibility-assistance-dog";
-  static readonly observedAttributes = ["title", "description", "width", "height"];
+  static readonly tagName = 'pi-ac-005-accessibility-assistance-dog';
+  static readonly observedAttributes = ['title', 'description', 'width', 'height'];
 
-  connectedCallback(): void {
-    this._render();
-  }
-  attributeChangedCallback(): void {
-    this._render();
-  }
+  connectedCallback(): void { this._render(); }
+  attributeChangedCallback(): void { this._render(); }
 
   private _render(): void {
     const descId = `pi-desc-ac-005-accessibility-assistance-dog`;
     const titleId = `pi-title-ac-005-accessibility-assistance-dog`;
-    const _w = this.hasAttribute("width") ? _h(this.getAttribute("width")!) : _DefaultWidth;
-    const _ht = this.hasAttribute("height") ? _h(this.getAttribute("height")!) : _DefaultHeight;
-    const resolvedTitle = this.getAttribute("title") ?? _DefaultTitle;
-    const resolvedDesc = this.getAttribute("description") ?? _DefaultDesc;
-    this.style.display = "contents";
+    const _w = this.hasAttribute('width') ? _h(this.getAttribute('width')!) : _DefaultWidth;
+    const _ht = this.hasAttribute('height') ? _h(this.getAttribute('height')!) : _DefaultHeight;
+    const resolvedTitle = this.getAttribute('title') ?? _DefaultTitle;
+    const resolvedDesc = this.getAttribute('description') ?? _DefaultDesc;
+    this.style.display = 'contents';
     this.innerHTML = `<svg ${_Attrs} width="${_w}" height="${_ht}" role="img" aria-labelledby="${titleId} ${descId}">
   <title id="${titleId}">${_h(resolvedTitle)}</title>
   <desc id="${descId}">${_h(resolvedDesc)}</desc>

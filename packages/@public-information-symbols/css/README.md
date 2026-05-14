@@ -22,11 +22,11 @@ yarn add @public-information-symbols/css
 Import the stylesheet once in your entry point:
 
 ```js
-import "@public-information-symbols/css/sprite.css";
+import '@public-information-symbols/css/sprite.css';
 ```
 
 ```css
-@import "@public-information-symbols/css/sprite.css";
+@import '@public-information-symbols/css/sprite.css';
 ```
 
 ---
