@@ -22,7 +22,7 @@ yarn add @public-information-symbols/elements
 ### Register all elements
 
 ```ts
-import { defineCustomElements } from '@public-information-symbols/elements';
+import { defineCustomElements } from "@public-information-symbols/elements";
 defineCustomElements();
 ```
 
@@ -33,7 +33,9 @@ Then use the elements in HTML:
 <pi-symbol symbol-id="ac-001-full-accessibility-or-toilets-accessible" width="64"></pi-symbol>
 
 <!-- Named elements -->
-<pi-ac-001-full-accessibility-or-toilets-accessible width="64"></pi-ac-001-full-accessibility-or-toilets-accessible>
+<pi-ac-001-full-accessibility-or-toilets-accessible
+  width="64"
+></pi-ac-001-full-accessibility-or-toilets-accessible>
 <pi-pf-001-general-information width="64"></pi-pf-001-general-information>
 ```
 
@@ -42,7 +44,7 @@ Then use the elements in HTML:
 Avoid tag-name conflicts with other libraries by passing a custom prefix:
 
 ```ts
-defineCustomElements('pub');
+defineCustomElements("pub");
 // Registers: pub-symbol, pub-ac-001-full-accessibility-or-toilets-accessible, …
 ```
 
@@ -52,13 +54,13 @@ defineCustomElements('pub');
 
 All elements accept the same attributes:
 
-| Attribute     | Default              | Description                                                               |
-| ------------- | -------------------- | ------------------------------------------------------------------------- |
+| Attribute     | Default              | Description                                                                                   |
+| ------------- | -------------------- | --------------------------------------------------------------------------------------------- |
 | `symbol-id`   | —                    | Symbol slug ID (`<pi-symbol>` only), e.g. `"ac-001-full-accessibility-or-toilets-accessible"` |
-| `title`       | Symbol name          | Accessible title (`<title>` inside SVG)                                   |
-| `description` | Symbol description   | Accessible description (`<desc>` inside SVG)                              |
-| `width`       | SVG intrinsic width  | Forwarded to the `<svg>` width attribute                                  |
-| `height`      | SVG intrinsic height | Forwarded to the `<svg>` height attribute                                 |
+| `title`       | Symbol name          | Accessible title (`<title>` inside SVG)                                                       |
+| `description` | Symbol description   | Accessible description (`<desc>` inside SVG)                                                  |
+| `width`       | SVG intrinsic width  | Forwarded to the `<svg>` width attribute                                                      |
+| `height`      | SVG intrinsic height | Forwarded to the `<svg>` height attribute                                                     |
 
 All attributes are reactive — changing them re-renders the SVG.
 
@@ -77,8 +79,8 @@ All attributes are reactive — changing them re-renders the SVG.
 ### Angular
 
 ```ts
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { defineCustomElements } from '@public-information-symbols/elements';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { defineCustomElements } from "@public-information-symbols/elements";
 defineCustomElements();
 
 @NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA] })
