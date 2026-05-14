@@ -1,7 +1,7 @@
-import type { PropType } from "vue";
+import type { PropType } from 'vue';
 
 export const symbolProps = {
-  "aria-label": { type: String as PropType<string> },
+  'aria-label': { type: String as PropType<string> },
   description: { type: String as PropType<string> },
   height: { type: [Number, String] as PropType<number | string> },
   title: { type: String as PropType<string> },

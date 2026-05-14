@@ -9,15 +9,15 @@ Accessible, framework-agnostic packages for all **178 ISO 7001** public informat
 
 ## Packages
 
-| Package | npm | Description |
-| ------- | --- | ----------- |
-| [`@public-information-symbols/core`](packages/@public-information-symbols/core) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/core)](https://www.npmjs.com/package/@public-information-symbols/core) | Typed symbol data and lookup functions |
-| [`@public-information-symbols/react`](packages/@public-information-symbols/react) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/react)](https://www.npmjs.com/package/@public-information-symbols/react) | React components (inline SVG) |
-| [`@public-information-symbols/vue`](packages/@public-information-symbols/vue) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/vue)](https://www.npmjs.com/package/@public-information-symbols/vue) | Vue 3 components (inline SVG) |
-| [`@public-information-symbols/elements`](packages/@public-information-symbols/elements) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/elements)](https://www.npmjs.com/package/@public-information-symbols/elements) | Web Components (Custom Elements) |
-| [`@public-information-symbols/css`](packages/@public-information-symbols/css) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/css)](https://www.npmjs.com/package/@public-information-symbols/css) | CSS sprite (background-image) |
-| [`@public-information-symbols/sprite`](packages/@public-information-symbols/sprite) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/sprite)](https://www.npmjs.com/package/@public-information-symbols/sprite) | SVG sprite sheet |
-| [`@public-information-symbols/assets`](packages/@public-information-symbols/assets) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/assets)](https://www.npmjs.com/package/@public-information-symbols/assets) | Static SVG/PNG/JPG/WebP files (240–2048 px) |
+| Package                                                                                 | npm                                                                                                                                             | Description                                 |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| [`@public-information-symbols/core`](packages/@public-information-symbols/core)         | [![npm](https://img.shields.io/npm/v/@public-information-symbols/core)](https://www.npmjs.com/package/@public-information-symbols/core)         | Typed symbol data and lookup functions      |
+| [`@public-information-symbols/react`](packages/@public-information-symbols/react)       | [![npm](https://img.shields.io/npm/v/@public-information-symbols/react)](https://www.npmjs.com/package/@public-information-symbols/react)       | React components (inline SVG)               |
+| [`@public-information-symbols/vue`](packages/@public-information-symbols/vue)           | [![npm](https://img.shields.io/npm/v/@public-information-symbols/vue)](https://www.npmjs.com/package/@public-information-symbols/vue)           | Vue 3 components (inline SVG)               |
+| [`@public-information-symbols/elements`](packages/@public-information-symbols/elements) | [![npm](https://img.shields.io/npm/v/@public-information-symbols/elements)](https://www.npmjs.com/package/@public-information-symbols/elements) | Web Components (Custom Elements)            |
+| [`@public-information-symbols/css`](packages/@public-information-symbols/css)           | [![npm](https://img.shields.io/npm/v/@public-information-symbols/css)](https://www.npmjs.com/package/@public-information-symbols/css)           | CSS sprite (background-image)               |
+| [`@public-information-symbols/sprite`](packages/@public-information-symbols/sprite)     | [![npm](https://img.shields.io/npm/v/@public-information-symbols/sprite)](https://www.npmjs.com/package/@public-information-symbols/sprite)     | SVG sprite sheet                            |
+| [`@public-information-symbols/assets`](packages/@public-information-symbols/assets)     | [![npm](https://img.shields.io/npm/v/@public-information-symbols/assets)](https://www.npmjs.com/package/@public-information-symbols/assets)     | Static SVG/PNG/JPG/WebP files (240–2048 px) |
 
 ---
 
@@ -77,7 +77,12 @@ import '@public-information-symbols/css/sprite.css';
 ```
 
 ```html
-<span class="pi-ac-001" style="display:inline-block;width:64px;height:64px" role="img" aria-label="Full accessibility"></span>
+<span
+  class="pi-ac-001"
+  style="display:inline-block;width:64px;height:64px"
+  role="img"
+  aria-label="Full accessibility"
+></span>
 ```
 
 ---

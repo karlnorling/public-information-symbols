@@ -1,8 +1,8 @@
-import type * as React from "react";
+import type * as React from 'react';
 
 export interface SymbolProps {
   /** Accessible label that overrides the default aria-label on the wrapping span. */
-  "aria-label"?: string;
+  'aria-label'?: string;
   className?: string;
   /** Overrides the default SVG `<desc>` text. */
   description?: string;

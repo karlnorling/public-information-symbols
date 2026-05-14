@@ -1,17 +1,17 @@
-import { fileURLToPath } from "node:url";
-import path from "path";
-import remarkGfm from "remark-gfm";
-import type { StorybookConfig } from "@storybook/react-vite";
+import { fileURLToPath } from 'node:url';
+import path from 'path';
+import remarkGfm from 'remark-gfm';
+import type { StorybookConfig } from '@storybook/react-vite';
 
-const dirname = fileURLToPath(new URL(".", import.meta.url));
+const dirname = fileURLToPath(new URL('.', import.meta.url));
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-vitest",
-    "@storybook/addon-a11y",
+    '@storybook/addon-vitest',
+    '@storybook/addon-a11y',
     {
-      name: "@storybook/addon-docs",
+      name: '@storybook/addon-docs',
       options: {
         mdxPluginOptions: {
           mdxCompileOptions: {
@@ -21,10 +21,10 @@ const config: StorybookConfig = {
       },
     },
   ],
-  framework: "@storybook/react-vite",
+  framework: '@storybook/react-vite',
   staticDirs: [
-    { from: "../../../packages/@public-information-symbols/assets/assets", to: "/assets" },
-    { from: "../../../packages/@public-information-symbols/sprite", to: "/assets/sprites" },
+    { from: '../../../packages/@public-information-symbols/assets/assets', to: '/assets' },
+    { from: '../../../packages/@public-information-symbols/sprite', to: '/assets/sprites' },
   ],
   viteFinal: (config) => {
     if (process.env.STORYBOOK_BASE_PATH) {
@@ -33,21 +33,21 @@ const config: StorybookConfig = {
     config.resolve ??= {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@public-information-symbols/core": path.resolve(
+      '@public-information-symbols/core': path.resolve(
         dirname,
-        "../../../packages/@public-information-symbols/core/src/index.ts",
+        '../../../packages/@public-information-symbols/core/src/index.ts',
       ),
-      "@public-information-symbols/react": path.resolve(
+      '@public-information-symbols/react': path.resolve(
         dirname,
-        "../../../packages/@public-information-symbols/react/src/index.ts",
+        '../../../packages/@public-information-symbols/react/src/index.ts',
       ),
-      "@public-information-symbols/elements": path.resolve(
+      '@public-information-symbols/elements': path.resolve(
         dirname,
-        "../../../packages/@public-information-symbols/elements/src/index.ts",
+        '../../../packages/@public-information-symbols/elements/src/index.ts',
       ),
-      "@public-information-symbols/css": path.resolve(
+      '@public-information-symbols/css': path.resolve(
         dirname,
-        "../../../packages/@public-information-symbols/css",
+        '../../../packages/@public-information-symbols/css',
       ),
     };
     return config;

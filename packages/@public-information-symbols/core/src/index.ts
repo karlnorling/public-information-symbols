@@ -1,8 +1,8 @@
-import { symbols } from "./symbols.generated";
-import type { PISymbol, SymbolCategory } from "./types";
+import { symbols } from './symbols.generated';
+import type { PISymbol, SymbolCategory } from './types';
 
-export type { PISymbol, SymbolAssets, SymbolCategory } from "./types";
-export { symbols } from "./symbols.generated";
+export type { PISymbol, SymbolAssets, SymbolCategory } from './types';
+export { symbols } from './symbols.generated';
 
 export const getAllSymbols = (): PISymbol[] => symbols;
 

@@ -1,5 +1,5 @@
-import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
-import * as ReactStories from "./ReactComponents.stories";
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ReactStories from './ReactComponents.stories';
 
 <Meta of={ReactStories} />
 
@@ -21,7 +21,7 @@ Named components are generated for every symbol:
 import {
   Ac001FullAccessibilityOrToiletsAccessible,
   Pf001GeneralInformation,
-} from "@public-information-symbols/react";
+} from '@public-information-symbols/react';
 
 export default function SignagePanel() {
   return (
@@ -36,7 +36,7 @@ export default function SignagePanel() {
 ## Dynamic rendering by ID
 
 ```tsx
-import { SymbolById } from "@public-information-symbols/react";
+import { SymbolById } from '@public-information-symbols/react';
 
 <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" width={64} />;
 ```

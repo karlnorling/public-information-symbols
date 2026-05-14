@@ -6,13 +6,13 @@
  * Category of an ISO 7001 public information symbol.
  */
 export type SymbolCategory =
-  | "accessibility"
-  | "public-facilities"
-  | "transportation"
-  | "behaviour"
-  | "commercial"
-  | "tourism"
-  | "sporting";
+  | 'accessibility'
+  | 'public-facilities'
+  | 'transportation'
+  | 'behaviour'
+  | 'commercial'
+  | 'tourism'
+  | 'sporting';
 
 /**
  * Pre-built image asset paths, relative to the package `assets/` directory.

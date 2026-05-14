@@ -1,5 +1,5 @@
-import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
-import * as WebComponentsStories from "./WebComponents.stories";
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as WebComponentsStories from './WebComponents.stories';
 
 <Meta of={WebComponentsStories} />
 
@@ -18,7 +18,7 @@ npm install @public-information-symbols/elements
 Call `defineCustomElements()` once at app startup to register all custom elements:
 
 ```ts
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 ```
 
@@ -33,7 +33,7 @@ Renders any symbol by slug ID. Use this when the symbol ID is dynamic or unknown
 ```
 
 ```ts
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 ```
 
@@ -68,7 +68,7 @@ Each symbol has its own named element — e.g. `<pi-ac-001-full-accessibility-or
 
 ```vue
 <script setup>
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 </script>
 <template>
@@ -80,8 +80,8 @@ defineCustomElements();
 
 ```ts
 // app.module.ts
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 
 @NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA] })

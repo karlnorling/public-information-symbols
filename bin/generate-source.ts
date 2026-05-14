@@ -16,11 +16,11 @@
  * Run via: yarn generate
  */
 
-import fs from "fs";
-import path from "path";
-import { optimize } from "svgo";
-import type { ScrapedData, SymbolCategory } from "./scrape";
-import type { PISymbol } from "../packages/@public-information-symbols/core/src/types";
+import fs from 'fs';
+import path from 'path';
+import { optimize } from 'svgo';
+import type { ScrapedData, SymbolCategory } from './scrape';
+import type { PISymbol } from '../packages/@public-information-symbols/core/src/types';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -29,19 +29,19 @@ import type { PISymbol } from "../packages/@public-information-symbols/core/src/
 const slugify = (str: string): string =>
   str
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 
 /** Converts a kebab-case slug to PascalCase component name. */
 const toComponentName = (id: string): string =>
   id
-    .split("-")
+    .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join("");
+    .join('');
 
 const IMAGE_SIZES = [240, 512, 768, 1024, 2048] as const;
 
-const buildAssets = (svgRelPath: string): PISymbol["assets"] => {
+const buildAssets = (svgRelPath: string): PISymbol['assets'] => {
   const dir = path.dirname(svgRelPath);
   const base = path.basename(svgRelPath, path.extname(svgRelPath));
   const makeRecord = (ext: string): Record<number, string> =>
@@ -50,21 +50,21 @@ const buildAssets = (svgRelPath: string): PISymbol["assets"] => {
       string
     >;
   return {
-    jpg: makeRecord("jpg"),
-    png: makeRecord("png"),
+    jpg: makeRecord('jpg'),
+    png: makeRecord('png'),
     svg: svgRelPath,
-    webp: makeRecord("webp"),
+    webp: makeRecord('webp'),
   };
 };
 
 const cleanSvg = (svg: string): string =>
   svg
-    .replace(/<\?xml[^>]*\?>/g, "")
-    .replace(/<!DOCTYPE[^>]*>/g, "")
+    .replace(/<\?xml[^>]*\?>/g, '')
+    .replace(/<!DOCTYPE[^>]*>/g, '')
     .trim();
 
 const optimizeSvg = (svg: string): string =>
-  optimize(svg, { multipass: true, plugins: ["preset-default"] }).data;
+  optimize(svg, { multipass: true, plugins: ['preset-default'] }).data;
 
 /** Prefix every internal SVG id with the symbol slug to prevent DOM collisions. */
 const scopeBodyIds = (body: string, prefix: string): string => {
@@ -76,28 +76,28 @@ const scopeBodyIds = (body: string, prefix: string): string => {
   if (ids.size === 0) return body;
   let out = body;
   for (const id of ids) {
-    const esc = id.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const esc = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     out = out
-      .replace(new RegExp(`\\bid="${esc}"`, "g"), `id="${prefix}-${id}"`)
-      .replace(new RegExp(`url\\(#${esc}\\)`, "g"), `url(#${prefix}-${id})`)
-      .replace(new RegExp(`href="#${esc}"`, "g"), `href="#${prefix}-${id}"`);
+      .replace(new RegExp(`\\bid="${esc}"`, 'g'), `id="${prefix}-${id}"`)
+      .replace(new RegExp(`url\\(#${esc}\\)`, 'g'), `url(#${prefix}-${id})`)
+      .replace(new RegExp(`href="#${esc}"`, 'g'), `href="#${prefix}-${id}"`);
   }
   return out;
 };
 
 /** "AC 001" → "accessibility", "PF 015" → "public-facilities", etc. */
 const categoryFromCode = (code: string): SymbolCategory => {
-  const prefix = code.split(" ")[0].toUpperCase();
+  const prefix = code.split(' ')[0].toUpperCase();
   const map: Record<string, SymbolCategory> = {
-    AC: "accessibility",
-    PF: "public-facilities",
-    TF: "transportation",
-    BP: "behaviour",
-    CF: "commercial",
-    TC: "tourism",
-    SA: "sporting",
+    AC: 'accessibility',
+    PF: 'public-facilities',
+    TF: 'transportation',
+    BP: 'behaviour',
+    CF: 'commercial',
+    TC: 'tourism',
+    SA: 'sporting',
   };
-  return map[prefix] ?? "public-facilities";
+  return map[prefix] ?? 'public-facilities';
 };
 
 // ---------------------------------------------------------------------------
@@ -121,16 +121,16 @@ const collectEntries = (
     for (const symbol of symbols) {
       const category = categoryFromCode(symbol.code);
       // slug: "AC 001" → "ac-001", name: "Full accessibility" → "ac-001-full-accessibility"
-      const codeSlug = symbol.code.toLowerCase().replace(/\s+/, "-");
+      const codeSlug = symbol.code.toLowerCase().replace(/\s+/, '-');
       const id = symbol.name ? `${codeSlug}-${slugify(symbol.name)}` : codeSlug;
 
       // Find the SVG in the map: look for files under the category/codeSlug path
       const svgKey = Object.keys(svgMap).find((k) => {
-        const normalized = k.replace(/\\/g, "/");
+        const normalized = k.replace(/\\/g, '/');
         return (
           (normalized.startsWith(`${category}/${codeSlug}/`) ||
             normalized.includes(`/${category}/${codeSlug}/`)) &&
-          normalized.endsWith(".svg") &&
+          normalized.endsWith('.svg') &&
           !/_\d+x\d+\.svg$/.test(normalized)
         );
       });
@@ -170,7 +170,7 @@ const collectEntries = (
 
 const generateSymbolsFile = (symbols: PISymbol[]): string => {
   const esc = (s: string): string =>
-    s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
+    s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
 
   const entries = symbols.map((s) => {
     const assetsStr = JSON.stringify(s.assets, null, 4).replace(/"/g, "'");
@@ -184,7 +184,7 @@ const generateSymbolsFile = (symbols: PISymbol[]): string => {
       `    name: \`${esc(s.name)}\`,`,
       `    svg: \`${esc(s.svg)}\`,`,
       `  },`,
-    ].join("\n");
+    ].join('\n');
   });
 
   return [
@@ -197,7 +197,7 @@ const generateSymbolsFile = (symbols: PISymbol[]): string => {
     ...entries,
     `];`,
     ``,
-  ].join("\n");
+  ].join('\n');
 };
 
 // ---------------------------------------------------------------------------
@@ -211,7 +211,7 @@ const generateReactPropsFile = (): string =>
     ``,
     `export type { SymbolProps } from './SymbolPropsBase';`,
     ``,
-  ].join("\n");
+  ].join('\n');
 
 // ---------------------------------------------------------------------------
 // Code generation — react/src/{ComponentName}.tsx
@@ -222,27 +222,27 @@ const generateReactComponentFile = (entry: ComponentEntry): string => {
   const componentName = toComponentName(id);
 
   const svgBodyMatch = optimizedSvg.match(/^<svg([^>]*)>([\s\S]*)<\/svg>\s*$/i);
-  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : "";
+  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : '';
   const svgBody = scopeBodyIds(svgBodyMatch ? svgBodyMatch[2] : optimizedSvg, id);
 
   const esc = (s: string): string =>
-    s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
+    s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
 
   const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
   const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
-  const defaultWidth = (widthMatch ? widthMatch[1] : "100%").replace(/px$/, "");
-  const defaultHeight = (heightMatch ? heightMatch[1] : "100%").replace(/px$/, "");
+  const defaultWidth = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
+  const defaultHeight = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
 
   const hasViewBox = /\bviewBox="/.test(svgAttrs);
   const syntheticViewBox =
     !hasViewBox && /^\d+(\.\d+)?$/.test(defaultWidth) && /^\d+(\.\d+)?$/.test(defaultHeight)
       ? ` viewBox="0 0 ${defaultWidth} ${defaultHeight}"`
-      : "";
+      : '';
 
   const attrsWithoutSize =
     svgAttrs
-      .replace(/\s*\bwidth="[^"]*"/, "")
-      .replace(/\s*\bheight="[^"]*"/, "")
+      .replace(/\s*\bwidth="[^"]*"/, '')
+      .replace(/\s*\bheight="[^"]*"/, '')
       .trim() + syntheticViewBox;
 
   return [
@@ -284,7 +284,7 @@ const generateReactComponentFile = (entry: ComponentEntry): string => {
     `);`,
     `${componentName}.displayName = '${componentName}';`,
     ``,
-  ].join("\n");
+  ].join('\n');
 };
 
 // ---------------------------------------------------------------------------
@@ -301,7 +301,7 @@ const generateReactIndex = (componentNames: string[]): string =>
     ...componentNames.map((name) => `export { ${name} } from './${name}';`),
     `export type { PISymbol, SymbolAssets, SymbolCategory } from '@public-information-symbols/core';`,
     ``,
-  ].join("\n");
+  ].join('\n');
 
 // ---------------------------------------------------------------------------
 // Code generation — vue/src/SymbolProps.ts
@@ -314,7 +314,7 @@ const generateVuePropsFile = (): string =>
     ``,
     `export { symbolProps } from './SymbolPropsBase';`,
     ``,
-  ].join("\n");
+  ].join('\n');
 
 // ---------------------------------------------------------------------------
 // Code generation — vue/src/{ComponentName}.ts
@@ -325,27 +325,27 @@ const generateVueComponentFile = (entry: ComponentEntry): string => {
   const componentName = toComponentName(id);
 
   const svgBodyMatch = optimizedSvg.match(/^<svg([^>]*)>([\s\S]*)<\/svg>\s*$/i);
-  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : "";
+  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : '';
   const svgBody = scopeBodyIds(svgBodyMatch ? svgBodyMatch[2] : optimizedSvg, id);
 
   const esc = (s: string): string =>
-    s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
+    s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
 
   const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
   const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
-  const defaultWidth = (widthMatch ? widthMatch[1] : "100%").replace(/px$/, "");
-  const defaultHeight = (heightMatch ? heightMatch[1] : "100%").replace(/px$/, "");
+  const defaultWidth = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
+  const defaultHeight = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
 
   const hasViewBox = /\bviewBox="/.test(svgAttrs);
   const syntheticViewBox =
     !hasViewBox && /^\d+(\.\d+)?$/.test(defaultWidth) && /^\d+(\.\d+)?$/.test(defaultHeight)
       ? ` viewBox="0 0 ${defaultWidth} ${defaultHeight}"`
-      : "";
+      : '';
 
   const attrsWithoutSize =
     svgAttrs
-      .replace(/\s*\bwidth="[^"]*"/, "")
-      .replace(/\s*\bheight="[^"]*"/, "")
+      .replace(/\s*\bwidth="[^"]*"/, '')
+      .replace(/\s*\bheight="[^"]*"/, '')
       .trim() + syntheticViewBox;
 
   return [
@@ -390,7 +390,7 @@ const generateVueComponentFile = (entry: ComponentEntry): string => {
     `  },`,
     `});`,
     ``,
-  ].join("\n");
+  ].join('\n');
 };
 
 // ---------------------------------------------------------------------------
@@ -407,7 +407,7 @@ const generateVueIndex = (componentNames: string[]): string =>
     ...componentNames.map((name) => `export { ${name} } from './${name}';`),
     `export type { PISymbol, SymbolAssets, SymbolCategory } from '@public-information-symbols/core';`,
     ``,
-  ].join("\n");
+  ].join('\n');
 
 // ---------------------------------------------------------------------------
 // Code generation — elements/src/{ComponentName}.ts
@@ -418,27 +418,27 @@ const generateElementFile = (entry: ComponentEntry): string => {
   const componentName = toComponentName(id);
 
   const svgBodyMatch = optimizedSvg.match(/^<svg([^>]*)>([\s\S]*)<\/svg>\s*$/i);
-  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : "";
+  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : '';
   const svgBody = scopeBodyIds(svgBodyMatch ? svgBodyMatch[2] : optimizedSvg, id);
 
   const esc = (s: string): string =>
-    s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
+    s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
 
   const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
   const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
-  const defaultWidth = (widthMatch ? widthMatch[1] : "100%").replace(/px$/, "");
-  const defaultHeight = (heightMatch ? heightMatch[1] : "100%").replace(/px$/, "");
+  const defaultWidth = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
+  const defaultHeight = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
 
   const hasViewBox = /\bviewBox="/.test(svgAttrs);
   const syntheticViewBox =
     !hasViewBox && /^\d+(\.\d+)?$/.test(defaultWidth) && /^\d+(\.\d+)?$/.test(defaultHeight)
       ? ` viewBox="0 0 ${defaultWidth} ${defaultHeight}"`
-      : "";
+      : '';
 
   const attrsWithoutSize =
     svgAttrs
-      .replace(/\s*\bwidth="[^"]*"/, "")
-      .replace(/\s*\bheight="[^"]*"/, "")
+      .replace(/\s*\bwidth="[^"]*"/, '')
+      .replace(/\s*\bheight="[^"]*"/, '')
       .trim() + syntheticViewBox;
 
   return [
@@ -475,7 +475,7 @@ const generateElementFile = (entry: ComponentEntry): string => {
     `  }`,
     `}`,
     ``,
-  ].join("\n");
+  ].join('\n');
 };
 
 // ---------------------------------------------------------------------------
@@ -515,7 +515,7 @@ const generateDefineCustomElements = (
     `  }`,
     `}`,
     ``,
-  ].join("\n");
+  ].join('\n');
 
 // ---------------------------------------------------------------------------
 // Code generation — elements/src/index.ts
@@ -531,20 +531,20 @@ const generateElementsIndex = (componentNames: string[]): string =>
     ...componentNames.map((name) => `export { ${name} } from './${name}';`),
     `export type { PISymbol, SymbolAssets, SymbolCategory } from '@public-information-symbols/core';`,
     ``,
-  ].join("\n");
+  ].join('\n');
 
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
 export const generateSource = async (): Promise<void> => {
-  const scrapedPath = path.join("data", "scraped.json");
+  const scrapedPath = path.join('data', 'scraped.json');
   const svgMapPath = path.join(
-    "packages",
-    "@public-information-symbols",
-    "assets",
-    "assets",
-    "svg-map.json",
+    'packages',
+    '@public-information-symbols',
+    'assets',
+    'assets',
+    'svg-map.json',
   );
 
   if (!fs.existsSync(scrapedPath)) {
@@ -554,8 +554,8 @@ export const generateSource = async (): Promise<void> => {
     throw new Error(`Missing ${svgMapPath}. Run 'yarn update' first.`);
   }
 
-  const scraped: ScrapedData = JSON.parse(fs.readFileSync(scrapedPath, "utf-8"));
-  const svgMap: Record<string, string> = JSON.parse(fs.readFileSync(svgMapPath, "utf-8"));
+  const scraped: ScrapedData = JSON.parse(fs.readFileSync(scrapedPath, 'utf-8'));
+  const svgMap: Record<string, string> = JSON.parse(fs.readFileSync(svgMapPath, 'utf-8'));
 
   console.log(`Loaded ${Object.keys(svgMap).length} SVGs from svg-map.json`);
 
@@ -572,20 +572,20 @@ export const generateSource = async (): Promise<void> => {
 
   // core/src/symbols.generated.ts
   const coreOut = path.join(
-    "packages",
-    "@public-information-symbols",
-    "core",
-    "src",
-    "symbols.generated.ts",
+    'packages',
+    '@public-information-symbols',
+    'core',
+    'src',
+    'symbols.generated.ts',
   );
-  fs.writeFileSync(coreOut, generateSymbolsFile(symbols), "utf-8");
+  fs.writeFileSync(coreOut, generateSymbolsFile(symbols), 'utf-8');
   console.log(`Written: ${coreOut}`);
 
   // react/src/
-  const reactDir = path.join("packages", "@public-information-symbols", "react", "src");
+  const reactDir = path.join('packages', '@public-information-symbols', 'react', 'src');
   fs.mkdirSync(reactDir, { recursive: true });
 
-  fs.writeFileSync(path.join(reactDir, "SymbolProps.ts"), generateReactPropsFile(), "utf-8");
+  fs.writeFileSync(path.join(reactDir, 'SymbolProps.ts'), generateReactPropsFile(), 'utf-8');
 
   const componentNames: string[] = [];
   for (const entry of componentEntries) {
@@ -594,35 +594,35 @@ export const generateSource = async (): Promise<void> => {
     fs.writeFileSync(
       path.join(reactDir, `${componentName}.tsx`),
       generateReactComponentFile(entry),
-      "utf-8",
+      'utf-8',
     );
   }
   console.log(`Written: ${componentNames.length} React components`);
 
-  fs.writeFileSync(path.join(reactDir, "index.ts"), generateReactIndex(componentNames), "utf-8");
-  console.log(`Written: ${path.join(reactDir, "index.ts")}`);
+  fs.writeFileSync(path.join(reactDir, 'index.ts'), generateReactIndex(componentNames), 'utf-8');
+  console.log(`Written: ${path.join(reactDir, 'index.ts')}`);
 
   // vue/src/
-  const vueDir = path.join("packages", "@public-information-symbols", "vue", "src");
+  const vueDir = path.join('packages', '@public-information-symbols', 'vue', 'src');
   fs.mkdirSync(vueDir, { recursive: true });
 
-  fs.writeFileSync(path.join(vueDir, "SymbolProps.ts"), generateVuePropsFile(), "utf-8");
+  fs.writeFileSync(path.join(vueDir, 'SymbolProps.ts'), generateVuePropsFile(), 'utf-8');
 
   for (const entry of componentEntries) {
     const componentName = toComponentName(entry.id);
     fs.writeFileSync(
       path.join(vueDir, `${componentName}.ts`),
       generateVueComponentFile(entry),
-      "utf-8",
+      'utf-8',
     );
   }
   console.log(`Written: ${componentNames.length} Vue components`);
 
-  fs.writeFileSync(path.join(vueDir, "index.ts"), generateVueIndex(componentNames), "utf-8");
-  console.log(`Written: ${path.join(vueDir, "index.ts")}`);
+  fs.writeFileSync(path.join(vueDir, 'index.ts'), generateVueIndex(componentNames), 'utf-8');
+  console.log(`Written: ${path.join(vueDir, 'index.ts')}`);
 
   // elements/src/
-  const elementsDir = path.join("packages", "@public-information-symbols", "elements", "src");
+  const elementsDir = path.join('packages', '@public-information-symbols', 'elements', 'src');
   fs.mkdirSync(elementsDir, { recursive: true });
 
   const elementEntries: Array<{ id: string; componentName: string }> = [];
@@ -632,30 +632,30 @@ export const generateSource = async (): Promise<void> => {
     fs.writeFileSync(
       path.join(elementsDir, `${componentName}.ts`),
       generateElementFile(entry),
-      "utf-8",
+      'utf-8',
     );
   }
   console.log(`Written: ${elementEntries.length} custom elements`);
 
   fs.writeFileSync(
-    path.join(elementsDir, "defineCustomElements.ts"),
+    path.join(elementsDir, 'defineCustomElements.ts'),
     generateDefineCustomElements(elementEntries),
-    "utf-8",
+    'utf-8',
   );
 
   fs.writeFileSync(
-    path.join(elementsDir, "index.ts"),
+    path.join(elementsDir, 'index.ts'),
     generateElementsIndex(elementEntries.map((e) => e.componentName)),
-    "utf-8",
+    'utf-8',
   );
 
-  console.log("\nDone.");
+  console.log('\nDone.');
 };
 
 const isMain =
   process.argv[1] &&
-  (process.argv[1].endsWith("generate-source.ts") ||
-    process.argv[1].endsWith("generate-source.js"));
+  (process.argv[1].endsWith('generate-source.ts') ||
+    process.argv[1].endsWith('generate-source.js'));
 
 if (isMain) {
   generateSource().catch((err) => {

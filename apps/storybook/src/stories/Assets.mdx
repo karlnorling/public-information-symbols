@@ -1,4 +1,4 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="ISO 7001/Assets & API" />
 
@@ -19,7 +19,7 @@ npm install @public-information-symbols/core @public-information-symbols/assets
 ## Programmatic API
 
 ```ts
-import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
 ```
 
 ### `getAllSymbols()`
@@ -36,10 +36,10 @@ const all = getAllSymbols();
 Look up a single symbol by its slug ID.
 
 ```ts
-const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible");
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
 // → PISymbol | undefined
 
-const info = getSymbol("pf-001-general-information");
+const info = getSymbol('pf-001-general-information');
 ```
 
 ### `getSymbolsByCategory(category)`
@@ -47,13 +47,13 @@ const info = getSymbol("pf-001-general-information");
 Filter symbols by ISO 7001 category.
 
 ```ts
-const accessibility = getSymbolsByCategory("accessibility"); // AC-series
-const publicFacilities = getSymbolsByCategory("public-facilities"); // PF-series
-const transportation = getSymbolsByCategory("transportation"); // TF-series
-const behaviour = getSymbolsByCategory("behaviour"); // BP-series
-const commercial = getSymbolsByCategory("commercial"); // CF-series
-const tourism = getSymbolsByCategory("tourism"); // TC-series
-const sporting = getSymbolsByCategory("sporting"); // SA-series
+const accessibility = getSymbolsByCategory('accessibility'); // AC-series
+const publicFacilities = getSymbolsByCategory('public-facilities'); // PF-series
+const transportation = getSymbolsByCategory('transportation'); // TF-series
+const behaviour = getSymbolsByCategory('behaviour'); // BP-series
+const commercial = getSymbolsByCategory('commercial'); // CF-series
+const tourism = getSymbolsByCategory('tourism'); // TC-series
+const sporting = getSymbolsByCategory('sporting'); // SA-series
 ```
 
 ---
@@ -79,13 +79,13 @@ interface SymbolAssets {
 }
 
 type SymbolCategory =
-  | "accessibility"
-  | "public-facilities"
-  | "transportation"
-  | "behaviour"
-  | "commercial"
-  | "tourism"
-  | "sporting";
+  | 'accessibility'
+  | 'public-facilities'
+  | 'transportation'
+  | 'behaviour'
+  | 'commercial'
+  | 'tourism'
+  | 'sporting';
 ```
 
 ---
@@ -134,9 +134,9 @@ assets/
 ### Resolve asset paths via the API
 
 ```ts
-import { getSymbol } from "@public-information-symbols/core";
+import { getSymbol } from '@public-information-symbols/core';
 
-const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible");
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
 if (symbol) {
   console.log(symbol.assets.svg); // 'accessibility/ac-001/ISO_7001_PI_*.svg'
   console.log(symbol.assets.png[512]); // 'accessibility/ac-001/ISO_7001_PI_*_512x512.png'
