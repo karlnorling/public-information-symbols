@@ -1,5 +1,5 @@
 ---
-title: "@public-information-symbols/sprite"
+title: '@public-information-symbols/sprite'
 description: SVG sprite sheet for Public Information Symbols — reference symbols by ID without inlining every SVG.
 ---
 
@@ -34,6 +34,7 @@ Serve the sprite file as a static asset and reference it from your HTML. This ke
   <use href="/assets/sprite.svg#ac-001" />
 </svg>
 ```
+
   </TabItem>
   <TabItem label="Inline sprite">
 
@@ -51,6 +52,7 @@ Inline the sprite into the document `<body>` so cross-origin restrictions do not
   <use href="#ac-001" />
 </svg>
 ```
+
   </TabItem>
   <TabItem label="React portal">
 
@@ -65,7 +67,7 @@ function SpriteProvider() {
     <svg aria-hidden style={{ display: 'none' }}>
       <use href={`${spriteUrl}`} />
     </svg>,
-    document.body
+    document.body,
   );
 }
 
@@ -79,6 +81,7 @@ function AccessibleToilets() {
   );
 }
 ```
+
   </TabItem>
 </Tabs>
 

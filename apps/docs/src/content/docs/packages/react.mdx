@@ -1,5 +1,5 @@
 ---
-title: "@public-information-symbols/react"
+title: '@public-information-symbols/react'
 description: React components for Public Information Symbols — named components and a dynamic SymbolById helper.
 ---
 
@@ -20,11 +20,7 @@ import { Ac001FullAccessibilityOrToiletsAccessible } from '@public-information-s
 
 export default function App() {
   return (
-    <Ac001FullAccessibilityOrToiletsAccessible
-      width={64}
-      height={64}
-      title="Accessible toilets"
-    />
+    <Ac001FullAccessibilityOrToiletsAccessible width={64} height={64} title="Accessible toilets" />
   );
 }
 ```
@@ -52,17 +48,17 @@ export default function App() {
 
 ### Shared props (all named components and SymbolById)
 
-| Prop          | Type     | Required | Description                                      |
-| ------------- | -------- | -------- | ------------------------------------------------ |
-| `width`       | `number` | No       | Width of the rendered SVG in pixels.             |
-| `height`      | `number` | No       | Height of the rendered SVG in pixels.            |
-| `title`       | `string` | No       | Accessible name injected as `<title>` in the SVG. |
+| Prop          | Type     | Required | Description                                         |
+| ------------- | -------- | -------- | --------------------------------------------------- |
+| `width`       | `number` | No       | Width of the rendered SVG in pixels.                |
+| `height`      | `number` | No       | Height of the rendered SVG in pixels.               |
+| `title`       | `string` | No       | Accessible name injected as `<title>` in the SVG.   |
 | `description` | `string` | No       | Longer description injected as `<desc>` in the SVG. |
 
 ### Additional SymbolById props
 
-| Prop | Type     | Required | Description                                        |
-| ---- | -------- | -------- | -------------------------------------------------- |
+| Prop | Type     | Required | Description                                                        |
+| ---- | -------- | -------- | ------------------------------------------------------------------ |
 | `id` | `string` | Yes      | Symbol ID, e.g. `ac-001-full-accessibility-or-toilets-accessible`. |
 
 ## TypeScript

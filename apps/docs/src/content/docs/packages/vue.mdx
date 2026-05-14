@@ -1,5 +1,5 @@
 ---
-title: "@public-information-symbols/vue"
+title: '@public-information-symbols/vue'
 description: Vue 3 components for Public Information Symbols — named components and a dynamic SymbolById helper.
 ---
 
@@ -21,11 +21,7 @@ import { Ac001FullAccessibilityOrToiletsAccessible } from '@public-information-s
 </script>
 
 <template>
-  <Ac001FullAccessibilityOrToiletsAccessible
-    :width="64"
-    :height="64"
-    title="Accessible toilets"
-  />
+  <Ac001FullAccessibilityOrToiletsAccessible :width="64" :height="64" title="Accessible toilets" />
 </template>
 ```
 
@@ -41,12 +37,7 @@ const symbolId = 'ac-001-full-accessibility-or-toilets-accessible';
 </script>
 
 <template>
-  <SymbolById
-    :id="symbolId"
-    :width="64"
-    :height="64"
-    title="Accessible toilets"
-  />
+  <SymbolById :id="symbolId" :width="64" :height="64" title="Accessible toilets" />
 </template>
 ```
 
@@ -54,12 +45,12 @@ const symbolId = 'ac-001-full-accessibility-or-toilets-accessible';
 
 ### Shared props (all named components and SymbolById)
 
-| Prop          | Type     | Required | Description                                           |
-| ------------- | -------- | -------- | ----------------------------------------------------- |
-| `width`       | `number` | No       | Width of the rendered SVG in pixels.                  |
-| `height`      | `number` | No       | Height of the rendered SVG in pixels.                 |
-| `title`       | `string` | No       | Accessible name injected as `<title>` in the SVG.    |
-| `description` | `string` | No       | Longer description injected as `<desc>` in the SVG.  |
+| Prop          | Type     | Required | Description                                         |
+| ------------- | -------- | -------- | --------------------------------------------------- |
+| `width`       | `number` | No       | Width of the rendered SVG in pixels.                |
+| `height`      | `number` | No       | Height of the rendered SVG in pixels.               |
+| `title`       | `string` | No       | Accessible name injected as `<title>` in the SVG.   |
+| `description` | `string` | No       | Longer description injected as `<desc>` in the SVG. |
 
 ### Additional SymbolById props
 

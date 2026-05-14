@@ -10,26 +10,12 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 Pick the package for your framework:
 
 <Tabs>
-  <TabItem label="React">
-    ```sh
-    npm install @public-information-symbols/react
-    ```
-  </TabItem>
-  <TabItem label="Vue 3">
-    ```sh
-    npm install @public-information-symbols/vue
-    ```
-  </TabItem>
+  <TabItem label="React">```sh npm install @public-information-symbols/react ```</TabItem>
+  <TabItem label="Vue 3">```sh npm install @public-information-symbols/vue ```</TabItem>
   <TabItem label="Web Components">
-    ```sh
-    npm install @public-information-symbols/elements
-    ```
+    ```sh npm install @public-information-symbols/elements ```
   </TabItem>
-  <TabItem label="CSS">
-    ```sh
-    npm install @public-information-symbols/css
-    ```
-  </TabItem>
+  <TabItem label="CSS">```sh npm install @public-information-symbols/css ```</TabItem>
 </Tabs>
 
 ## Quick start
@@ -48,6 +34,7 @@ Pick the package for your framework:
     // Dynamic by ID
     <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" width={64} />
     ```
+
   </TabItem>
   <TabItem label="Vue 3">
     ```vue
@@ -63,6 +50,7 @@ Pick the package for your framework:
       <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" :width="64" />
     </template>
     ```
+
   </TabItem>
   <TabItem label="Web Components">
     ```ts
@@ -78,6 +66,7 @@ Pick the package for your framework:
     <pi-ac-001-full-accessibility-or-toilets-accessible width="64">
     </pi-ac-001-full-accessibility-or-toilets-accessible>
     ```
+
   </TabItem>
   <TabItem label="CSS">
     ```js
@@ -92,6 +81,7 @@ Pick the package for your framework:
       aria-label="Full accessibility"
     ></span>
     ```
+
   </TabItem>
 </Tabs>
 

@@ -1,5 +1,5 @@
 ---
-title: "@public-information-symbols/elements"
+title: '@public-information-symbols/elements'
 description: Framework-agnostic Web Components (Custom Elements) for Public Information Symbols.
 ---
 
@@ -55,13 +55,13 @@ Every symbol also has a dedicated tag derived from its ID.
 
 ## Attributes
 
-| Attribute   | Type     | Required for `<pi-symbol>` | Description                                          |
-| ----------- | -------- | -------------------------- | ---------------------------------------------------- |
-| `symbol-id` | `string` | Yes                        | Symbol ID (only used on the generic `<pi-symbol>`).  |
-| `width`     | `string` | No                         | Width of the rendered SVG in pixels.                 |
-| `height`    | `string` | No                         | Height of the rendered SVG in pixels.                |
-| `title`     | `string` | No                         | Accessible name injected as `<title>` in the SVG.   |
-| `description` | `string` | No                       | Longer description injected as `<desc>` in the SVG. |
+| Attribute     | Type     | Required for `<pi-symbol>` | Description                                         |
+| ------------- | -------- | -------------------------- | --------------------------------------------------- |
+| `symbol-id`   | `string` | Yes                        | Symbol ID (only used on the generic `<pi-symbol>`). |
+| `width`       | `string` | No                         | Width of the rendered SVG in pixels.                |
+| `height`      | `string` | No                         | Height of the rendered SVG in pixels.               |
+| `title`       | `string` | No                         | Accessible name injected as `<title>` in the SVG.   |
+| `description` | `string` | No                         | Longer description injected as `<desc>` in the SVG. |
 
 ## Reactivity
 
@@ -94,7 +94,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 @NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA] })
 export class AppModule {}
-```
+
+````
 ```html
 <!-- template -->
 <pi-symbol
@@ -102,7 +103,8 @@ export class AppModule {}
   [attr.width]="size"
   title="Accessible toilets"
 ></pi-symbol>
-```
+````
+
   </TabItem>
 </Tabs>
 

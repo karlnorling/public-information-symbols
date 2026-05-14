@@ -1,5 +1,5 @@
 ---
-title: "@public-information-symbols/core"
+title: '@public-information-symbols/core'
 description: Core API for Public Information Symbols — query symbols, categories, and TypeScript types.
 ---
 
@@ -32,8 +32,8 @@ import { getSymbol } from '@public-information-symbols/core';
 const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
 
 if (symbol) {
-  console.log(symbol.name);        // "Full accessibility or toilets accessible"
-  console.log(symbol.category);    // "accessibility"
+  console.log(symbol.name); // "Full accessibility or toilets accessible"
+  console.log(symbol.category); // "accessibility"
   console.log(symbol.assets[512]); // path to the 512 px SVG
 }
 ```
@@ -54,13 +54,13 @@ const accessibilitySymbols = getSymbolsByCategory('accessibility');
 
 ```ts
 interface PISymbol {
-  id:          string;         // e.g. "ac-001-full-accessibility-or-toilets-accessible"
-  code:        string;         // e.g. "AC-001"
-  name:        string;         // human-readable name
-  description: string;         // extended description
-  category:    SymbolCategory;
-  svg:         string;         // inline SVG string
-  assets:      SymbolAssets;
+  id: string; // e.g. "ac-001-full-accessibility-or-toilets-accessible"
+  code: string; // e.g. "AC-001"
+  name: string; // human-readable name
+  description: string; // extended description
+  category: SymbolCategory;
+  svg: string; // inline SVG string
+  assets: SymbolAssets;
 }
 ```
 
@@ -68,9 +68,9 @@ interface PISymbol {
 
 ```ts
 interface SymbolAssets {
-  240:  string;
-  512:  string;
-  768:  string;
+  240: string;
+  512: string;
+  768: string;
   1024: string;
   2048: string;
 }

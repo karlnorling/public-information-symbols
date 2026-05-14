@@ -18,8 +18,7 @@ export default defineConfig({
         },
       ],
       editLink: {
-        baseUrl:
-          'https://github.com/karlnorling/public-information-symbols/edit/main/apps/docs/',
+        baseUrl: 'https://github.com/karlnorling/public-information-symbols/edit/main/apps/docs/',
       },
       sidebar: [
         {

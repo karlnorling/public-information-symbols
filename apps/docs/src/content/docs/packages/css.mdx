@@ -1,5 +1,5 @@
 ---
-title: "@public-information-symbols/css"
+title: '@public-information-symbols/css'
 description: CSS sprite sheet for Public Information Symbols — use symbols with a single class name and no JavaScript.
 ---
 
@@ -44,13 +44,13 @@ The element will display the symbol at its natural size. Override dimensions wit
 
 The class name is always `pi-` followed by the symbol code in lowercase with hyphens.
 
-| Class name   | Category             | Symbol                                 |
-| ------------ | -------------------- | -------------------------------------- |
-| `pi-ac-001`  | Accessibility        | Full accessibility / accessible toilets |
-| `pi-pf-001`  | Public facilities    | Toilets                                |
-| `pi-tf-001`  | Transportation       | Airport                                |
-| `pi-bp-001`  | Behaviour / policies | No smoking                             |
-| `pi-cf-001`  | Commercial           | Restaurant / café                      |
+| Class name  | Category             | Symbol                                  |
+| ----------- | -------------------- | --------------------------------------- |
+| `pi-ac-001` | Accessibility        | Full accessibility / accessible toilets |
+| `pi-pf-001` | Public facilities    | Toilets                                 |
+| `pi-tf-001` | Transportation       | Airport                                 |
+| `pi-bp-001` | Behaviour / policies | No smoking                              |
+| `pi-cf-001` | Commercial           | Restaurant / café                       |
 
 ## Accessibility
 
@@ -58,11 +58,7 @@ CSS background images are invisible to screen readers. Always pair the element w
 
 ```html
 <!-- Informative symbol -->
-<span
-  class="pi-ac-001"
-  role="img"
-  aria-label="Accessible toilets"
-></span>
+<span class="pi-ac-001" role="img" aria-label="Accessible toilets"></span>
 
 <!-- Decorative symbol (hidden from assistive technology) -->
 <span class="pi-ac-001" aria-hidden="true"></span>
