@@ -1,4 +1,4 @@
-import{j as m}from"./jsx-runtime-D_zvdyIk.js";import{r as v}from"./iframe-CEkzhLJW.js";import{a as Kt,g as H3}from"./index-BuCz66Rl.js";const S=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/'/g,"&#39;").replace(/"/g,"&quot;");function Jt(t,c){const i=new Set;if(t.replace(/\bid="([^"]+)"/g,(o,n)=>(i.add(n),o)),i.size===0)return t;let e=t;for(const o of i){const n=o.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");e=e.replace(new RegExp(`\\bid="${n}"`,"g"),`id="${c}-${o}"`).replace(new RegExp(`url\\(#${n}\\)`,"g"),`url(#${c}-${o})`).replace(new RegExp(`href="#${n}"`,"g"),`href="#${c}-${o}"`)}return e}const U2=new Map;function Yt(t,c){const i=t.match(/<svg([^>]*)>/),e=i?i[1]:"",o=e.match(/\bviewBox="([^"]+)"/),n=e.match(/\bwidth="([^"]+)"/),a=e.match(/\bheight="([^"]+)"/),s=t.match(/<svg[^>]*>([\s\S]*)<\/svg>/),l=(n?n[1]:"100%").replace(/px$/,""),r=(a?a[1]:"100%").replace(/px$/,""),p=!o&&/^\d+(\.\d+)?$/.test(l)&&/^\d+(\.\d+)?$/.test(r)?` viewBox="0 0 ${l} ${r}"`:"",d=e.replace(/\s*\bxmlns="[^"]*"/g,"").replace(/\s*\bwidth="[^"]*"/,"").replace(/\s*\bheight="[^"]*"/,"").replace(/\s*\bviewBox="[^"]*"/,"").trim(),h=o?` viewBox="${o[1]}"`:p,g=Jt(s?s[1]:"",c);return{attrs:`xmlns="http://www.w3.org/2000/svg"${h}${d?` ${d}`:""}`,body:g,width:l,height:r}}function Xt(t,c){let i=U2.get(c);return i||(i=Yt(t,c),U2.set(c,i)),i}const R2=v.memo(({id:t,"aria-label":c,className:i,description:e,height:o,style:n,title:a,width:s})=>{const l=Kt(t);if(!l)return null;const{attrs:r,body:p,width:d,height:h}=Xt(l.svg,t),g=a??l.name,Qt=e??l.description,Zt=s!==void 0?S(String(s)):d,Ut=o!==void 0?S(String(o)):h,Q2=`pi-desc-${t}`,Z2=`pi-title-${t}`,Gt=`<svg ${r} width="${Zt}" height="${Ut}" role="img" aria-labelledby="${Z2} ${Q2}">
+import{j as m}from"./jsx-runtime-D_zvdyIk.js";import{r as v}from"./iframe-Ck_nr96i.js";import{a as Kt,g as H3}from"./index-BuCz66Rl.js";const S=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/'/g,"&#39;").replace(/"/g,"&quot;");function Jt(t,c){const i=new Set;if(t.replace(/\bid="([^"]+)"/g,(o,n)=>(i.add(n),o)),i.size===0)return t;let e=t;for(const o of i){const n=o.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");e=e.replace(new RegExp(`\\bid="${n}"`,"g"),`id="${c}-${o}"`).replace(new RegExp(`url\\(#${n}\\)`,"g"),`url(#${c}-${o})`).replace(new RegExp(`href="#${n}"`,"g"),`href="#${c}-${o}"`)}return e}const U2=new Map;function Yt(t,c){const i=t.match(/<svg([^>]*)>/),e=i?i[1]:"",o=e.match(/\bviewBox="([^"]+)"/),n=e.match(/\bwidth="([^"]+)"/),a=e.match(/\bheight="([^"]+)"/),s=t.match(/<svg[^>]*>([\s\S]*)<\/svg>/),l=(n?n[1]:"100%").replace(/px$/,""),r=(a?a[1]:"100%").replace(/px$/,""),p=!o&&/^\d+(\.\d+)?$/.test(l)&&/^\d+(\.\d+)?$/.test(r)?` viewBox="0 0 ${l} ${r}"`:"",d=e.replace(/\s*\bxmlns="[^"]*"/g,"").replace(/\s*\bwidth="[^"]*"/,"").replace(/\s*\bheight="[^"]*"/,"").replace(/\s*\bviewBox="[^"]*"/,"").trim(),h=o?` viewBox="${o[1]}"`:p,g=Jt(s?s[1]:"",c);return{attrs:`xmlns="http://www.w3.org/2000/svg"${h}${d?` ${d}`:""}`,body:g,width:l,height:r}}function Xt(t,c){let i=U2.get(c);return i||(i=Yt(t,c),U2.set(c,i)),i}const R2=v.memo(({id:t,"aria-label":c,className:i,description:e,height:o,style:n,title:a,width:s})=>{const l=Kt(t);if(!l)return null;const{attrs:r,body:p,width:d,height:h}=Xt(l.svg,t),g=a??l.name,Qt=e??l.description,Zt=s!==void 0?S(String(s)):d,Ut=o!==void 0?S(String(o)):h,Q2=`pi-desc-${t}`,Z2=`pi-title-${t}`,Gt=`<svg ${r} width="${Zt}" height="${Ut}" role="img" aria-labelledby="${Z2} ${Q2}">
   <title id="${Z2}">${S(g)}</title>
   <desc id="${Q2}">${S(Qt)}</desc>
   ${p}</svg>`;return m.jsx("span",{"aria-label":c,className:i,dangerouslySetInnerHTML:{__html:Gt},style:{display:"contents",...n}})});R2.displayName="SymbolById";R2.__docgenInfo={description:"",methods:[],displayName:"SymbolById"};const te='xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 52.917 52.917"',ee='<path d="M90.782 69.064h52.917v52.917H90.782z" style="fill:#fff;fill-opacity:1;stroke:none;stroke-width:2.01819" transform="translate(-90.782 -69.064)"/><path d="M112.35 77.466c-1.78 0-3.228 1.427-3.228 3.203 0 1.756 1.448 3.203 3.228 3.203 1.795 0 3.234-1.447 3.234-3.203 0-1.776-1.439-3.203-3.234-3.203m.444 7.143a3 3 0 0 0-.414.02c-1.491.169-2.577 1.322-2.434 2.586l1.224 10.84c.621 1.736 1.666 2.105 3.228 2.086h8.096l3.848 8.844c.441 1.013 1.535 1.507 2.452 1.107l.166-.072c.918-.4 1.301-1.536.86-2.549l-4.215-9.686c-.542-1.054-.991-1.314-2.127-1.361h-7.04l-.363-3.216h6.015c.697 0 1.259-.562 1.259-1.26 0-.697-.562-1.258-1.26-1.258h-6.298l-.461-4.082c-.13-1.146-1.223-1.978-2.536-1.999m-3.209 7.735c-3.08 2.093-5.108 5.624-5.108 9.616 0 6.401 5.217 11.619 11.619 11.619 3.75 0 7.092-1.79 9.218-4.56l-1.226-2.817a9.02 9.02 0 0 1-7.992 4.8 9.024 9.024 0 0 1-9.043-9.042 9.02 9.02 0 0 1 2.81-6.562z" style="display:inline;fill:#000;fill-opacity:1;stroke-width:.0797928" transform="translate(-90.782 -69.064)"/>',le="Full accessibility or toilets - accessible",se="Full accessibility or toilets - accessible",ae="200.001",oe="200.001",I=t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/'/g,"&#39;").replace(/"/g,"&quot;"),x3=v.memo(({"aria-label":t,className:c,description:i,height:e,style:o,title:n,width:a})=>{const s="pi-desc-ac-001-full-accessibility-or-toilets-accessible",l="pi-title-ac-001-full-accessibility-or-toilets-accessible",r=a!==void 0?I(String(a)):ae,p=e!==void 0?I(String(e)):oe,d=n??se,h=i??le,g=`<svg ${te} width="${r}" height="${p}" role="img" aria-labelledby="${l} ${s}">
@@ -536,79 +536,79 @@ import{j as m}from"./jsx-runtime-D_zvdyIk.js";import{r as v}from"./iframe-CEkzhL
   <title id="${l}">${V2(d)}</title>
   <desc id="${s}">${V2(h)}</desc>
   ${Of}</svg>`;return m.jsx("span",{"aria-label":t,className:c,dangerouslySetInnerHTML:{__html:g},style:{display:"contents",...o}})});Et.displayName="Sa004SportsHall";Et.__docgenInfo={description:"",methods:[],displayName:"Sa004SportsHall"};const Ef=({size:t=120,category:c})=>{const i=H3(),e=c?i.filter(o=>o.category===c):i;return m.jsx("div",{style:{display:"flex",flexWrap:"wrap",gap:"0.75rem",padding:"1rem"},children:e.map(o=>m.jsxs("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",gap:"0.5rem"},children:[m.jsx(R2,{id:o.id,width:t,height:t}),m.jsx("span",{style:{fontSize:"0.75rem",textAlign:"center",color:"#555"},children:o.code})]},o.id))})},Qf={title:"ISO 7001/React Components",component:Ef,parameters:{layout:"padded"},argTypes:{size:{control:{type:"number",min:32,max:512,step:8}},category:{control:"select",options:["","accessibility","public-facilities","transportation","behaviour","commercial","tourism","sporting"]}}},f={name:"All Symbols",args:{size:120}},$={name:"All Large",args:{size:200}},y={name:"All Small",args:{size:64}},_={args:{size:120,category:"accessibility"}},u={name:"Public Facilities",args:{size:120,category:"public-facilities"}},w={args:{size:120,category:"transportation"}},D={args:{size:120,category:"behaviour"}},b={args:{size:120,category:"commercial"}},k={args:{size:120,category:"tourism"}},T={args:{size:120,category:"sporting"}},E2=H3();var G2;const z={name:"Single Symbol",parameters:{layout:"centered"},render:({id:t,...c})=>m.jsx(R2,{id:t,...c}),args:{id:((G2=E2[0])==null?void 0:G2.id)??"ac-001-full-accessibility",width:200,height:200},argTypes:{id:{control:"select",options:E2.map(t=>t.id),labels:Object.fromEntries(E2.map(t=>[t.id,`${t.code} — ${t.name}`]))},width:{control:{type:"number",min:32,max:512,step:8}},height:{control:{type:"number",min:32,max:512,step:8}},title:{control:"text"},description:{control:"text"}}};var K2,J2,Y2;f.parameters={...f.parameters,docs:{...(K2=f.parameters)==null?void 0:K2.docs,source:{originalSource:`{
-  name: "All Symbols",
+  name: 'All Symbols',
   args: {
     size: 120
   }
 }`,...(Y2=(J2=f.parameters)==null?void 0:J2.docs)==null?void 0:Y2.source}}};var X2,t3,e3;$.parameters={...$.parameters,docs:{...(X2=$.parameters)==null?void 0:X2.docs,source:{originalSource:`{
-  name: "All Large",
+  name: 'All Large',
   args: {
     size: 200
   }
 }`,...(e3=(t3=$.parameters)==null?void 0:t3.docs)==null?void 0:e3.source}}};var l3,s3,a3;y.parameters={...y.parameters,docs:{...(l3=y.parameters)==null?void 0:l3.docs,source:{originalSource:`{
-  name: "All Small",
+  name: 'All Small',
   args: {
     size: 64
   }
 }`,...(a3=(s3=y.parameters)==null?void 0:s3.docs)==null?void 0:a3.source}}};var o3,c3,i3;_.parameters={..._.parameters,docs:{...(o3=_.parameters)==null?void 0:o3.docs,source:{originalSource:`{
   args: {
     size: 120,
-    category: "accessibility"
+    category: 'accessibility'
   }
 }`,...(i3=(c3=_.parameters)==null?void 0:c3.docs)==null?void 0:i3.source}}};var n3,r3,d3;u.parameters={...u.parameters,docs:{...(n3=u.parameters)==null?void 0:n3.docs,source:{originalSource:`{
-  name: "Public Facilities",
+  name: 'Public Facilities',
   args: {
     size: 120,
-    category: "public-facilities"
+    category: 'public-facilities'
   }
 }`,...(d3=(r3=u.parameters)==null?void 0:r3.docs)==null?void 0:d3.source}}};var p3,h3,g3;w.parameters={...w.parameters,docs:{...(p3=w.parameters)==null?void 0:p3.docs,source:{originalSource:`{
   args: {
     size: 120,
-    category: "transportation"
+    category: 'transportation'
   }
 }`,...(g3=(h3=w.parameters)==null?void 0:h3.docs)==null?void 0:g3.source}}};var m3,v3,f3;D.parameters={...D.parameters,docs:{...(m3=D.parameters)==null?void 0:m3.docs,source:{originalSource:`{
   args: {
     size: 120,
-    category: "behaviour"
+    category: 'behaviour'
   }
 }`,...(f3=(v3=D.parameters)==null?void 0:v3.docs)==null?void 0:f3.source}}};var $3,y3,_3;b.parameters={...b.parameters,docs:{...($3=b.parameters)==null?void 0:$3.docs,source:{originalSource:`{
   args: {
     size: 120,
-    category: "commercial"
+    category: 'commercial'
   }
 }`,...(_3=(y3=b.parameters)==null?void 0:y3.docs)==null?void 0:_3.source}}};var u3,w3,D3;k.parameters={...k.parameters,docs:{...(u3=k.parameters)==null?void 0:u3.docs,source:{originalSource:`{
   args: {
     size: 120,
-    category: "tourism"
+    category: 'tourism'
   }
 }`,...(D3=(w3=k.parameters)==null?void 0:w3.docs)==null?void 0:D3.source}}};var b3,k3,T3;T.parameters={...T.parameters,docs:{...(b3=T.parameters)==null?void 0:b3.docs,source:{originalSource:`{
   args: {
     size: 120,
-    category: "sporting"
+    category: 'sporting'
   }
 }`,...(T3=(k3=T.parameters)==null?void 0:k3.docs)==null?void 0:T3.source}}};var z3,S3,I3;z.parameters={...z.parameters,docs:{...(z3=z.parameters)==null?void 0:z3.docs,source:{originalSource:`{
-  name: "Single Symbol",
+  name: 'Single Symbol',
   parameters: {
-    layout: "centered"
+    layout: 'centered'
   },
   render: ({
     id,
     ...props
   }) => <SymbolById id={id} {...props} />,
   args: {
-    id: AllSymbols[0]?.id ?? "ac-001-full-accessibility",
+    id: AllSymbols[0]?.id ?? 'ac-001-full-accessibility',
     width: 200,
     height: 200
   },
   argTypes: {
     id: {
-      control: "select",
+      control: 'select',
       options: AllSymbols.map(s => s.id),
       labels: Object.fromEntries(AllSymbols.map(s => [s.id, \`\${s.code} — \${s.name}\`]))
     },
     width: {
       control: {
-        type: "number",
+        type: 'number',
         min: 32,
         max: 512,
         step: 8
@@ -616,17 +616,17 @@ import{j as m}from"./jsx-runtime-D_zvdyIk.js";import{r as v}from"./iframe-CEkzhL
     },
     height: {
       control: {
-        type: "number",
+        type: 'number',
         min: 32,
         max: 512,
         step: 8
       }
     },
     title: {
-      control: "text"
+      control: 'text'
     },
     description: {
-      control: "text"
+      control: 'text'
     }
   }
 }`,...(I3=(S3=z.parameters)==null?void 0:S3.docs)==null?void 0:I3.source}}};const Zf=["All","Large","Small","Accessibility","PublicFacilities","Transportation","Behaviour","Commercial","Tourism","Sporting","SingleSymbol"],Jf=Object.freeze(Object.defineProperty({__proto__:null,Accessibility:_,All:f,Behaviour:D,Commercial:b,Large:$,PublicFacilities:u,SingleSymbol:z,Small:y,Sporting:T,Tourism:k,Transportation:w,__namedExportsOrder:Zf,default:Qf},Symbol.toStringTag,{value:"Module"}));export{_ as A,D as B,b as C,u as P,Jf as R,z as S,w as T,k as a,T as b};

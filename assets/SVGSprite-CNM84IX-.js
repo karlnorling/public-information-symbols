@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as o,C as i,a as c}from"./blocks-CFPdZ4fe.js";import{S as d,A as h,a as r}from"./SVGSprite.stories-ss1lWwqV.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-CEkzhLJW.js";import"./index-BnYVibb5.js";import"./index-BuCz66Rl.js";function t(n){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...l(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{of:d}),`
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as o,C as i,a as c}from"./blocks-BBHi4z1h.js";import{S as d,A as h,a as r}from"./SVGSprite.stories-phWfauhP.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-Ck_nr96i.js";import"./index-a61pA9U_.js";import"./index-BuCz66Rl.js";function t(n){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...l(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{of:d}),`
 `,e.jsx(s.h1,{id:"svg-sprite",children:"SVG Sprite"}),`
 `,e.jsxs(s.p,{children:["A single ",e.jsx(s.code,{children:"sprite.svg"})," contains all ISO 7001 public information symbols as ",e.jsx(s.code,{children:"<symbol>"})," elements. Reference any symbol with ",e.jsx(s.code,{children:'<use href="#id">'})," — one HTTP request serves every symbol."]}),`
 `,e.jsx(s.h2,{id:"installation",children:"Installation"}),`
@@ -25,7 +25,7 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as o,C as i,a as c
 </svg>
 `})}),`
 `,e.jsx(s.h3,{id:"react-with-bundler-import",children:"React with bundler import"}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-tsx",children:`import spriteUrl from "@public-information-symbols/sprite/sprite.svg";
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-tsx",children:`import spriteUrl from '@public-information-symbols/sprite/sprite.svg';
 
 <svg width={64} height={64} role="img" aria-label="Full accessibility">
   <title>Full accessibility</title>
@@ -35,7 +35,7 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as o,C as i,a as c
 `,e.jsx(s.hr,{}),`
 `,e.jsx(s.h2,{id:"symbol-id-pattern",children:"Symbol ID pattern"}),`
 `,e.jsxs(s.p,{children:["Symbol IDs are the code slug: ",e.jsx(s.code,{children:"ac-001"}),", ",e.jsx(s.code,{children:"pf-015"}),", ",e.jsx(s.code,{children:"tf-001"}),". Enumerate all IDs from ",e.jsx(s.code,{children:"sprite-ids.json"}),":"]}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import ids from "@public-information-symbols/sprite/sprite-ids.json";
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import ids from '@public-information-symbols/sprite/sprite-ids.json';
 `})}),`
 `,e.jsx(s.hr,{}),`
 `,e.jsx(s.h2,{id:"all-symbols",children:"All symbols"}),`

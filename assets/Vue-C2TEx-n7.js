@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as l}from"./blocks-CFPdZ4fe.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-CEkzhLJW.js";import"./index-BnYVibb5.js";function i(s){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...t(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"ISO 7001/Vue 3"}),`
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as l}from"./blocks-BBHi4z1h.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-Ck_nr96i.js";import"./index-a61pA9U_.js";function i(s){const n={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...t(),...s.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"ISO 7001/Vue 3"}),`
 `,e.jsx(n.h1,{id:"vue-3-components",children:"Vue 3 Components"}),`
 `,e.jsx(n.p,{children:"Inline SVG components for all ISO 7001 public information symbols — fully typed, tree-shakeable, and built for Vue 3's Composition API."}),`
 `,e.jsx(n.h2,{id:"installation",children:"Installation"}),`
@@ -8,7 +8,7 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as l}from"./blocks
 `,e.jsx(n.h2,{id:"basic-usage",children:"Basic usage"}),`
 `,e.jsx(n.h3,{id:"dynamic-rendering-by-id",children:"Dynamic rendering by ID"}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-vue",children:`<script setup>
-import { SymbolById } from "@public-information-symbols/vue";
+import { SymbolById } from '@public-information-symbols/vue';
 <\/script>
 <template>
   <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" :width="64" />
@@ -20,7 +20,7 @@ import { SymbolById } from "@public-information-symbols/vue";
 import {
   Ac001FullAccessibilityOrToiletsAccessible,
   Pf001GeneralInformation,
-} from "@public-information-symbols/vue";
+} from '@public-information-symbols/vue';
 <\/script>
 <template>
   <Ac001FullAccessibilityOrToiletsAccessible :width="64" />
@@ -33,8 +33,8 @@ import {
 `,e.jsx(n.hr,{}),`
 `,e.jsx(n.h2,{id:"all-symbols-grid",children:"All symbols grid"}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-vue",children:`<script setup>
-import { SymbolById } from "@public-information-symbols/vue";
-import { getAllSymbols } from "@public-information-symbols/core";
+import { SymbolById } from '@public-information-symbols/vue';
+import { getAllSymbols } from '@public-information-symbols/core';
 
 const symbols = getAllSymbols();
 <\/script>
@@ -50,10 +50,10 @@ const symbols = getAllSymbols();
 `,e.jsx(n.hr,{}),`
 `,e.jsx(n.h2,{id:"category-filtering",children:"Category filtering"}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-vue",children:`<script setup>
-import { SymbolById } from "@public-information-symbols/vue";
-import { getSymbolsByCategory } from "@public-information-symbols/core";
+import { SymbolById } from '@public-information-symbols/vue';
+import { getSymbolsByCategory } from '@public-information-symbols/core';
 
-const symbols = getSymbolsByCategory("accessibility");
+const symbols = getSymbolsByCategory('accessibility');
 <\/script>
 <template>
   <SymbolById v-for="s in symbols" :key="s.id" :id="s.id" :width="64" />
@@ -61,9 +61,9 @@ const symbols = getSymbolsByCategory("accessibility");
 `})}),`
 `,e.jsx(n.hr,{}),`
 `,e.jsx(n.h2,{id:"programmatic-api",children:"Programmatic API"}),`
-`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-ts",children:`import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+`,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-ts",children:`import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
 
 const all = getAllSymbols(); // PISymbol[]
-const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible"); // PISymbol | undefined
-const accessibility = getSymbolsByCategory("accessibility"); // PISymbol[]
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible'); // PISymbol | undefined
+const accessibility = getSymbolsByCategory('accessibility'); // PISymbol[]
 `})})]})}function m(s={}){const{wrapper:n}={...t(),...s.components};return n?e.jsx(n,{...s,children:e.jsx(i,{...s})}):i(s)}export{m as default};

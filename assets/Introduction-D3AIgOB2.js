@@ -1,4 +1,4 @@
-import{j as s}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as r}from"./blocks-CFPdZ4fe.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-CEkzhLJW.js";import"./index-BnYVibb5.js";function n(i){const e={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",img:"img",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...l(),...i.components};return s.jsxs(s.Fragment,{children:[s.jsx(r,{title:"Introduction"}),`
+import{j as s}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as r}from"./blocks-BBHi4z1h.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-Ck_nr96i.js";import"./index-a61pA9U_.js";function n(i){const e={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",img:"img",p:"p",pre:"pre",strong:"strong",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...l(),...i.components};return s.jsxs(s.Fragment,{children:[s.jsx(r,{title:"Introduction"}),`
 `,s.jsx(e.h1,{id:"iso-7001-public-information-symbols",children:"ISO 7001 Public Information Symbols"}),`
 `,s.jsxs(e.p,{children:["Accessible, framework-agnostic packages for all ",s.jsx(e.strong,{children:"ISO 7001"})," public information symbols used in airports, train stations, hotels, and public spaces worldwide."]}),`
 `,s.jsxs(e.p,{children:[s.jsx(e.a,{href:"https://github.com/karlnorling/public-information-symbols/actions/workflows/ci.yml",rel:"nofollow",children:s.jsx(e.img,{src:"https://github.com/karlnorling/public-information-symbols/actions/workflows/ci.yml/badge.svg",alt:"CI"})}),`
@@ -22,7 +22,7 @@ import{j as s}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as r}from"./blocks
 <Pf001GeneralInformation width={64} title="Information desk" />
 `})}),`
 `,s.jsx(e.p,{children:"Dynamic rendering by ID:"}),`
-`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-tsx",children:`import { SymbolById } from "@public-information-symbols/react";
+`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-tsx",children:`import { SymbolById } from '@public-information-symbols/react';
 
 <SymbolById id="ac-001-full-accessibility" width={64} />;
 `})}),`
@@ -30,7 +30,7 @@ import{j as s}from"./jsx-runtime-D_zvdyIk.js";import{u as l,M as r}from"./blocks
 `,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-sh",children:`npm install @public-information-symbols/vue
 `})}),`
 `,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-vue",children:`<script setup>
-import { SymbolById } from "@public-information-symbols/vue";
+import { SymbolById } from '@public-information-symbols/vue';
 <\/script>
 <template>
   <SymbolById id="ac-001-full-accessibility" :width="64" />
@@ -39,7 +39,7 @@ import { SymbolById } from "@public-information-symbols/vue";
 `,s.jsx(e.h3,{id:"web-components",children:"Web Components"}),`
 `,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-sh",children:`npm install @public-information-symbols/elements
 `})}),`
-`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-ts",children:`import { defineCustomElements } from "@public-information-symbols/elements";
+`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-ts",children:`import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 `})}),`
 `,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-html",children:`<!-- Generic element -->
@@ -51,7 +51,7 @@ defineCustomElements();
 `,s.jsx(e.h3,{id:"css-sprite-no-javascript",children:"CSS sprite (no JavaScript)"}),`
 `,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-sh",children:`npm install @public-information-symbols/css
 `})}),`
-`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-js",children:`import "@public-information-symbols/css/sprite.css";
+`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-js",children:`import '@public-information-symbols/css/sprite.css';
 `})}),`
 `,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-html",children:`<span
   class="pi-ac-001"
@@ -69,11 +69,11 @@ defineCustomElements();
 </svg>
 `})}),`
 `,s.jsx(e.h3,{id:"programmatic-api",children:"Programmatic API"}),`
-`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-ts",children:`import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+`,s.jsx(e.pre,{children:s.jsx(e.code,{className:"language-ts",children:`import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
 
 const all = getAllSymbols(); // PISymbol[]
-const symbol = getSymbol("ac-001-full-accessibility"); // PISymbol | undefined
-const accessibility = getSymbolsByCategory("accessibility"); // PISymbol[]
+const symbol = getSymbol('ac-001-full-accessibility'); // PISymbol | undefined
+const accessibility = getSymbolsByCategory('accessibility'); // PISymbol[]
 `})}),`
 `,s.jsx(e.hr,{}),`
 `,s.jsx(e.h2,{id:"license",children:"License"}),`

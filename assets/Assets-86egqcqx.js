@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as r}from"./blocks-CFPdZ4fe.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-CEkzhLJW.js";import"./index-BnYVibb5.js";function n(i){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...t(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"ISO 7001/Assets & API"}),`
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as r}from"./blocks-BBHi4z1h.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-Ck_nr96i.js";import"./index-a61pA9U_.js";function n(i){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...t(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"ISO 7001/Assets & API"}),`
 `,e.jsx(s.h1,{id:"assets--programmatic-api",children:"Assets & Programmatic API"}),`
 `,e.jsxs(s.p,{children:["The ",e.jsx(s.code,{children:"@public-information-symbols/core"})," package exposes typed data for all ISO 7001 symbols alongside helper functions for filtering and lookup. The ",e.jsx(s.code,{children:"@public-information-symbols/assets"})," package provides pre-built image files at multiple resolutions."]}),`
 `,e.jsx(s.hr,{}),`
@@ -7,7 +7,7 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as r}from"./blocks
 `})}),`
 `,e.jsx(s.hr,{}),`
 `,e.jsx(s.h2,{id:"programmatic-api",children:"Programmatic API"}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
 `})}),`
 `,e.jsx(s.h3,{id:"getallsymbols",children:e.jsx(s.code,{children:"getAllSymbols()"})}),`
 `,e.jsx(s.p,{children:"Returns all 178 ISO 7001 symbols."}),`
@@ -16,20 +16,20 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as r}from"./blocks
 `})}),`
 `,e.jsx(s.h3,{id:"getsymbolid",children:e.jsx(s.code,{children:"getSymbol(id)"})}),`
 `,e.jsx(s.p,{children:"Look up a single symbol by its slug ID."}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible");
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
 // → PISymbol | undefined
 
-const info = getSymbol("pf-001-general-information");
+const info = getSymbol('pf-001-general-information');
 `})}),`
 `,e.jsx(s.h3,{id:"getsymbolsbycategorycategory",children:e.jsx(s.code,{children:"getSymbolsByCategory(category)"})}),`
 `,e.jsx(s.p,{children:"Filter symbols by ISO 7001 category."}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`const accessibility = getSymbolsByCategory("accessibility"); // AC-series
-const publicFacilities = getSymbolsByCategory("public-facilities"); // PF-series
-const transportation = getSymbolsByCategory("transportation"); // TF-series
-const behaviour = getSymbolsByCategory("behaviour"); // BP-series
-const commercial = getSymbolsByCategory("commercial"); // CF-series
-const tourism = getSymbolsByCategory("tourism"); // TC-series
-const sporting = getSymbolsByCategory("sporting"); // SA-series
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`const accessibility = getSymbolsByCategory('accessibility'); // AC-series
+const publicFacilities = getSymbolsByCategory('public-facilities'); // PF-series
+const transportation = getSymbolsByCategory('transportation'); // TF-series
+const behaviour = getSymbolsByCategory('behaviour'); // BP-series
+const commercial = getSymbolsByCategory('commercial'); // CF-series
+const tourism = getSymbolsByCategory('tourism'); // TC-series
+const sporting = getSymbolsByCategory('sporting'); // SA-series
 `})}),`
 `,e.jsx(s.hr,{}),`
 `,e.jsxs(s.h2,{id:"pisymbol-type",children:[e.jsx(s.code,{children:"PISymbol"})," type"]}),`
@@ -51,13 +51,13 @@ interface SymbolAssets {
 }
 
 type SymbolCategory =
-  | "accessibility"
-  | "public-facilities"
-  | "transportation"
-  | "behaviour"
-  | "commercial"
-  | "tourism"
-  | "sporting";
+  | 'accessibility'
+  | 'public-facilities'
+  | 'transportation'
+  | 'behaviour'
+  | 'commercial'
+  | 'tourism'
+  | 'sporting';
 `})}),`
 `,e.jsx(s.hr,{}),`
 `,e.jsx(s.h2,{id:"iso-7001-categories",children:"ISO 7001 Categories"}),`
@@ -86,9 +86,9 @@ type SymbolCategory =
   sporting/
 `})}),`
 `,e.jsx(s.h3,{id:"resolve-asset-paths-via-the-api",children:"Resolve asset paths via the API"}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { getSymbol } from "@public-information-symbols/core";
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { getSymbol } from '@public-information-symbols/core';
 
-const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible");
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
 if (symbol) {
   console.log(symbol.assets.svg); // 'accessibility/ac-001/ISO_7001_PI_*.svg'
   console.log(symbol.assets.png[512]); // 'accessibility/ac-001/ISO_7001_PI_*_512x512.png'

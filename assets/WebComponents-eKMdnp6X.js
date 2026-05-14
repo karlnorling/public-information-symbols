@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as r,M as d,C as i,a as c}from"./blocks-CFPdZ4fe.js";import{W as o,A as h,S as l}from"./WebComponents.stories-BBaeUpYp.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-CEkzhLJW.js";import"./index-BnYVibb5.js";import"./index-BuCz66Rl.js";function t(n){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...r(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(d,{of:o}),`
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as r,M as d,C as i,a as c}from"./blocks-BBHi4z1h.js";import{W as o,A as h,S as l}from"./WebComponents.stories-BlVwnMYH.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-Ck_nr96i.js";import"./index-a61pA9U_.js";import"./index-BuCz66Rl.js";function t(n){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...r(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(d,{of:o}),`
 `,e.jsx(s.h1,{id:"web-components",children:"Web Components"}),`
 `,e.jsx(s.p,{children:"Custom elements for all ISO 7001 public information symbols — framework-agnostic, works with any HTML page or JavaScript framework."}),`
 `,e.jsx(s.h2,{id:"installation",children:"Installation"}),`
@@ -6,7 +6,7 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as r,M as d,C as i,a as c
 `})}),`
 `,e.jsx(s.h2,{id:"setup",children:"Setup"}),`
 `,e.jsxs(s.p,{children:["Call ",e.jsx(s.code,{children:"defineCustomElements()"})," once at app startup to register all custom elements:"]}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { defineCustomElements } from "@public-information-symbols/elements";
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 `})}),`
 `,e.jsx(s.hr,{}),`
@@ -14,7 +14,7 @@ defineCustomElements();
 `,e.jsx(s.p,{children:"Renders any symbol by slug ID. Use this when the symbol ID is dynamic or unknown at build time."}),`
 `,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-html",children:`<pi-symbol symbol-id="ac-001-full-accessibility-or-toilets-accessible" width="64"></pi-symbol>
 `})}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { defineCustomElements } from "@public-information-symbols/elements";
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 `})}),`
 `,e.jsx(s.h3,{id:"attributes",children:"Attributes"}),`
@@ -31,7 +31,7 @@ defineCustomElements();
 `,e.jsx(s.h2,{id:"usage-in-frameworks",children:"Usage in frameworks"}),`
 `,e.jsx(s.h3,{id:"vue-3",children:"Vue 3"}),`
 `,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-vue",children:`<script setup>
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 <\/script>
 <template>
@@ -40,8 +40,8 @@ defineCustomElements();
 `})}),`
 `,e.jsx(s.h3,{id:"angular",children:"Angular"}),`
 `,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-ts",children:`// app.module.ts
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
-import { defineCustomElements } from "@public-information-symbols/elements";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { defineCustomElements } from '@public-information-symbols/elements';
 defineCustomElements();
 
 @NgModule({ schemas: [CUSTOM_ELEMENTS_SCHEMA] })

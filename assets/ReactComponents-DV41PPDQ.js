@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as d,C as i,a as l}from"./blocks-CFPdZ4fe.js";import{R as o,S as r,A as h,P as a,T as x,B as j,C as m,a as p,b}from"./ReactComponents.stories-BkL-Q5kj.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-CEkzhLJW.js";import"./index-BnYVibb5.js";import"./index-BuCz66Rl.js";function c(n){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...t(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(d,{of:o}),`
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as d,C as i,a as l}from"./blocks-BBHi4z1h.js";import{R as o,S as r,A as h,P as a,T as x,B as j,C as m,a as p,b}from"./ReactComponents.stories-Dwb_Pq_w.js";import"./preload-helper-Bcsn5fLb.js";import"./iframe-Ck_nr96i.js";import"./index-a61pA9U_.js";import"./index-BuCz66Rl.js";function c(n){const s={code:"code",h1:"h1",h2:"h2",h3:"h3",hr:"hr",p:"p",pre:"pre",table:"table",tbody:"tbody",td:"td",th:"th",thead:"thead",tr:"tr",...t(),...n.components};return e.jsxs(e.Fragment,{children:[e.jsx(d,{of:o}),`
 `,e.jsx(s.h1,{id:"react-components",children:"React Components"}),`
 `,e.jsxs(s.p,{children:["Inline SVG components for all ISO 7001 public information symbols. Each component is tree-shakeable, fully accessible, and accepts the same ",e.jsx(s.code,{children:"SymbolProps"})," interface."]}),`
 `,e.jsx(s.h2,{id:"installation",children:"Installation"}),`
@@ -9,7 +9,7 @@ import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{u as t,M as d,C as i,a as l
 `,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-tsx",children:`import {
   Ac001FullAccessibilityOrToiletsAccessible,
   Pf001GeneralInformation,
-} from "@public-information-symbols/react";
+} from '@public-information-symbols/react';
 
 export default function SignagePanel() {
   return (
@@ -21,7 +21,7 @@ export default function SignagePanel() {
 }
 `})}),`
 `,e.jsx(s.h2,{id:"dynamic-rendering-by-id",children:"Dynamic rendering by ID"}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-tsx",children:`import { SymbolById } from "@public-information-symbols/react";
+`,e.jsx(s.pre,{children:e.jsx(s.code,{className:"language-tsx",children:`import { SymbolById } from '@public-information-symbols/react';
 
 <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" width={64} />;
 `})}),`
