@@ -12,11 +12,15 @@
     "sprite",
     "svg"
   ],
-  "homepage": "https://github.com/karlnorling/public-information-symbols",
+  "homepage": "https://karlnorling.github.io/public-information-symbols/",
   "bugs": {
     "url": "https://github.com/karlnorling/public-information-symbols/issues"
   },
   "license": "MIT",
+  "author": {
+    "name": "Karl Norling",
+    "url": "https://github.com/karlnorling"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/karlnorling/public-information-symbols",
