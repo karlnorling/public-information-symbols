@@ -1,6 +1,6 @@
 {
   "name": "@public-information-symbols/assets",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Static image assets for all ISO 7001 public information symbols — SVG, PNG, JPG, and WebP at five sizes (240–2048 px)",
   "keywords": [
     "assets",

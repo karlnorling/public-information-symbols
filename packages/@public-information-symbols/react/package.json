@@ -1,6 +1,6 @@
 {
   "name": "@public-information-symbols/react",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Accessible React components for all ISO 7001 public information symbols — fully typed, zero runtime dependencies beyond React",
   "keywords": [
     "accessible",
