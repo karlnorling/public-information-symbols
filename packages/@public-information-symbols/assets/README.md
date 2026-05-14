@@ -49,15 +49,15 @@ assets/
 ### Import by path
 
 ```ts
-import accessibility from '@public-information-symbols/assets/assets/accessibility/ac-001/ISO_7001_PI_PF_006.svg';
+import accessibility from "@public-information-symbols/assets/assets/accessibility/ac-001/ISO_7001_PI_PF_006.svg";
 ```
 
 ### Resolve paths via the core API
 
 ```ts
-import { getSymbol } from '@public-information-symbols/core';
+import { getSymbol } from "@public-information-symbols/core";
 
-const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
+const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible");
 if (symbol) {
   console.log(symbol.assets.svg); // 'accessibility/ac-001/ISO_7001_PI_*.svg'
   console.log(symbol.assets.png[512]); // 'accessibility/ac-001/ISO_7001_PI_*_512x512.png'
