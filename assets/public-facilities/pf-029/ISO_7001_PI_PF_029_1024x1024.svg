@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="52.917mm"
+   height="52.917mm"
+   viewBox="0 0 52.917 52.917"
+   version="1.1"
+   id="svg1724"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="ISO_7001_PI_PF_029.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1726"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.76880612"
+     inkscape:cx="-84.546674"
+     inkscape:cy="167.79263"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1721" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-127.3758,-103.97372)">
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.01819"
+       id="rect70551"
+       width="52.917"
+       height="52.917"
+       x="127.3758"
+       y="103.97372"
+       inkscape:label="1" />
+    <path
+       id="rect17112"
+       style="stroke-width:1.5"
+       inkscape:label="2"
+       d="m 136.45448,115.06752 v 2.61896 h 25.44444 v -2.61896 z m 17.03565,6.85332 5.19142,5.19194 h -15.99593 v 3.31814 0.003 3.31814 h 15.99593 l -5.19142,5.19142 h 8.74624 l 8.97775,-8.51111 -8.97775,-8.51111 z m -17.03565,21.25659 v 2.61948 h 25.44444 v -2.61948 z" />
+  </g>
+</svg>
