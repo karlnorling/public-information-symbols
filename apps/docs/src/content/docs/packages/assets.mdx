@@ -1,0 +1,73 @@
+---
+title: "@public-information-symbols/assets"
+description: Raw SVG asset files for Public Information Symbols at multiple resolutions.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Installation
+
+```sh
+npm install @public-information-symbols/assets
+```
+
+## Directory layout
+
+Assets are organised by category and symbol code. Each symbol folder contains SVG files at several sizes.
+
+```
+assets/
+  accessibility/
+    ac-001/
+      ISO_7001_PI_AC_001_240.svg
+      ISO_7001_PI_AC_001_512.svg
+      ISO_7001_PI_AC_001_768.svg
+      ISO_7001_PI_AC_001_1024.svg
+      ISO_7001_PI_AC_001_2048.svg
+  public-facilities/
+    pf-001/
+      ISO_7001_PI_PF_001_240.svg
+      …
+  transportation/
+    …
+```
+
+## Available sizes
+
+| Size (px) | File suffix |
+| --------- | ----------- |
+| 240       | `_240.svg`  |
+| 512       | `_512.svg`  |
+| 768       | `_768.svg`  |
+| 1024      | `_1024.svg` |
+| 2048      | `_2048.svg` |
+
+## Importing by path
+
+You can import individual SVG files directly when your bundler supports asset imports.
+
+```ts
+import symbol240 from '@public-information-symbols/assets/accessibility/ac-001/ISO_7001_PI_AC_001_240.svg';
+import symbol1024 from '@public-information-symbols/assets/accessibility/ac-001/ISO_7001_PI_AC_001_1024.svg';
+```
+
+## Resolving assets via the core API
+
+Use `getSymbol()` from `@public-information-symbols/core` to retrieve the full asset map for a symbol without hard-coding paths.
+
+```ts
+import { getSymbol } from '@public-information-symbols/core';
+
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
+
+if (symbol) {
+  console.log(symbol.assets);
+  // {
+  //   240:  'accessibility/ac-001/ISO_7001_PI_AC_001_240.svg',
+  //   512:  'accessibility/ac-001/ISO_7001_PI_AC_001_512.svg',
+  //   768:  'accessibility/ac-001/ISO_7001_PI_AC_001_768.svg',
+  //   1024: 'accessibility/ac-001/ISO_7001_PI_AC_001_1024.svg',
+  //   2048: 'accessibility/ac-001/ISO_7001_PI_AC_001_2048.svg',
+  // }
+}
+```

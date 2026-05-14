@@ -49,6 +49,7 @@
     "packages/@public-information-symbols/elements/src/index.ts",
     "packages/@public-information-symbols/css/sprite.css",
     ".storybook",
-    "src"
+    "src",
+    "apps/docs/.astro"
   ]
 }

@@ -1,0 +1,116 @@
+---
+title: Getting started
+description: Install @public-information-symbols packages and display your first symbol in minutes.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Installation
+
+Pick the package for your framework:
+
+<Tabs>
+  <TabItem label="React">
+    ```sh
+    npm install @public-information-symbols/react
+    ```
+  </TabItem>
+  <TabItem label="Vue 3">
+    ```sh
+    npm install @public-information-symbols/vue
+    ```
+  </TabItem>
+  <TabItem label="Web Components">
+    ```sh
+    npm install @public-information-symbols/elements
+    ```
+  </TabItem>
+  <TabItem label="CSS">
+    ```sh
+    npm install @public-information-symbols/css
+    ```
+  </TabItem>
+</Tabs>
+
+## Quick start
+
+<Tabs>
+  <TabItem label="React">
+    ```tsx
+    import {
+      Ac001FullAccessibilityOrToiletsAccessible,
+      SymbolById,
+    } from '@public-information-symbols/react';
+
+    // Named component
+    <Ac001FullAccessibilityOrToiletsAccessible width={64} />
+
+    // Dynamic by ID
+    <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" width={64} />
+    ```
+  </TabItem>
+  <TabItem label="Vue 3">
+    ```vue
+    <script setup>
+    import {
+      Ac001FullAccessibilityOrToiletsAccessible,
+      SymbolById,
+    } from '@public-information-symbols/vue';
+    </script>
+
+    <template>
+      <Ac001FullAccessibilityOrToiletsAccessible :width="64" />
+      <SymbolById id="ac-001-full-accessibility-or-toilets-accessible" :width="64" />
+    </template>
+    ```
+  </TabItem>
+  <TabItem label="Web Components">
+    ```ts
+    import { defineCustomElements } from '@public-information-symbols/elements';
+    defineCustomElements();
+    ```
+
+    ```html
+    <!-- Generic element -->
+    <pi-symbol symbol-id="ac-001-full-accessibility-or-toilets-accessible" width="64"></pi-symbol>
+
+    <!-- Named element -->
+    <pi-ac-001-full-accessibility-or-toilets-accessible width="64">
+    </pi-ac-001-full-accessibility-or-toilets-accessible>
+    ```
+  </TabItem>
+  <TabItem label="CSS">
+    ```js
+    import '@public-information-symbols/css/sprite.css';
+    ```
+
+    ```html
+    <span
+      class="pi-ac-001"
+      style="display:inline-block;width:64px;height:64px"
+      role="img"
+      aria-label="Full accessibility"
+    ></span>
+    ```
+  </TabItem>
+</Tabs>
+
+## Finding symbol IDs
+
+Every symbol has a slug ID based on its ISO code and name. Browse the
+[Symbol Gallery](/public-information-symbols/gallery/) to find the symbol you need. The ID format
+is: `{code-lowercase}-{name-slugified}`, e.g. `ac-001-full-accessibility-or-toilets-accessible`.
+
+## TypeScript
+
+All packages ship full TypeScript types. The `core` package exports `PISymbol` and `SymbolCategory`
+if you need them:
+
+```ts
+import type { PISymbol, SymbolCategory } from '@public-information-symbols/core';
+```
+
+## Next steps
+
+- See the full props/attributes for each package in the [Packages](/public-information-symbols/packages/react/) section.
+- Browse all 178 symbols in the [Symbol Gallery](/public-information-symbols/gallery/).

@@ -1,0 +1,76 @@
+---
+title: "@public-information-symbols/vue"
+description: Vue 3 components for Public Information Symbols — named components and a dynamic SymbolById helper.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## Installation
+
+```sh
+npm install @public-information-symbols/vue
+```
+
+## Named components
+
+Every symbol ships as a named Vue component. The component name is derived from the symbol ID by converting it to PascalCase.
+
+```vue
+<script setup lang="ts">
+import { Ac001FullAccessibilityOrToiletsAccessible } from '@public-information-symbols/vue';
+</script>
+
+<template>
+  <Ac001FullAccessibilityOrToiletsAccessible
+    :width="64"
+    :height="64"
+    title="Accessible toilets"
+  />
+</template>
+```
+
+## SymbolById
+
+Use `SymbolById` when the symbol is determined at runtime — for example, from an API response or user selection.
+
+```vue
+<script setup lang="ts">
+import { SymbolById } from '@public-information-symbols/vue';
+
+const symbolId = 'ac-001-full-accessibility-or-toilets-accessible';
+</script>
+
+<template>
+  <SymbolById
+    :id="symbolId"
+    :width="64"
+    :height="64"
+    title="Accessible toilets"
+  />
+</template>
+```
+
+## Props
+
+### Shared props (all named components and SymbolById)
+
+| Prop          | Type     | Required | Description                                           |
+| ------------- | -------- | -------- | ----------------------------------------------------- |
+| `width`       | `number` | No       | Width of the rendered SVG in pixels.                  |
+| `height`      | `number` | No       | Height of the rendered SVG in pixels.                 |
+| `title`       | `string` | No       | Accessible name injected as `<title>` in the SVG.    |
+| `description` | `string` | No       | Longer description injected as `<desc>` in the SVG.  |
+
+### Additional SymbolById props
+
+| Prop | Type     | Required | Description                                                        |
+| ---- | -------- | -------- | ------------------------------------------------------------------ |
+| `id` | `string` | Yes      | Symbol ID, e.g. `ac-001-full-accessibility-or-toilets-accessible`. |
+
+## TypeScript
+
+The package ships with full TypeScript declarations. Use `:width` and `:height` (dynamic bindings) to pass numeric values; use plain `title="…"` for static strings. The `id` prop on `SymbolById` is typed as `string` — consult `PISymbol` from `@public-information-symbols/core` for valid IDs.
+
+## Accessibility
+
+Always supply a `title` (and optionally a `description`) so screen readers can announce the symbol's meaning. When a `title` is provided, the component adds `role="img"` and `aria-labelledby` to the SVG automatically. For decorative symbols, bind `aria-hidden="true"` on the component.

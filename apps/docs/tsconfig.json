@@ -1,0 +1,10 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "paths": {
+      "@public-information-symbols/core": [
+        "../../packages/@public-information-symbols/core/src/index.ts"
+      ]
+    }
+  }
+}
