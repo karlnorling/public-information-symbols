@@ -20,18 +20,18 @@ yarn add @public-information-symbols/core
 ## Usage
 
 ```ts
-import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
 
 // All symbols
 const all = getAllSymbols();
 
 // Single symbol by slug ID
-const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
+const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible");
 // → PISymbol | undefined
 
 // Symbols by category
-const accessibility = getSymbolsByCategory('accessibility');
-const transport = getSymbolsByCategory('transportation');
+const accessibility = getSymbolsByCategory("accessibility");
+const transport = getSymbolsByCategory("transportation");
 ```
 
 ---
@@ -56,28 +56,28 @@ Returns all symbols in a category. Categories: `"accessibility"`, `"public-facil
 
 ```ts
 type SymbolCategory =
-  | 'accessibility'
-  | 'public-facilities'
-  | 'transportation'
-  | 'behaviour'
-  | 'commercial'
-  | 'tourism'
-  | 'sporting';
+  | "accessibility"
+  | "public-facilities"
+  | "transportation"
+  | "behaviour"
+  | "commercial"
+  | "tourism"
+  | "sporting";
 
 interface PISymbol {
   assets: SymbolAssets;
   category: SymbolCategory;
-  code: string;        // e.g. "AC 001"
+  code: string; // e.g. "AC 001"
   description: string; // accessible description
-  id: string;          // e.g. "ac-001-full-accessibility-or-toilets-accessible"
-  name: string;        // e.g. "Full accessibility or toilets - accessible"
-  svg: string;         // inline SVG markup
+  id: string; // e.g. "ac-001-full-accessibility-or-toilets-accessible"
+  name: string; // e.g. "Full accessibility or toilets - accessible"
+  svg: string; // inline SVG markup
 }
 
 interface SymbolAssets {
-  jpg: Record<number, string>;  // size → relative path (240, 512, 768, 1024, 2048)
+  jpg: Record<number, string>; // size → relative path (240, 512, 768, 1024, 2048)
   png: Record<number, string>;
-  svg: string;                  // relative path to original SVG
+  svg: string; // relative path to original SVG
   webp: Record<number, string>;
 }
 ```

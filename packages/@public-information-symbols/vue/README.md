@@ -26,7 +26,7 @@ yarn add @public-information-symbols/vue
 import {
   Ac001FullAccessibilityOrToiletsAccessible,
   Pf001GeneralInformation,
-} from '@public-information-symbols/vue';
+} from "@public-information-symbols/vue";
 </script>
 
 <template>
@@ -65,8 +65,8 @@ Returns `null` for unrecognised IDs.
 
 `SymbolById` also requires:
 
-| Prop | Type     | Description                                                             |
-| ---- | -------- | ----------------------------------------------------------------------- |
+| Prop | Type     | Description                                                              |
+| ---- | -------- | ------------------------------------------------------------------------ |
 | `id` | `string` | Symbol slug ID, e.g. `"ac-001-full-accessibility-or-toilets-accessible"` |
 
 ---
