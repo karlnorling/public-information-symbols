@@ -1,6 +1,6 @@
 {
   "name": "@public-information-symbols/css",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "CSS background-image sprite for all ISO 7001 public information symbols — zero JavaScript",
   "keywords": [
     "css",

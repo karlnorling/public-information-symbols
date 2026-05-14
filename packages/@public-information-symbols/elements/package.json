@@ -1,6 +1,6 @@
 {
   "name": "@public-information-symbols/elements",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Web Components (Custom Elements) for all ISO 7001 public information symbols — framework-agnostic, zero dependencies",
   "keywords": [
     "accessible",

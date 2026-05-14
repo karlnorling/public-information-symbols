@@ -1,6 +1,6 @@
 {
   "name": "@public-information-symbols/sprite",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "SVG symbol sprite for all ISO 7001 public information symbols — single network request",
   "keywords": [
     "icons",

@@ -1,6 +1,6 @@
 {
   "name": "@public-information-symbols/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "TypeScript registry and lookup helpers for ISO 7001 public information symbols — includes inline SVG, asset paths, and descriptions",
   "keywords": [
     "accessibility",
