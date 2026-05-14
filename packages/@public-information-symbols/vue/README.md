@@ -26,7 +26,7 @@ yarn add @public-information-symbols/vue
 import {
   Ac001FullAccessibilityOrToiletsAccessible,
   Pf001GeneralInformation,
-} from "@public-information-symbols/vue";
+} from '@public-information-symbols/vue';
 </script>
 
 <template>

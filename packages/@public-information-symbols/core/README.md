@@ -20,18 +20,18 @@ yarn add @public-information-symbols/core
 ## Usage
 
 ```ts
-import { getAllSymbols, getSymbol, getSymbolsByCategory } from "@public-information-symbols/core";
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '@public-information-symbols/core';
 
 // All symbols
 const all = getAllSymbols();
 
 // Single symbol by slug ID
-const symbol = getSymbol("ac-001-full-accessibility-or-toilets-accessible");
+const symbol = getSymbol('ac-001-full-accessibility-or-toilets-accessible');
 // → PISymbol | undefined
 
 // Symbols by category
-const accessibility = getSymbolsByCategory("accessibility");
-const transport = getSymbolsByCategory("transportation");
+const accessibility = getSymbolsByCategory('accessibility');
+const transport = getSymbolsByCategory('transportation');
 ```
 
 ---
@@ -56,13 +56,13 @@ Returns all symbols in a category. Categories: `"accessibility"`, `"public-facil
 
 ```ts
 type SymbolCategory =
-  | "accessibility"
-  | "public-facilities"
-  | "transportation"
-  | "behaviour"
-  | "commercial"
-  | "tourism"
-  | "sporting";
+  | 'accessibility'
+  | 'public-facilities'
+  | 'transportation'
+  | 'behaviour'
+  | 'commercial'
+  | 'tourism'
+  | 'sporting';
 
 interface PISymbol {
   assets: SymbolAssets;
