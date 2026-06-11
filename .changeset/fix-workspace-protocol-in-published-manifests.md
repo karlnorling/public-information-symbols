@@ -1,7 +1,7 @@
 ---
-"@public-information-symbols/elements": patch
-"@public-information-symbols/react": patch
-"@public-information-symbols/vue": patch
+'@public-information-symbols/elements': patch
+'@public-information-symbols/react': patch
+'@public-information-symbols/vue': patch
 ---
 
 Replace `workspace:*` with real version ranges for the `@public-information-symbols/core` dependency.
