@@ -2782,7 +2782,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@public-information-symbols/core@workspace:*, @public-information-symbols/core@workspace:packages/@public-information-symbols/core":
+"@public-information-symbols/core@npm:^1.0.1, @public-information-symbols/core@workspace:*, @public-information-symbols/core@workspace:packages/@public-information-symbols/core":
   version: 0.0.0-use.local
   resolution: "@public-information-symbols/core@workspace:packages/@public-information-symbols/core"
   dependencies:
@@ -2804,7 +2804,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@public-information-symbols/elements@workspace:packages/@public-information-symbols/elements"
   dependencies:
-    "@public-information-symbols/core": "workspace:*"
+    "@public-information-symbols/core": "npm:^1.0.1"
     "@types/jest": "npm:^30.0.0"
     jest: "npm:^30.3.0"
     jest-environment-jsdom: "npm:^30.3.0"
@@ -2817,7 +2817,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@public-information-symbols/react@workspace:packages/@public-information-symbols/react"
   dependencies:
-    "@public-information-symbols/core": "workspace:*"
+    "@public-information-symbols/core": "npm:^1.0.1"
     "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:^19.1.0"
     "@types/react-dom": "npm:^19"
@@ -2842,7 +2842,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@public-information-symbols/vue@workspace:packages/@public-information-symbols/vue"
   dependencies:
-    "@public-information-symbols/core": "workspace:*"
+    "@public-information-symbols/core": "npm:^1.0.1"
     "@types/jest": "npm:^30.0.0"
     jest: "npm:^30.3.0"
     jest-environment-jsdom: "npm:^30.3.0"
