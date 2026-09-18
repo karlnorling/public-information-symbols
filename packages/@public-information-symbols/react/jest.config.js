@@ -9,7 +9,16 @@ const config = {
   transform: {
     '^.+\\.(ts|tsx)$': [
       'ts-jest',
-      { tsconfig: { jsx: 'react-jsx', esModuleInterop: true, skipLibCheck: true } },
+      {
+        tsconfig: {
+          jsx: 'react-jsx',
+          esModuleInterop: true,
+          module: 'commonjs',
+          moduleResolution: 'bundler',
+          skipLibCheck: true,
+          types: ['jest'],
+        },
+      },
     ],
   },
   moduleNameMapper: {

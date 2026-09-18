@@ -6,7 +6,18 @@ const config = {
   testMatch: ['**/__tests__/**/*.test.ts'],
   moduleFileExtensions: ['ts', 'js', 'json'],
   transform: {
-    '^.+\\.ts$': ['ts-jest', { tsconfig: { esModuleInterop: true, skipLibCheck: true } }],
+    '^.+\\.ts$': [
+      'ts-jest',
+      {
+        tsconfig: {
+          esModuleInterop: true,
+          module: 'commonjs',
+          moduleResolution: 'bundler',
+          skipLibCheck: true,
+          types: ['jest'],
+        },
+      },
+    ],
   },
 };
 

@@ -9,8 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "jsx": "react-jsx",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "node16",
+    "moduleResolution": "node16",
     "paths": {
       "@public-information-symbols/core": ["../core/src/index.ts"],
       "@public-information-symbols/core/render": ["../core/src/render.ts"]
