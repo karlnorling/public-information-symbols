@@ -34,18 +34,24 @@
     "package.json",
     "README.md"
   ],
+  "sideEffects": false,
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js",
-      "types": "./dist/esm/index.d.ts"
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
     }
   },
   "scripts": {
-    "compile": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'})); require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type:'module'}))\"",
+    "compile": "tsc -p tsconfig.cjs.json && tsc -p tsconfig.esm.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs',sideEffects:false})); require('fs').writeFileSync('dist/esm/package.json', JSON.stringify({type:'module',sideEffects:false}))\"",
     "test": "jest",
     "type-check": "tsc --noEmit -p tsconfig.json"
   },

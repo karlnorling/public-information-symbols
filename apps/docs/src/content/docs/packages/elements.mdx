@@ -23,10 +23,10 @@ defineCustomElements();
 
 ### Custom prefix
 
-By default elements are registered under the `pi-` prefix. Pass an options object to use a different prefix.
+By default elements are registered under the `pi-` prefix. Pass a different prefix to register them under another name as well; each prefix can be registered alongside the others.
 
 ```ts
-defineCustomElements({ prefix: 'my-' });
+defineCustomElements('my');
 // registers <my-ac-001-full-accessibility-or-toilets-accessible>
 ```
 
@@ -55,13 +55,15 @@ Every symbol also has a dedicated tag derived from its ID.
 
 ## Attributes
 
-| Attribute     | Type     | Required for `<pi-symbol>` | Description                                         |
-| ------------- | -------- | -------------------------- | --------------------------------------------------- |
-| `symbol-id`   | `string` | Yes                        | Symbol ID (only used on the generic `<pi-symbol>`). |
-| `width`       | `string` | No                         | Width of the rendered SVG in pixels.                |
-| `height`      | `string` | No                         | Height of the rendered SVG in pixels.               |
-| `title`       | `string` | No                         | Accessible name injected as `<title>` in the SVG.   |
-| `description` | `string` | No                         | Longer description injected as `<desc>` in the SVG. |
+| Attribute      | Type     | Required for `<pi-symbol>` | Description                                               |
+| -------------- | -------- | -------------------------- | --------------------------------------------------------- |
+| `symbol-id`    | `string` | Yes                        | Symbol ID (only used on the generic `<pi-symbol>`).       |
+| `width`        | `string` | No                         | Width of the rendered SVG in pixels.                      |
+| `height`       | `string` | No                         | Height of the rendered SVG in pixels.                     |
+| `symbol-title` | `string` | No                         | Accessible name injected as `<title>` in the SVG.         |
+| `title`        | `string` | No                         | Same as `symbol-title`, but also shows a browser tooltip. |
+| `aria-label`   | `string` | No                         | Explicit accessible name, forwarded to the `<svg>`.       |
+| `description`  | `string` | No                         | Longer description injected as `<desc>` in the SVG.       |
 
 ## Reactivity
 
@@ -110,4 +112,4 @@ export class AppModule {}
 
 ## Accessibility
 
-Provide a `title` attribute so screen readers can announce the symbol. The element automatically adds `role="img"` and `aria-labelledby` when a title is present. For purely decorative symbols, set `aria-hidden="true"` on the element.
+Every element announces the symbol name by default; use `symbol-title` or `aria-label` to override it. The `<svg>` gets `role="img"` and `aria-labelledby` pointing to its `<title>`, plus `aria-describedby` when a distinct description is set. For purely decorative symbols, set `aria-hidden="true"` on the element.

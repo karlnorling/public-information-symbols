@@ -2,7 +2,9 @@
  * update.ts
  *
  * Full pipeline runner: scrape → cache → create assets → generate source.
- * Run via: yarn update
+ * Run via: yarn update [--refetch] [--reconvert]
+ *   --refetch    re-download every source SVG (implies --reconvert)
+ *   --reconvert  regenerate every raster/sized image even if up to date
  */
 
 import fs from 'fs';
@@ -22,7 +24,10 @@ import { generateSource } from './generate-source';
   console.log(`Scraped data cached to ${cacheFile}`);
 
   console.log('\nStep 2/3: Creating assets...');
-  await createAssets(res);
+  await createAssets(res, {
+    reconvert: process.argv.includes('--reconvert'),
+    refetch: process.argv.includes('--refetch'),
+  });
 
   console.log('\nStep 3/3: Generating source files...');
   await generateSource();

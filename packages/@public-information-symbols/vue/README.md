@@ -56,12 +56,13 @@ Returns `null` for unrecognised IDs.
 
 ## Props
 
-| Prop          | Type               | Default              | Description                                  |
-| ------------- | ------------------ | -------------------- | -------------------------------------------- |
-| `width`       | `number \| string` | SVG intrinsic width  | Width of the `<svg>` element                 |
-| `height`      | `number \| string` | SVG intrinsic height | Height of the `<svg>` element                |
-| `title`       | `string`           | Symbol name          | Accessible title (`<title>` inside SVG)      |
-| `description` | `string`           | Symbol description   | Accessible description (`<desc>` inside SVG) |
+| Prop          | Type               | Default              | Description                                        |
+| ------------- | ------------------ | -------------------- | -------------------------------------------------- |
+| `width`       | `number \| string` | SVG intrinsic width  | Width of the `<svg>` element                       |
+| `height`      | `number \| string` | SVG intrinsic height | Height of the `<svg>` element                      |
+| `title`       | `string`           | Symbol name          | Accessible title (`<title>` inside SVG)            |
+| `description` | `string`           | Symbol description   | Accessible description (`<desc>` inside SVG)       |
+| `aria-label`  | `string`           | —                    | Accessible name on the `<svg>`; replaces `<title>` |
 
 `SymbolById` also requires:
 
@@ -73,7 +74,7 @@ Returns `null` for unrecognised IDs.
 
 ## Accessibility
 
-Every component renders with `role="img"` and `aria-labelledby` pointing to `<title>` and `<desc>` elements injected inside the SVG.
+In every component, the `<svg>` gets `role="img"` and `aria-labelledby` pointing to its `<title>`. A `<desc>` is added (via `aria-describedby`) only when the description differs from the title, so screen readers don't announce the name twice. All ids are unique per rendered instance, so the same symbol can appear any number of times on a page.
 
 ---
 

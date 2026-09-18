@@ -18,14 +18,12 @@ import { parse } from 'node-html-parser';
 import { globSync } from 'glob';
 import { optimize } from 'svgo';
 import sharp from 'sharp';
+import { USER_AGENT } from './scrape';
 import type { ScrapedData } from './scrape';
 
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
-
-const USER_AGENT =
-  'public-information-symbols/0.0.0 (https://github.com/karlnorling/public-information-symbols; build-script)';
 
 const IMAGE_TYPES_MAP = [
   { sizes: [240, 512, 768, 1024, 2048], type: 'svg' },
@@ -35,6 +33,16 @@ const IMAGE_TYPES_MAP = [
 ] as const;
 
 const ASSETS_ROOT = path.join('packages', '@public-information-symbols', 'assets', 'assets');
+
+/** Matches the per-size copies (e.g. `foo_512x512.svg`) written next to each source SVG. */
+const SIZED_COPY_RE = /_\d+x\d+\.svg$/;
+
+export interface CreateAssetsOptions {
+  /** Re-download source SVGs even if they already exist (implies `reconvert`). */
+  refetch?: boolean;
+  /** Regenerate every derived image even if it is up to date. */
+  reconvert?: boolean;
+}
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -108,7 +116,17 @@ const downloadImage = async (dest: string, url: string): Promise<void> => {
 // Image conversion
 // ---------------------------------------------------------------------------
 
-const convertImages = async (image: string): Promise<void> => {
+/** True when `output` exists, is non-empty and is newer than `source`. */
+const isUpToDate = async (output: string, source: string): Promise<boolean> => {
+  try {
+    const [out, src] = await Promise.all([fs.promises.stat(output), fs.promises.stat(source)]);
+    return out.size > 0 && out.mtimeMs >= src.mtimeMs;
+  } catch {
+    return false;
+  }
+};
+
+const convertImages = async (image: string, force: boolean): Promise<void> => {
   const inputExt = path.extname(image).toLowerCase();
   const inputBuffer = await fs.promises.readFile(image);
 
@@ -118,20 +136,18 @@ const convertImages = async (image: string): Promise<void> => {
       const baseName = path.basename(image, inputExt);
       const outputFile = path.join(outputDir, `${baseName}_${size}x${size}.${typeObj.type}`);
 
-      try {
-        const stat = await fs.promises.stat(outputFile);
-        if (stat.size > 0) continue;
-      } catch {
-        // File does not exist — proceed with conversion.
+      if (!force && (await isUpToDate(outputFile, image))) continue;
+
+      if (typeObj.type === 'svg') {
+        if (inputExt === '.svg') await fs.promises.copyFile(image, outputFile);
+        continue;
       }
 
       const pipeline = sharp(inputBuffer).resize(size, size);
 
-      if (typeObj.type === 'svg') {
-        if (inputExt !== '.svg') continue;
-        await fs.promises.copyFile(image, outputFile);
-      } else if (typeObj.type === 'jpg') {
-        await pipeline.jpeg({ quality: 90 }).toFile(outputFile);
+      if (typeObj.type === 'jpg') {
+        // JPEG has no alpha channel; without flattening, transparency turns black.
+        await pipeline.flatten({ background: '#ffffff' }).jpeg({ quality: 90 }).toFile(outputFile);
       } else if (typeObj.type === 'png') {
         await pipeline.png({ quality: 90 }).toFile(outputFile);
       } else if (typeObj.type === 'webp') {
@@ -145,28 +161,34 @@ const convertImages = async (image: string): Promise<void> => {
 // Download orchestration
 // ---------------------------------------------------------------------------
 
-const processImage = async (destDir: string, imagePageUrl: string): Promise<void> => {
+const processImage = async (
+  destDir: string,
+  imagePageUrl: string,
+  { reconvert = false, refetch = false }: CreateAssetsOptions,
+): Promise<void> => {
   await fs.promises.mkdir(destDir, { recursive: true });
 
   const imgName = decodeURIComponent(path.basename(imagePageUrl)).replace(/^File:/, '');
   const dest = path.join(destDir, imgName);
 
-  try {
-    const stat = await fs.promises.stat(dest);
-    if (stat.size > 0) {
-      console.log(`  Skipping (exists): ${path.basename(dest)}`);
-      await convertImages(dest);
-      return;
+  if (!refetch) {
+    try {
+      const stat = await fs.promises.stat(dest);
+      if (stat.size > 0) {
+        console.log(`  Skipping download (exists): ${path.basename(dest)}`);
+        await convertImages(dest, reconvert);
+        return;
+      }
+    } catch {
+      // File does not exist — proceed with download.
     }
-  } catch {
-    // File does not exist — proceed with download.
   }
 
   const imageUrl = await downloadImagePage(imagePageUrl);
   if (imageUrl) {
     await downloadImage(dest, imageUrl);
     await sleep(300);
-    await convertImages(dest);
+    await convertImages(dest, true);
   }
 };
 
@@ -176,7 +198,10 @@ const processImage = async (destDir: string, imagePageUrl: string): Promise<void
 
 const createSVGMap = async (): Promise<void> => {
   const svgMap: Record<string, string> = {};
-  const svgFiles = globSync(path.join(ASSETS_ROOT, '**', '*.svg'));
+  // The sized copies are byte-identical to their source, so only map the source.
+  const svgFiles = globSync(path.join(ASSETS_ROOT, '**', '*.svg')).filter(
+    (f) => !SIZED_COPY_RE.test(f),
+  );
 
   for (const file of svgFiles) {
     const svgContent = await fs.promises.readFile(file, 'utf-8');
@@ -194,7 +219,7 @@ const createSVGSprite = async (): Promise<void> => {
   await fs.promises.mkdir(spriteDir, { recursive: true });
 
   const svgFiles = globSync(path.join(ASSETS_ROOT, '**', '*.svg')).filter(
-    (f) => !f.includes('sprites') && !/_\d+x\d+\.svg$/.test(f),
+    (f) => !f.includes('sprites') && !SIZED_COPY_RE.test(f),
   );
 
   const seen = new Set<string>();
@@ -264,7 +289,7 @@ const createSVGSprite = async (): Promise<void> => {
   console.log(`SVG sprite written to ${spriteFile} (${ids.length} symbols)`);
 
   const idMapFile = path.join(spriteDir, 'sprite-ids.json');
-  await fs.promises.writeFile(idMapFile, JSON.stringify(ids, null, 2), 'utf-8');
+  await fs.promises.writeFile(idMapFile, JSON.stringify(ids, null, 2) + '\n', 'utf-8');
   console.log(`SVG sprite ID map written to ${idMapFile}`);
 };
 
@@ -274,7 +299,7 @@ const createCSSSprite = async (): Promise<void> => {
 
   const svgFiles = globSync(path.join(ASSETS_ROOT, '**', '*.svg'))
     .filter((f) => !f.includes('sprites'))
-    .filter((f) => !/_\d+x\d+\.svg$/.test(f));
+    .filter((f) => !SIZED_COPY_RE.test(f));
 
   const seen = new Set<string>();
   const cssRules: string[] = [
@@ -312,7 +337,7 @@ const createCSSSprite = async (): Promise<void> => {
 // Public API
 // ---------------------------------------------------------------------------
 
-const createAssets = async (res: ScrapedData): Promise<void> => {
+const createAssets = async (res: ScrapedData, options: CreateAssetsOptions = {}): Promise<void> => {
   for (const [category, symbols] of Object.entries(res)) {
     const catDir = path.join(ASSETS_ROOT, category);
     await fs.promises.mkdir(catDir, { recursive: true });
@@ -322,7 +347,10 @@ const createAssets = async (res: ScrapedData): Promise<void> => {
       // Slug: "AC 001" → "ac-001"
       const slug = symbol.code.toLowerCase().replace(/\s+/, '-');
       const symbolDir = path.join(catDir, slug);
-      await processImage(symbolDir, symbol.imageUrl);
+      await processImage(symbolDir, symbol.imageUrl, {
+        reconvert: options.reconvert || options.refetch,
+        refetch: options.refetch,
+      });
     }
   }
 

@@ -54,6 +54,7 @@ export default function App() {
 | `height`      | `number` | No       | Height of the rendered SVG in pixels.               |
 | `title`       | `string` | No       | Accessible name injected as `<title>` in the SVG.   |
 | `description` | `string` | No       | Longer description injected as `<desc>` in the SVG. |
+| `aria-label`  | `string` | No       | Explicit accessible name on the `<svg>`.            |
 
 ### Additional SymbolById props
 
@@ -67,4 +68,4 @@ The package ships with full TypeScript declarations. Prop types are inferred aut
 
 ## Accessibility
 
-Always supply a `title` (and optionally a `description`) so screen readers can announce the symbol's meaning. When a `title` is provided, the component adds `role="img"` and `aria-labelledby` to the SVG automatically. If the symbol is decorative, set `aria-hidden="true"` on the component.
+Always supply a `title` (and optionally a `description`) so screen readers can announce the symbol's meaning. The SVG always gets `role="img"` and `aria-labelledby` pointing to its `<title>`, plus `aria-describedby` when a distinct description is set. If the symbol is decorative, set `aria-hidden="true"` on the component.

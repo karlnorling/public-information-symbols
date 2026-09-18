@@ -66,6 +66,7 @@ Every component and `SymbolById` accept the same props:
 | `height`      | `number \| string`    | SVG intrinsic height | Height of the `<svg>` element                        |
 | `title`       | `string`              | Symbol name          | Accessible title (`<title>` inside SVG)              |
 | `description` | `string`              | Symbol description   | Accessible description (`<desc>` inside SVG)         |
+| `aria-label`  | `string`              | —                    | Accessible name on the `<svg>`; replaces `<title>`   |
 | `className`   | `string`              | —                    | CSS class forwarded to the root `<span>` wrapper     |
 | `style`       | `React.CSSProperties` | —                    | Inline styles forwarded to the root `<span>` wrapper |
 
@@ -79,7 +80,7 @@ Every component and `SymbolById` accept the same props:
 
 ## Accessibility
 
-Every component renders `role="img"` with `aria-labelledby` pointing to a `<title>` and `<desc>` injected inside the SVG. Screen readers announce the symbol name and description automatically.
+In every component, the `<svg>` gets `role="img"` and `aria-labelledby` pointing to its `<title>`. A `<desc>` is added (via `aria-describedby`) only when the description differs from the title, so screen readers don't announce the name twice. All ids are unique per rendered instance, so the same symbol can appear any number of times on a page.
 
 Override defaults when needed:
 

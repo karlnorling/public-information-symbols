@@ -12,7 +12,8 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "paths": {
-      "@public-information-symbols/core": ["../core/src/index.ts"]
+      "@public-information-symbols/core": ["../core/src/index.ts"],
+      "@public-information-symbols/core/render": ["../core/src/render.ts"]
     }
   },
   "include": ["src/**/*"],

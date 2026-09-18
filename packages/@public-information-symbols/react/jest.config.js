@@ -14,6 +14,7 @@ const config = {
   },
   moduleNameMapper: {
     '^@public-information-symbols/core$': '<rootDir>/../core/src/index.ts',
+    '^@public-information-symbols/core/render$': '<rootDir>/../core/src/render.ts',
   },
 };
 

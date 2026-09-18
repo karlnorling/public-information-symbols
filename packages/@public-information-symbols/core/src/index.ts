@@ -10,3 +10,5 @@ export const getSymbol = (id: string): PISymbol | undefined => symbols.find((s) 
 
 export const getSymbolsByCategory = (category: SymbolCategory): PISymbol[] =>
   symbols.filter((s) => s.category === category);
+export { UID_PLACEHOLDER, escapeHtml, getSvgParts, nextUid, parseSvg, renderSvg } from './render';
+export type { RenderSvgOptions, SvgParts } from './render';

@@ -23,7 +23,8 @@
     "storybook": "yarn workspace @pi-storybook/app storybook",
     "test": "yarn workspaces foreach -A run test",
     "type-check": "yarn workspaces foreach -A --include '@public-information-symbols/*' run type-check",
-    "update": "tsx bin/update.ts"
+    "update": "tsx bin/update.ts",
+    "version-packages": "changeset version && yarn format"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.10",
