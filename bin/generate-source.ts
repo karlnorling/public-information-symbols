@@ -21,6 +21,7 @@ import path from 'path';
 import { optimize } from 'svgo';
 import type { ScrapedData, SymbolCategory } from './scrape';
 import type { PISymbol } from '../packages/@public-information-symbols/core/src/types';
+import { parseSvg } from '../packages/@public-information-symbols/core/src/render';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -66,25 +67,6 @@ const cleanSvg = (svg: string): string =>
 const optimizeSvg = (svg: string): string =>
   optimize(svg, { multipass: true, plugins: ['preset-default'] }).data;
 
-/** Prefix every internal SVG id with the symbol slug to prevent DOM collisions. */
-const scopeBodyIds = (body: string, prefix: string): string => {
-  const ids = new Set<string>();
-  body.replace(/\bid="([^"]+)"/g, (_, id: string) => {
-    ids.add(id);
-    return _;
-  });
-  if (ids.size === 0) return body;
-  let out = body;
-  for (const id of ids) {
-    const esc = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    out = out
-      .replace(new RegExp(`\\bid="${esc}"`, 'g'), `id="${prefix}-${id}"`)
-      .replace(new RegExp(`url\\(#${esc}\\)`, 'g'), `url(#${prefix}-${id})`)
-      .replace(new RegExp(`href="#${esc}"`, 'g'), `href="#${prefix}-${id}"`);
-  }
-  return out;
-};
-
 /** "AC 001" → "accessibility", "PF 015" → "public-facilities", etc. */
 const categoryFromCode = (code: string): SymbolCategory => {
   const prefix = code.split(' ')[0].toUpperCase();
@@ -97,8 +79,20 @@ const categoryFromCode = (code: string): SymbolCategory => {
     TC: 'tourism',
     SA: 'sporting',
   };
-  return map[prefix] ?? 'public-facilities';
+  const category = map[prefix];
+  if (!category) throw new Error(`Unknown ISO 7001 code prefix "${prefix}" in "${code}"`);
+  return category;
 };
+
+/** Emits a JS string literal; JSON escaping covers quotes, backslashes and newlines. */
+const str = (s: string): string => JSON.stringify(s);
+
+/** Emits the module-level constants every generated component file shares. */
+const symbolConstants = ({ description, name, optimizedSvg }: ComponentEntry): string[] => [
+  `const _parts: SvgParts = ${JSON.stringify(parseSvg(optimizedSvg))};`,
+  `const _title = ${str(name)};`,
+  `const _description = ${str(description.slice(0, 300))};`,
+];
 
 // ---------------------------------------------------------------------------
 // Entry collection
@@ -218,69 +212,20 @@ const generateReactPropsFile = (): string =>
 // ---------------------------------------------------------------------------
 
 const generateReactComponentFile = (entry: ComponentEntry): string => {
-  const { description, id, name, optimizedSvg } = entry;
-  const componentName = toComponentName(id);
-
-  const svgBodyMatch = optimizedSvg.match(/^<svg([^>]*)>([\s\S]*)<\/svg>\s*$/i);
-  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : '';
-  const svgBody = scopeBodyIds(svgBodyMatch ? svgBodyMatch[2] : optimizedSvg, id);
-
-  const esc = (s: string): string =>
-    s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
-
-  const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
-  const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
-  const defaultWidth = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
-  const defaultHeight = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
-
-  const hasViewBox = /\bviewBox="/.test(svgAttrs);
-  const syntheticViewBox =
-    !hasViewBox && /^\d+(\.\d+)?$/.test(defaultWidth) && /^\d+(\.\d+)?$/.test(defaultHeight)
-      ? ` viewBox="0 0 ${defaultWidth} ${defaultHeight}"`
-      : '';
-
-  const attrsWithoutSize =
-    svgAttrs
-      .replace(/\s*\bwidth="[^"]*"/, '')
-      .replace(/\s*\bheight="[^"]*"/, '')
-      .trim() + syntheticViewBox;
-
+  const componentName = toComponentName(entry.id);
   return [
     `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.`,
     `// Run 'yarn generate' to regenerate.`,
     ``,
     `import * as React from 'react';`,
+    `import type { SvgParts } from '@public-information-symbols/core/render';`,
     `import type { SymbolProps } from './SymbolPropsBase';`,
+    `import { renderSymbol, useSymbolUid } from './renderSymbol';`,
     ``,
-    `const _Attrs = \`${esc(attrsWithoutSize)}\`;`,
-    `const _Body = \`${esc(svgBody)}\`;`,
-    `const _DefaultDesc = \`${esc(description.slice(0, 300))}\`;`,
-    `const _DefaultTitle = '${name.replace(/'/g, "\\'")}';`,
-    `const _DefaultWidth = \`${esc(defaultWidth)}\`;`,
-    `const _DefaultHeight = \`${esc(defaultHeight)}\`;`,
-    `const _h = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');`,
+    ...symbolConstants(entry),
     ``,
-    `export const ${componentName} = React.memo<SymbolProps>(`,
-    `  ({ 'aria-label': ariaLabel, className, description, height, style, title, width }) => {`,
-    `    const descId = \`pi-desc-${id}\`;`,
-    `    const titleId = \`pi-title-${id}\`;`,
-    `    const _w = width !== undefined ? _h(String(width)) : _DefaultWidth;`,
-    `    const _ht = height !== undefined ? _h(String(height)) : _DefaultHeight;`,
-    `    const resolvedTitle = title ?? _DefaultTitle;`,
-    `    const resolvedDesc = description ?? _DefaultDesc;`,
-    `    const svgHtml = \`<svg \${_Attrs} width="\${_w}" height="\${_ht}" role="img" aria-labelledby="\${titleId} \${descId}">`,
-    `  <title id="\${titleId}">\${_h(resolvedTitle)}</title>`,
-    `  <desc id="\${descId}">\${_h(resolvedDesc)}</desc>`,
-    `  \${_Body}</svg>\`;`,
-    `    return (`,
-    `      <span`,
-    `        aria-label={ariaLabel}`,
-    `        className={className}`,
-    `        dangerouslySetInnerHTML={{ __html: svgHtml }}`,
-    `        style={{ display: 'contents', ...style }}`,
-    `      />`,
-    `    );`,
-    `  },`,
+    `export const ${componentName} = React.memo<SymbolProps>((props) =>`,
+    `  renderSymbol(_parts, _title, _description, props, useSymbolUid()),`,
     `);`,
     `${componentName}.displayName = '${componentName}';`,
     ``,
@@ -321,72 +266,26 @@ const generateVuePropsFile = (): string =>
 // ---------------------------------------------------------------------------
 
 const generateVueComponentFile = (entry: ComponentEntry): string => {
-  const { description, id, name, optimizedSvg } = entry;
-  const componentName = toComponentName(id);
-
-  const svgBodyMatch = optimizedSvg.match(/^<svg([^>]*)>([\s\S]*)<\/svg>\s*$/i);
-  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : '';
-  const svgBody = scopeBodyIds(svgBodyMatch ? svgBodyMatch[2] : optimizedSvg, id);
-
-  const esc = (s: string): string =>
-    s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
-
-  const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
-  const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
-  const defaultWidth = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
-  const defaultHeight = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
-
-  const hasViewBox = /\bviewBox="/.test(svgAttrs);
-  const syntheticViewBox =
-    !hasViewBox && /^\d+(\.\d+)?$/.test(defaultWidth) && /^\d+(\.\d+)?$/.test(defaultHeight)
-      ? ` viewBox="0 0 ${defaultWidth} ${defaultHeight}"`
-      : '';
-
-  const attrsWithoutSize =
-    svgAttrs
-      .replace(/\s*\bwidth="[^"]*"/, '')
-      .replace(/\s*\bheight="[^"]*"/, '')
-      .trim() + syntheticViewBox;
-
+  const componentName = toComponentName(entry.id);
   return [
     `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.`,
     `// Run 'yarn generate' to regenerate.`,
     ``,
-    `import { defineComponent, h } from 'vue';`,
+    `import { defineComponent } from 'vue';`,
+    `import { nextUid } from '@public-information-symbols/core/render';`,
+    `import type { SvgParts } from '@public-information-symbols/core/render';`,
     `import { symbolProps } from './SymbolPropsBase';`,
+    `import { renderSymbol } from './renderSymbol';`,
     ``,
-    `const _Attrs = \`${esc(attrsWithoutSize)}\`;`,
-    `const _Body = \`${esc(svgBody)}\`;`,
-    `const _DefaultDesc = \`${esc(description.slice(0, 300))}\`;`,
-    `const _DefaultTitle = '${name.replace(/'/g, "\\'")}';`,
-    `const _DefaultWidth = \`${esc(defaultWidth)}\`;`,
-    `const _DefaultHeight = \`${esc(defaultHeight)}\`;`,
-    `const _h = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');`,
+    ...symbolConstants(entry),
     ``,
     `export const ${componentName} = defineComponent({`,
     `  name: '${componentName}',`,
     `  inheritAttrs: false,`,
-    `  props: {`,
-    `    ...symbolProps,`,
-    `  },`,
+    `  props: symbolProps,`,
     `  setup(props, { attrs }) {`,
-    `    return () => {`,
-    `      const descId = \`pi-desc-${id}\`;`,
-    `      const titleId = \`pi-title-${id}\`;`,
-    `      const _w = props.width !== undefined ? _h(String(props.width)) : _DefaultWidth;`,
-    `      const _ht = props.height !== undefined ? _h(String(props.height)) : _DefaultHeight;`,
-    `      const resolvedTitle = props.title ?? _DefaultTitle;`,
-    `      const resolvedDesc = props.description ?? _DefaultDesc;`,
-    `      const svgHtml = \`<svg \${_Attrs} width="\${_w}" height="\${_ht}" role="img" aria-labelledby="\${titleId} \${descId}">`,
-    `  <title id="\${titleId}">\${_h(resolvedTitle)}</title>`,
-    `  <desc id="\${descId}">\${_h(resolvedDesc)}</desc>`,
-    `  \${_Body}</svg>\`;`,
-    `      return h('span', {`,
-    `        ...attrs,`,
-    `        style: { display: 'contents', ...(typeof attrs.style === 'object' ? (attrs.style as Record<string, unknown>) : {}) },`,
-    `        innerHTML: svgHtml,`,
-    `      });`,
-    `    };`,
+    `    const uid = nextUid();`,
+    `    return () => renderSymbol(_parts, _title, _description, props, attrs, uid);`,
     `  },`,
     `});`,
     ``,
@@ -414,64 +313,22 @@ const generateVueIndex = (componentNames: string[]): string =>
 // ---------------------------------------------------------------------------
 
 const generateElementFile = (entry: ComponentEntry): string => {
-  const { description, id, name, optimizedSvg } = entry;
-  const componentName = toComponentName(id);
-
-  const svgBodyMatch = optimizedSvg.match(/^<svg([^>]*)>([\s\S]*)<\/svg>\s*$/i);
-  const svgAttrs = svgBodyMatch ? svgBodyMatch[1] : '';
-  const svgBody = scopeBodyIds(svgBodyMatch ? svgBodyMatch[2] : optimizedSvg, id);
-
-  const esc = (s: string): string =>
-    s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$/g, '\\$');
-
-  const widthMatch = svgAttrs.match(/\bwidth="([^"]+)"/);
-  const heightMatch = svgAttrs.match(/\bheight="([^"]+)"/);
-  const defaultWidth = (widthMatch ? widthMatch[1] : '100%').replace(/px$/, '');
-  const defaultHeight = (heightMatch ? heightMatch[1] : '100%').replace(/px$/, '');
-
-  const hasViewBox = /\bviewBox="/.test(svgAttrs);
-  const syntheticViewBox =
-    !hasViewBox && /^\d+(\.\d+)?$/.test(defaultWidth) && /^\d+(\.\d+)?$/.test(defaultHeight)
-      ? ` viewBox="0 0 ${defaultWidth} ${defaultHeight}"`
-      : '';
-
-  const attrsWithoutSize =
-    svgAttrs
-      .replace(/\s*\bwidth="[^"]*"/, '')
-      .replace(/\s*\bheight="[^"]*"/, '')
-      .trim() + syntheticViewBox;
-
+  const componentName = toComponentName(entry.id);
   return [
     `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.`,
     `// Run 'yarn generate' to regenerate.`,
     ``,
-    `const _Attrs = \`${esc(attrsWithoutSize)}\`;`,
-    `const _Body = \`${esc(svgBody)}\`;`,
-    `const _DefaultDesc = \`${esc(description.slice(0, 300))}\`;`,
-    `const _DefaultTitle = '${name.replace(/'/g, "\\'")}';`,
-    `const _DefaultWidth = \`${esc(defaultWidth)}\`;`,
-    `const _DefaultHeight = \`${esc(defaultHeight)}\`;`,
-    `const _h = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');`,
+    `import type { SvgParts } from '@public-information-symbols/core/render';`,
+    `import { PISymbolBase } from './PISymbolBase';`,
+    `import type { SymbolSource } from './PISymbolBase';`,
     ``,
-    `export class ${componentName} extends HTMLElement {`,
-    `  static readonly tagName = 'pi-${id}';`,
-    `  static readonly observedAttributes = ['title', 'description', 'width', 'height'];`,
+    ...symbolConstants(entry),
     ``,
-    `  connectedCallback(): void { this._render(); }`,
-    `  attributeChangedCallback(): void { this._render(); }`,
+    `export class ${componentName} extends PISymbolBase {`,
+    `  static override readonly tagName = 'pi-${entry.id}';`,
     ``,
-    `  private _render(): void {`,
-    `    const descId = \`pi-desc-${id}\`;`,
-    `    const titleId = \`pi-title-${id}\`;`,
-    `    const _w = this.hasAttribute('width') ? _h(this.getAttribute('width')!) : _DefaultWidth;`,
-    `    const _ht = this.hasAttribute('height') ? _h(this.getAttribute('height')!) : _DefaultHeight;`,
-    `    const resolvedTitle = this.getAttribute('title') ?? _DefaultTitle;`,
-    `    const resolvedDesc = this.getAttribute('description') ?? _DefaultDesc;`,
-    `    this.style.display = 'contents';`,
-    `    this.innerHTML = \`<svg \${_Attrs} width="\${_w}" height="\${_ht}" role="img" aria-labelledby="\${titleId} \${descId}">`,
-    `  <title id="\${titleId}">\${_h(resolvedTitle)}</title>`,
-    `  <desc id="\${descId}">\${_h(resolvedDesc)}</desc>`,
-    `  \${_Body}</svg>\`;`,
+    `  protected override _source(): SymbolSource {`,
+    `    return { parts: _parts, title: _title, description: _description };`,
     `  }`,
     `}`,
     ``,
@@ -489,12 +346,13 @@ const generateDefineCustomElements = (
     `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.`,
     `// Run 'yarn generate' to regenerate.`,
     ``,
+    `import type { PISymbolBase } from './PISymbolBase';`,
     `import { PISymbolElement } from './PISymbolElement';`,
     ...entries.map(({ componentName }) => `import { ${componentName} } from './${componentName}';`),
     ``,
-    `const _elements: Array<[typeof HTMLElement & { tagName: string }, string]> = [`,
-    `  [PISymbolElement, PISymbolElement.tagName],`,
-    ...entries.map(({ componentName }) => `  [${componentName}, ${componentName}.tagName],`),
+    `const _elements: Array<typeof PISymbolBase> = [`,
+    `  PISymbolElement,`,
+    ...entries.map(({ componentName }) => `  ${componentName},`),
     `];`,
     ``,
     `/**`,
@@ -509,9 +367,14 @@ const generateDefineCustomElements = (
     ` * \`\`\``,
     ` */`,
     `export function defineCustomElements(prefix = 'pi'): void {`,
-    `  for (const [cls, defaultTag] of _elements) {`,
-    `    const tag = prefix === 'pi' ? defaultTag : \`\${prefix}-\${defaultTag.replace(/^pi-/, '')}\`;`,
-    `    if (!customElements.get(tag)) customElements.define(tag, cls);`,
+    `  for (const cls of _elements) {`,
+    `    if (prefix === 'pi') {`,
+    `      if (!customElements.get(cls.tagName)) customElements.define(cls.tagName, cls);`,
+    `      continue;`,
+    `    }`,
+    `    const tag = \`\${prefix}-\${cls.tagName.replace(/^pi-/, '')}\`;`,
+    `    // A constructor can only be registered once, so each extra prefix gets its own subclass.`,
+    `    if (!customElements.get(tag)) customElements.define(tag, class extends cls {});`,
     `  }`,
     `}`,
     ``,
@@ -526,6 +389,8 @@ const generateElementsIndex = (componentNames: string[]): string =>
     `// THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.`,
     `// Run 'yarn generate' to regenerate.`,
     ``,
+    `export { PISymbolBase } from './PISymbolBase';`,
+    `export type { SymbolSource } from './PISymbolBase';`,
     `export { PISymbolElement } from './PISymbolElement';`,
     `export { defineCustomElements } from './defineCustomElements';`,
     ...componentNames.map((name) => `export { ${name} } from './${name}';`),

@@ -9,11 +9,21 @@ const config = {
   transform: {
     '^.+\\.(ts|tsx)$': [
       'ts-jest',
-      { tsconfig: { jsx: 'react-jsx', esModuleInterop: true, skipLibCheck: true } },
+      {
+        tsconfig: {
+          jsx: 'react-jsx',
+          esModuleInterop: true,
+          module: 'commonjs',
+          moduleResolution: 'bundler',
+          skipLibCheck: true,
+          types: ['jest'],
+        },
+      },
     ],
   },
   moduleNameMapper: {
     '^@public-information-symbols/core$': '<rootDir>/../core/src/index.ts',
+    '^@public-information-symbols/core/render$': '<rootDir>/../core/src/render.ts',
   },
 };
 

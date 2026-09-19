@@ -54,13 +54,15 @@ defineCustomElements('pub');
 
 All elements accept the same attributes:
 
-| Attribute     | Default              | Description                                                                                   |
-| ------------- | -------------------- | --------------------------------------------------------------------------------------------- |
-| `symbol-id`   | —                    | Symbol slug ID (`<pi-symbol>` only), e.g. `"ac-001-full-accessibility-or-toilets-accessible"` |
-| `title`       | Symbol name          | Accessible title (`<title>` inside SVG)                                                       |
-| `description` | Symbol description   | Accessible description (`<desc>` inside SVG)                                                  |
-| `width`       | SVG intrinsic width  | Forwarded to the `<svg>` width attribute                                                      |
-| `height`      | SVG intrinsic height | Forwarded to the `<svg>` height attribute                                                     |
+| Attribute      | Default              | Description                                                                                         |
+| -------------- | -------------------- | --------------------------------------------------------------------------------------------------- |
+| `symbol-id`    | —                    | Symbol slug ID (`<pi-symbol>` only), e.g. `"ac-001-full-accessibility-or-toilets-accessible"`       |
+| `symbol-title` | Symbol name          | Accessible title (`<title>` inside SVG). Preferred over `title`, which also shows a browser tooltip |
+| `title`        | Symbol name          | Same as `symbol-title`; kept for backwards compatibility                                            |
+| `aria-label`   | —                    | Explicit accessible name, forwarded to the `<svg>` (replaces `aria-labelledby`)                     |
+| `description`  | Symbol description   | Accessible description (`<desc>` inside SVG)                                                        |
+| `width`        | SVG intrinsic width  | Forwarded to the `<svg>` width attribute                                                            |
+| `height`       | SVG intrinsic height | Forwarded to the `<svg>` height attribute                                                           |
 
 All attributes are reactive — changing them re-renders the SVG.
 
@@ -91,7 +93,7 @@ export class AppModule {}
 
 ## Accessibility
 
-Each element renders with `role="img"` and `aria-labelledby` pointing to a `<title>` and `<desc>` injected inside the SVG. The host element gets `display: contents` so it is transparent to layout.
+In each element, the `<svg>` gets `role="img"` and `aria-labelledby` pointing to its `<title>`. A `<desc>` is added (via `aria-describedby`) only when the description differs from the title, so screen readers don't announce the name twice. All ids are unique per rendered instance, so the same symbol can appear any number of times on a page. The host element gets `display: contents` so it is transparent to layout.
 
 ---
 

@@ -39,13 +39,15 @@ defineCustomElements();
 
 ### Attributes
 
-| Attribute     | Type               | Default            | Description                                                     |
-| ------------- | ------------------ | ------------------ | --------------------------------------------------------------- |
-| `symbol-id`   | `string`           | —                  | Slug ID, e.g. `ac-001-full-accessibility-or-toilets-accessible` |
-| `width`       | `string \| number` | SVG intrinsic      | Width forwarded to the `<svg>` element                          |
-| `height`      | `string \| number` | SVG intrinsic      | Height forwarded to the `<svg>` element                         |
-| `title`       | `string`           | Symbol name        | Overrides the accessible `<title>`                              |
-| `description` | `string`           | Symbol description | Overrides the accessible `<desc>`                               |
+| Attribute      | Type               | Default            | Description                                                     |
+| -------------- | ------------------ | ------------------ | --------------------------------------------------------------- |
+| `symbol-id`    | `string`           | —                  | Slug ID, e.g. `ac-001-full-accessibility-or-toilets-accessible` |
+| `width`        | `string \| number` | SVG intrinsic      | Width forwarded to the `<svg>` element                          |
+| `height`       | `string \| number` | SVG intrinsic      | Height forwarded to the `<svg>` element                         |
+| `symbol-title` | `string`           | Symbol name        | Overrides the accessible `<title>`                              |
+| `title`        | `string`           | Symbol name        | Same as `symbol-title`, but also shows a browser tooltip        |
+| `aria-label`   | `string`           | —                  | Explicit accessible name, forwarded to the `<svg>`              |
+| `description`  | `string`           | Symbol description | Overrides the accessible `<desc>`                               |
 
 ---
 

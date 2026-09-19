@@ -1,6 +1,8 @@
 // THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.
 // Run 'yarn generate' to regenerate.
 
+export { PISymbolBase } from './PISymbolBase';
+export type { SymbolSource } from './PISymbolBase';
 export { PISymbolElement } from './PISymbolElement';
 export { defineCustomElements } from './defineCustomElements';
 export { Ac001FullAccessibilityOrToiletsAccessible } from './Ac001FullAccessibilityOrToiletsAccessible';

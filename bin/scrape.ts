@@ -36,6 +36,10 @@ export interface ScrapedSymbol {
 /** Root shape of the data returned by {@link scrape}. */
 export type ScrapedData = Record<SymbolCategory, ScrapedSymbol[]>;
 
+/** Identifies these build scripts to Wikimedia, as its User-Agent policy requires. */
+export const USER_AGENT =
+  'public-information-symbols/0.0.0 (https://github.com/karlnorling/public-information-symbols; build-script)';
+
 // ---------------------------------------------------------------------------
 // Category configuration
 // ---------------------------------------------------------------------------
@@ -129,7 +133,8 @@ const scrapeSection = (
       for (const li of node.querySelectorAll('li.gallerybox')) {
         const imgLink = li.querySelector('.thumb a, .gallery-image-body a');
         const href = imgLink?.getAttribute('href') ?? null;
-        const imageUrl = href ? `https://en.wikipedia.org${href}` : null;
+        // Wikipedia has served both relative and absolute hrefs; resolve either form.
+        const imageUrl = href ? new URL(href, 'https://en.wikipedia.org').href : null;
 
         const captionEl = li.querySelector('.gallerytext, figcaption');
         const caption = captionEl?.textContent?.trim() ?? '';
@@ -154,7 +159,7 @@ const scrapeSection = (
 
 const scrape = async (): Promise<ScrapedData> => {
   const URL = 'https://en.wikipedia.org/wiki/ISO_7001';
-  const response = await fetch(URL);
+  const response = await fetch(URL, { headers: { 'User-Agent': USER_AGENT } });
   if (response.status !== 200) {
     throw new Error(`Failed to fetch Wikipedia page: ${response.status}`);
   }

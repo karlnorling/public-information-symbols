@@ -33,6 +33,11 @@ const config: StorybookConfig = {
     config.resolve ??= {};
     config.resolve.alias = {
       ...config.resolve.alias,
+      // Aliases match by prefix in insertion order, so the subpath must precede the package.
+      '@public-information-symbols/core/render': path.resolve(
+        dirname,
+        '../../../packages/@public-information-symbols/core/src/render.ts',
+      ),
       '@public-information-symbols/core': path.resolve(
         dirname,
         '../../../packages/@public-information-symbols/core/src/index.ts',

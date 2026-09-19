@@ -3,5 +3,7 @@
 # token exchange natively) rather than `yarn npm publish`.
 set -euo pipefail
 
+root="$(cd "$(dirname "$0")/.." && pwd)"
+
 yarn workspaces foreach -A --no-private --topological-dev exec \
-  npm publish --access public --provenance
+  bash "$root/scripts/publish-package.sh"
