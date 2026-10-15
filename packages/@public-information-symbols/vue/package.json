@@ -1,6 +1,6 @@
 {
   "name": "@public-information-symbols/vue",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Accessible Vue 3 components for all ISO 7001 public information symbols — fully typed, zero runtime dependencies beyond Vue",
   "keywords": [
     "accessible",
@@ -56,7 +56,7 @@
     "type-check": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@public-information-symbols/core": "^1.0.1"
+    "@public-information-symbols/core": "^1.1.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
