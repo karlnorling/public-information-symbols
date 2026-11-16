@@ -1,5 +1,11 @@
 # @public-information-symbols/core
 
+## 1.1.1
+
+### Patch Changes
+
+- c56ad4d: Fix `ERR_MODULE_NOT_FOUND` when importing the ESM build in Node. Relative imports in `dist/esm` now end in `.js`, as Node's ESM loader requires. Bundlers were unaffected.
+
 ## 1.1.0
 
 ### Minor Changes
