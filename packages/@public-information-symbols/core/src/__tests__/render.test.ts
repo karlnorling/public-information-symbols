@@ -1,5 +1,5 @@
-import { getAllSymbols } from '../index';
-import { UID_PLACEHOLDER, getSvgParts, parseSvg, renderSvg } from '../render';
+import { getAllSymbols } from '../index.js';
+import { UID_PLACEHOLDER, getSvgParts, parseSvg, renderSvg } from '../render.js';
 
 const ids = (html: string): string[] => [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
 

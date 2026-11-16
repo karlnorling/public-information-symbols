@@ -1,8 +1,8 @@
-import { symbols } from './symbols.generated';
-import type { PISymbol, SymbolCategory } from './types';
+import { symbols } from './symbols.generated.js';
+import type { PISymbol, SymbolCategory } from './types.js';
 
-export type { PISymbol, SymbolAssets, SymbolCategory } from './types';
-export { symbols } from './symbols.generated';
+export type { PISymbol, SymbolAssets, SymbolCategory } from './types.js';
+export { symbols } from './symbols.generated.js';
 
 export const getAllSymbols = (): PISymbol[] => symbols;
 
@@ -10,5 +10,12 @@ export const getSymbol = (id: string): PISymbol | undefined => symbols.find((s) 
 
 export const getSymbolsByCategory = (category: SymbolCategory): PISymbol[] =>
   symbols.filter((s) => s.category === category);
-export { UID_PLACEHOLDER, escapeHtml, getSvgParts, nextUid, parseSvg, renderSvg } from './render';
-export type { RenderSvgOptions, SvgParts } from './render';
+export {
+  UID_PLACEHOLDER,
+  escapeHtml,
+  getSvgParts,
+  nextUid,
+  parseSvg,
+  renderSvg,
+} from './render.js';
+export type { RenderSvgOptions, SvgParts } from './render.js';

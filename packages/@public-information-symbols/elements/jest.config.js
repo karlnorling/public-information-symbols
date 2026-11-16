@@ -20,6 +20,8 @@ const config = {
     ],
   },
   moduleNameMapper: {
+    // Source imports end in .js so the ESM build runs in Node; point them back at the .ts files.
+    '^(\\.{1,2}/.*)\\.js$': '$1',
     '^@public-information-symbols/core$': '<rootDir>/../core/src/index.ts',
     '^@public-information-symbols/core/render$': '<rootDir>/../core/src/render.ts',
   },

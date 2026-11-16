@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { SymbolById } from '../SymbolById';
-import { Pf002Hospital } from '../Pf002Hospital';
+import { SymbolById } from '../SymbolById.js';
+import { Pf002Hospital } from '../Pf002Hospital.js';
 
 const ids = (html: string): string[] => [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
 

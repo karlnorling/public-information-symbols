@@ -1,7 +1,7 @@
 import { createApp, h } from 'vue';
 import type { Component } from 'vue';
-import { SymbolById } from '../SymbolById';
-import { Pf002Hospital } from '../Pf002Hospital';
+import { SymbolById } from '../SymbolById.js';
+import { Pf002Hospital } from '../Pf002Hospital.js';
 
 const mount = (render: () => ReturnType<typeof h> | ReturnType<typeof h>[]): HTMLElement => {
   const el = document.createElement('div');

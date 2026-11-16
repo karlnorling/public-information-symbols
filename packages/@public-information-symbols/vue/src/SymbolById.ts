@@ -2,8 +2,8 @@ import { defineComponent } from 'vue';
 import type { PropType } from 'vue';
 import { getSymbol } from '@public-information-symbols/core';
 import { getSvgParts, nextUid } from '@public-information-symbols/core/render';
-import { symbolProps } from './SymbolPropsBase';
-import { renderSymbol } from './renderSymbol';
+import { symbolProps } from './SymbolPropsBase.js';
+import { renderSymbol } from './renderSymbol.js';
 
 export const SymbolById = defineComponent({
   name: 'SymbolById',

@@ -1,4 +1,4 @@
-import { getAllSymbols, getSymbol, getSymbolsByCategory } from '../index';
+import { getAllSymbols, getSymbol, getSymbolsByCategory } from '../index.js';
 
 describe('@public-information-symbols/core', () => {
   it('getAllSymbols returns an array', () => {
