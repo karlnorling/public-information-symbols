@@ -26,6 +26,10 @@ else
   git tag "$tag"
 fi
 
-# changesets/action parses this line to decide which tag to push and which
-# GitHub release to create.
+# changesets/action v2 reads the tags to push and the GitHub releases to create
+# from the CHANGESETS_OUTPUT file (see publish.sh), not from stdout. The
+# `packageName` must match the workspace package exactly.
+if [ -n "${CHANGESETS_OUTPUT:-}" ]; then
+  printf '{"type":"git-tag","tag":"%s","packageName":"%s"}\n' "$tag" "$name" >> "$CHANGESETS_OUTPUT"
+fi
 echo "New tag: $tag"
