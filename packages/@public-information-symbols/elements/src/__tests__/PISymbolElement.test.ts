@@ -1,5 +1,5 @@
-import { PISymbolElement } from '../PISymbolElement';
-import { defineCustomElements } from '../defineCustomElements';
+import { PISymbolElement } from '../PISymbolElement.js';
+import { defineCustomElements } from '../defineCustomElements.js';
 
 const create = (html: string): HTMLElement => {
   const host = document.createElement('div');

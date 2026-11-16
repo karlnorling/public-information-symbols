@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { renderSvg } from '@public-information-symbols/core/render';
 import type { SvgParts } from '@public-information-symbols/core/render';
-import type { SymbolProps } from './SymbolPropsBase';
+import type { SymbolProps } from './SymbolPropsBase.js';
 
 /** Returns an id that is unique per component instance and stable across SSR hydration. */
 export const useSymbolUid = (): string => `pi${React.useId()}`;

@@ -1,7 +1,7 @@
 // THIS FILE IS AUTO-GENERATED. DO NOT EDIT MANUALLY.
 // Run 'yarn generate' to regenerate.
 
-import type { PISymbol } from './types';
+import type { PISymbol } from './types.js';
 
 export const symbols: PISymbol[] = [
   {

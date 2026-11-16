@@ -2,8 +2,8 @@
 // Run 'yarn generate' to regenerate.
 
 import type { SvgParts } from '@public-information-symbols/core/render';
-import { PISymbolBase } from './PISymbolBase';
-import type { SymbolSource } from './PISymbolBase';
+import { PISymbolBase } from './PISymbolBase.js';
+import type { SymbolSource } from './PISymbolBase.js';
 
 const _parts: SvgParts = {"attrs":"xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52.917 52.917\" xml:space=\"preserve\"","body":"<path d=\"M90.782 69.064h52.917v52.917H90.782z\" style=\"fill:#fff;fill-opacity:1;stroke:none;stroke-width:2.01819\" transform=\"translate(-90.782 -69.064)\"/><path d=\"M116.97 78.661a4.11 4.11 0 0 0-4.109 4.109 4.11 4.11 0 0 0 4.11 4.108 4.11 4.11 0 0 0 4.108-4.108 4.11 4.11 0 0 0-4.109-4.109m-6.173 10.637c-.964 0-1.74.84-1.74 1.882v.406c0 1.042.776 1.881 1.74 1.881h2.303v14.924h-3.006c-.706 0-1.275.84-1.275 1.882v.406c0 1.043.569 1.882 1.275 1.882h14.061c.707 0 1.275-.84 1.275-1.882v-.406c0-1.042-.568-1.882-1.275-1.882h-3.027V89.298z\" style=\"fill:#000;fill-opacity:1;stroke:none;stroke-width:2.19112\" transform=\"translate(-90.782 -69.064)\"/>","width":"200.001","height":"200.001"};
 const _title = "Information";

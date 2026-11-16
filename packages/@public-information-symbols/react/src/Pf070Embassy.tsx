@@ -3,8 +3,8 @@
 
 import * as React from 'react';
 import type { SvgParts } from '@public-information-symbols/core/render';
-import type { SymbolProps } from './SymbolPropsBase';
-import { renderSymbol, useSymbolUid } from './renderSymbol';
+import type { SymbolProps } from './SymbolPropsBase.js';
+import { renderSymbol, useSymbolUid } from './renderSymbol.js';
 
 const _parts: SvgParts = {"attrs":"xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52.917 52.917\"","body":"<path d=\"M154.57 50.479h52.917v52.917H154.57z\" style=\"fill:#fff;fill-opacity:1;stroke:none;stroke-width:2.01819\" transform=\"translate(-154.57 -50.479)\"/><path d=\"M165.503 60.336v.725h.424v21.777h-2.35v10.7h14.093v-4.42a3.35 3.35 0 0 1 3.359-3.358 3.35 3.35 0 0 1 3.358 3.359v4.42h14.092V82.837h-2.35v-2.4l-15.655-2.37-13.346 2.174V68.93c.415-.223.946-.461 1.342-.478 2.049-.083 3.571 2.083 5.728 2.069 1.15-.007 1.714-.212 1.714-.212v-6.294s-.46.232-1.838.212c-1.297-.018-3.158-1.955-5.339-2.068-.41-.022-1.097.234-1.607.454v-1.552h.425v-.725z\" style=\"display:inline;fill:#000;stroke-width:.799999;stroke-linecap:round\" transform=\"translate(-154.57 -50.479)\"/>","width":"200.001","height":"200.001"};
 const _title = "Embassy";

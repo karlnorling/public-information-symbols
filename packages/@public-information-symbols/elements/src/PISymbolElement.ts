@@ -1,7 +1,7 @@
 import { getSymbol } from '@public-information-symbols/core';
 import { getSvgParts } from '@public-information-symbols/core/render';
-import { PISymbolBase } from './PISymbolBase';
-import type { SymbolSource } from './PISymbolBase';
+import { PISymbolBase } from './PISymbolBase.js';
+import type { SymbolSource } from './PISymbolBase.js';
 
 /**
  * Generic ISO 7001 public information symbol custom element — renders any symbol by slug ID.

@@ -2,8 +2,8 @@
 // Run 'yarn generate' to regenerate.
 
 import type { SvgParts } from '@public-information-symbols/core/render';
-import { PISymbolBase } from './PISymbolBase';
-import type { SymbolSource } from './PISymbolBase';
+import { PISymbolBase } from './PISymbolBase.js';
+import type { SymbolSource } from './PISymbolBase.js';
 
 const _parts: SvgParts = {"attrs":"xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 52.917 52.917\"","body":"<path d=\"M119.805 164.544h52.917v52.917h-52.917z\" style=\"fill:#fff;fill-opacity:1;stroke:none;stroke-width:2.01819\" transform=\"translate(-119.805 -164.544)\"/><path d=\"M141.793 170.848a3.506 3.506 0 0 0-3.506 3.506 3.506 3.506 0 0 0 3.506 3.506 3.506 3.506 0 0 0 3.506-3.506 3.506 3.506 0 0 0-3.506-3.506m.359 9.795q-.336 0-.712.062a4.16 4.16 0 0 0-3.43 4.793l1.622 9.79c.377 2.278 2.484 3.42 4.793 3.43.616.003 6.733-.022 7.352-.002l.043.003.233 10.395c.025 1.131.91 2.043 2.043 2.043 1.132 0 1.999-.912 2.044-2.043l.637-13.465c.03-2.515-2.965-3.372-5.716-4.083-.03-3.097-2.443-7.425-6.186-9.967-.972-.58-1.748-.956-2.723-.957m-6.403 19.458v2.108h14.11V200.1z\" style=\"fill:#000;stroke-width:.626924\" transform=\"translate(-119.805 -164.544)\"/>","width":"200.001","height":"200.001"};
 const _title = "Priority seats for obese people";

@@ -2,7 +2,7 @@ import { h } from 'vue';
 import type { ExtractPropTypes, StyleValue, VNode } from 'vue';
 import { renderSvg } from '@public-information-symbols/core/render';
 import type { SvgParts } from '@public-information-symbols/core/render';
-import type { symbolProps } from './SymbolPropsBase';
+import type { symbolProps } from './SymbolPropsBase.js';
 
 /** Renders a symbol's SVG inside a layout-transparent `<span>`. */
 export const renderSymbol = (
