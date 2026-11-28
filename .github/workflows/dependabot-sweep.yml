@@ -45,7 +45,7 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ secrets.PI_SYMBOLS_APP_ID }}
+          client-id: ${{ secrets.PI_SYMBOLS_CLIENT_ID }}
           private-key: ${{ secrets.PI_SYMBOLS_PRIVATE_KEY }}
 
       - name: Checkout
